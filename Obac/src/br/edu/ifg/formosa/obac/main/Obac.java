@@ -13,8 +13,7 @@ public class Obac extends Applet{
             java.awt.EventQueue.invokeAndWait(new Runnable() {
 
                 public void run() {
-                	//
-                    //initComponents();
+                	//initComponents();
                 }
             });
         } catch (Exception ex) {
