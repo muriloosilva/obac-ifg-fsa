@@ -1,8 +1,8 @@
 package br.edu.ifg.formosa.obac.visual;
 
-public class InterfaceManager {
+public class InterfaceBuilder {
 	
-	public InterfaceManager(){
+	public InterfaceBuilder(){
 		
 		
 		
