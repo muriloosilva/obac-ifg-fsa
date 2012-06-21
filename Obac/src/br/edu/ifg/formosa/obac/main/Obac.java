@@ -3,17 +3,24 @@ package br.edu.ifg.formosa.obac.main;
 
 import java.applet.Applet;
 
+import br.edu.ifg.formosa.obac.visual.InterfaceBuilder;
+
 
 public class Obac extends Applet{
 
-   
-    public void init() {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void init() {
     	
     	try {
             java.awt.EventQueue.invokeAndWait(new Runnable() {
 
                 public void run() {
-                	//init
+                	new InterfaceBuilder(Obac.this);
                 }
             });
         } catch (Exception ex) {
