@@ -17,7 +17,7 @@ public class Obac extends Applet{
 	public void init() {
     	
     	try {
-            java.awt.EventQueue.invokeAndWait(new Runnable() {
+             java.awt.EventQueue.invokeAndWait(new Runnable() {
 
                 public void run() {
                 	new InterfaceBuilder(Obac.this);
