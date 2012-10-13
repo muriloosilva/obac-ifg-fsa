@@ -1,5 +1,5 @@
 package br.edu.ifg.formosa.obac.controls;
- 
-public class CollisionController {
+
+public class ConfigurationControl {
 
 }

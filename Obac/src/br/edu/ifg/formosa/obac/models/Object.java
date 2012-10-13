@@ -1,5 +1,5 @@
 package br.edu.ifg.formosa.obac.models;
 
-public class Friction {
+public class Object {
 
 }
