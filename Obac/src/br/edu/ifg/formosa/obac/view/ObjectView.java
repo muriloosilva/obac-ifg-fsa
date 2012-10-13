@@ -1,5 +1,19 @@
 package br.edu.ifg.formosa.obac.view;
 
-public class ObjectView {
+import java.awt.Image;
+import java.awt.Panel;
+
+import javax.swing.ImageIcon;
+
+public class ObjectView extends Panel {
+	
+	private ImageIcon imgCubo;
+	
+	public ObjectView(){
+
+		imgCubo = new ImageIcon("cubo.png");
+		
+		
+	}
 
 }
