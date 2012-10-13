@@ -3,7 +3,6 @@ package br.edu.ifg.formosa.obac.main;
 
 import java.applet.Applet;
 
-import br.edu.ifg.formosa.obac.visual.InterfaceBuilder;
 
 
 public class Obac extends Applet{
