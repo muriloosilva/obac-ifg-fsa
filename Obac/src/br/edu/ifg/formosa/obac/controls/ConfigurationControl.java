@@ -20,46 +20,17 @@ public class ConfigurationControl {
 	private Surface surface;
 	private Obac obac;
 		
-	public ConfigurationControl(Obac obac, ConfigurationView configurationView){
-		
+	public ConfigurationControl(Obac obac, ConfigurationView configurationView, Environment environment){
+		this.environment = environment;
 		this.configurationView = configurationView;
 		
 		
 		
-		environment = new Environment();
-		objeto = new Object();
-		surface = new Surface();
-		
-		addActionListeners();
-		
-		//objeto.setAltura(0);
-		surface.setCoefFriction(0.62);
-		
-		environment.setObjeto(objeto);
-		environment.setSurface(surface);
-		
-		ObacControl obacControl = new ObacControl(environment);
-		
-//		if(configurationView.getComboBoxSupercie() == "plano"){
-//			
-//			new ObjectPlaneControl(obacControl, environment);
-//		}
-		
-//		configurationView.getBtnInit().addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent arg0) {
-//				
-//				//environment.setGravidade(configurationView.getCombox());
-//				
-//			}
-//		});
-		
+		addActionListeners();		
 	}
 	
 	public boolean verificaCampos(){
-		//System.out.println(configurationView.getCbPropulsion().getSelectedItem().toString());
-		//verifica se a propulsão é "Manual" e se a velocidade inicial está preenchida
+		//verifica se a velocidade inicial está preenchida quando a propulsão for manual
 		if(configurationView.getCbPropulsion().getSelectedItem().toString() == "Manual" &&
 				configurationView.getTxVelocity().getText().equals("")){
 			JOptionPane.showMessageDialog(obac, "Preencha o campo: Velocidade Inicial"); 
@@ -77,7 +48,6 @@ public class ConfigurationControl {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//trocar ambiente
-				System.out.println("Plano");
 			}
 		});
 		
@@ -87,7 +57,6 @@ public class ConfigurationControl {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//trocar ambiente
-				System.out.println("Plano e Subida");
 			}
 		});
 		
@@ -97,7 +66,6 @@ public class ConfigurationControl {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//trocar ambiente
-				System.out.println("Plano e Descida");
 			}
 		});
 		
@@ -107,7 +75,6 @@ public class ConfigurationControl {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//trocar ambiente
-				System.out.println("Plano e Precipício");
 			}
 		});
 		
@@ -120,21 +87,24 @@ public class ConfigurationControl {
 				if (verificaCampos() == true){
 
 					environment.getObjeto().setMassa(Double.parseDouble(configurationView.getTxMass().getText()));
-					System.out.println(configurationView.getTxMass().getText());
+
 					if(configurationView.getCbPropulsion().getSelectedItem() == "Manual"){
 						
 						environment.getObjeto().setPropulsao(0);
 						environment.getObjeto().setVelocidade(Integer.parseInt(configurationView.getTxVelocity().getText()));
-						System.out.println("Velocidade: "+configurationView.getTxVelocity().getText());
 					}
 					else{
 						environment.getObjeto().setPropulsao(1);
 						environment.getObjeto().setVelocidade(0);
 						//configurationView.getTxVelocity().setEditable(false);
-						System.out.println("Velocidade: 0");						
 					}
 					
 					
+				}
+				ObacControl obacControl = new ObacControl(environment);
+				
+				if(configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlane)){
+					new ObjectPlaneControl(obacControl, environment);
 				}
 				
 				
@@ -148,45 +118,40 @@ public class ConfigurationControl {
 			public void actionPerformed(ActionEvent arg0) {
 				if(configurationView.getCbPropulsion().getSelectedItem() == "Mola"){
 					configurationView.getTxVelocity().setEditable(false);
-					System.out.println("Mola");
 				}
 				else{
 					configurationView.getTxVelocity().setEditable(true);
-					System.out.println("Manual");
 				}
 			}
 		});
 	
+		//evento da seleção do atrito
 		configurationView.getCbFriction().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(configurationView.getCbFriction().getSelectedItem() == "Asfalto"){
 					environment.getSurface().setCoefFriction(Surface.asphalt);
-					System.out.println("Atrito: asfalto");
 				}
 				else if(configurationView.getCbFriction().getSelectedItem() == "Madeira"){
 					environment.getSurface().setCoefFriction(Surface.woodFriction);
-					System.out.println("Atrito: madeira");
 				}
 			}
 		});
 		
+		//evento da seleção da gravidade
 		configurationView.getCbGravity().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(configurationView.getCbGravity().getSelectedItem() == "Terra"){
 					environment.setGravidade(Environment.earth);
-					System.out.println("Gravidade: terra");
 				}
 				else if(configurationView.getCbGravity().getSelectedItem() == "Lua"){
 					environment.setGravidade(Environment.moon);
-					System.out.println("Gravidade: Lua");
 				}
 				else if(configurationView.getCbGravity().getSelectedItem() == "Marte"){
 					environment.setGravidade(Environment.mars);
-					System.out.println("Gravidade: Marte");
 				}
 			}
 		});

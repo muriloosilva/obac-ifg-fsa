@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class EnvironmentView extends Panel{
 	
-	public EnvironmentView(){
+	public EnvironmentView(Object objeto){
 		
 		this.setLayout(null);
 		this.setSize(600, 600);
@@ -16,7 +16,7 @@ public class EnvironmentView extends Panel{
 //		SurfaceView surfaceView = new SurfaceView();
 //		this.add(surfaceView);
 		this.add(new SurfaceView());
-		this.add(new ObjectView());
+		this.add(new ObjectView(objeto));
 	}
 
 }
