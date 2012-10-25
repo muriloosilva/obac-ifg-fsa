@@ -58,7 +58,7 @@ public class ConfigurationControl {
 	}
 	
 	public boolean verificaCampos(){
-		System.out.println(configurationView.getCbPropulsion().getSelectedItem().toString());
+		//System.out.println(configurationView.getCbPropulsion().getSelectedItem().toString());
 		//verifica se a propulsão é "Manual" e se a velocidade inicial está preenchida
 		if(configurationView.getCbPropulsion().getSelectedItem().toString() == "Manual" &&
 				configurationView.getTxVelocity().getText().equals("")){
@@ -70,17 +70,48 @@ public class ConfigurationControl {
 	}
 	
 	public void addActionListeners(){
-		
-		configurationView.getButtonGroupPlane().addActionListener(new ActionListener() {
+
+		//evento de seleção do tipo de superficie
+		configurationView.getPlane().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(e.getActionCommand());
-				//e.getActionCommand()
-				
+				//trocar ambiente
+				System.out.println("Plano");
 			}
 		});
 		
+		//evento de seleção do tipo de superficie
+		configurationView.getPlaneClimb().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//trocar ambiente
+				System.out.println("Plano e Subida");
+			}
+		});
+		
+		//evento de seleção do tipo de superficie
+		configurationView.getPlaneDescent().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//trocar ambiente
+				System.out.println("Plano e Descida");
+			}
+		});
+		
+		//evento de seleção do tipo de superficie
+		configurationView.getPlanePrecipice().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//trocar ambiente
+				System.out.println("Plano e Precipício");
+			}
+		});
+		
+		//evento botao simular
 		configurationView.getBtSimulation().addActionListener(new ActionListener() {
 			
 			@Override
@@ -88,15 +119,21 @@ public class ConfigurationControl {
 				
 				if (verificaCampos() == true){
 
+					environment.getObjeto().setMassa(Double.parseDouble(configurationView.getTxMass().getText()));
+					System.out.println(configurationView.getTxMass().getText());
 					if(configurationView.getCbPropulsion().getSelectedItem() == "Manual"){
+						
 						environment.getObjeto().setPropulsao(0);
 						environment.getObjeto().setVelocidade(Integer.parseInt(configurationView.getTxVelocity().getText()));
+						System.out.println("Velocidade: "+configurationView.getTxVelocity().getText());
 					}
 					else{
 						environment.getObjeto().setPropulsao(1);
 						environment.getObjeto().setVelocidade(0);
 						//configurationView.getTxVelocity().setEditable(false);
+						System.out.println("Velocidade: 0");						
 					}
+					
 					
 				}
 				
@@ -104,19 +141,55 @@ public class ConfigurationControl {
 			}
 		});
 		
+		//evento da seleção do tipo da propulsão
 		configurationView.getCbPropulsion().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(configurationView.getCbPropulsion().getSelectedItem() == "Mola"){
 					configurationView.getTxVelocity().setEditable(false);
+					System.out.println("Mola");
 				}
-				else
+				else{
 					configurationView.getTxVelocity().setEditable(true);
-				
+					System.out.println("Manual");
+				}
+			}
+		});
+	
+		configurationView.getCbFriction().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(configurationView.getCbFriction().getSelectedItem() == "Asfalto"){
+					environment.getSurface().setCoefFriction(Surface.asphalt);
+					System.out.println("Atrito: asfalto");
+				}
+				else if(configurationView.getCbFriction().getSelectedItem() == "Madeira"){
+					environment.getSurface().setCoefFriction(Surface.woodFriction);
+					System.out.println("Atrito: madeira");
+				}
 			}
 		});
 		
-	}
-	
+		configurationView.getCbGravity().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(configurationView.getCbGravity().getSelectedItem() == "Terra"){
+					environment.setGravidade(Environment.earth);
+					System.out.println("Gravidade: terra");
+				}
+				else if(configurationView.getCbGravity().getSelectedItem() == "Lua"){
+					environment.setGravidade(Environment.moon);
+					System.out.println("Gravidade: Lua");
+				}
+				else if(configurationView.getCbGravity().getSelectedItem() == "Marte"){
+					environment.setGravidade(Environment.mars);
+					System.out.println("Gravidade: Marte");
+				}
+			}
+		});
+		
+	}	
 }
