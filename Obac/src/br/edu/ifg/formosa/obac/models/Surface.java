@@ -1,6 +1,8 @@
 package br.edu.ifg.formosa.obac.models;
 
 public class Surface {
+	public static final double woodFriction = 0.62;
+	public static final double asphalt = 0.80;
 	private double coefFriction;
 	private int width;
 	private double forcaAtrito;

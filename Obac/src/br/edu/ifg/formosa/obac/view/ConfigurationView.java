@@ -23,6 +23,9 @@ public class ConfigurationView extends JPanel{
 	private JButton btSimulation;
 	private JRadioButton plane;
 	private JRadioButton planeClimb;
+	private JRadioButton planeDescent;
+	private JRadioButton planePrecipice;
+	private JComboBox cbGravity;
 	
 	public ConfigurationView(){
 		
@@ -96,11 +99,11 @@ public class ConfigurationView extends JPanel{
 		planeClimb.setBounds(5, 25, 160, 15);
 		planeClimb.setBackground(Color.WHITE);
 		planeClimb.setActionCommand("Plano e Subida");
-		JRadioButton planeDescent = new JRadioButton("Plano e Descida");
+		planeDescent = new JRadioButton("Plano e Descida");
 		planeDescent.setBounds(5, 45, 160, 15);
 		planeDescent.setBackground(Color.WHITE);
 		planeDescent.setActionCommand("Plano e Descida");
-		JRadioButton planePrecipice = new JRadioButton("Plano e Precipício");
+		planePrecipice = new JRadioButton("Plano e Precipício");
 		planePrecipice.setBounds(5, 65, 160, 15);
 		planePrecipice.setBackground(Color.WHITE);
 		planePrecipice.setActionCommand("Plano e Precipício");
@@ -125,7 +128,7 @@ public class ConfigurationView extends JPanel{
 		lbGravity.setForeground(Color.WHITE);
 		
 		String[] options2 = {"Terra", "Lua", "Marte"}; 
-		JComboBox cbGravity = new JComboBox(options2);
+		cbGravity = new JComboBox(options2);
 		cbGravity.setBounds(10, 10, 100, 20);
 		
 		Label lbObstacle = new Label("Obstaculo?");
@@ -247,6 +250,47 @@ public class ConfigurationView extends JPanel{
 	public void setBtSimulation(JButton btSimulation) {
 		this.btSimulation = btSimulation;
 	}
+
+	public JRadioButton getPlane() {
+		return plane;
+	}
+
+	public void setPlane(JRadioButton plane) {
+		this.plane = plane;
+	}
+
+	public JRadioButton getPlaneClimb() {
+		return planeClimb;
+	}
+
+	public void setPlaneClimb(JRadioButton planeClimb) {
+		this.planeClimb = planeClimb;
+	}
+
+	public JRadioButton getPlaneDescent() {
+		return planeDescent;
+	}
+
+	public void setPlaneDescent(JRadioButton planeDescent) {
+		this.planeDescent = planeDescent;
+	}
+
+	public JRadioButton getPlanePrecipice() {
+		return planePrecipice;
+	}
+
+	public void setPlanePrecipice(JRadioButton planePrecipice) {
+		this.planePrecipice = planePrecipice;
+	}
+
+	public JComboBox getCbGravity() {
+		return cbGravity;
+	}
+
+	public void setCbGravity(JComboBox cbGravity) {
+		this.cbGravity = cbGravity;
+	}
+	
 	
 	
 	
