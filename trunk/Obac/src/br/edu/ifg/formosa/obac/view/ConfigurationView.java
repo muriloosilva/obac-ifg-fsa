@@ -26,6 +26,10 @@ public class ConfigurationView extends JPanel{
 	private JRadioButton planeDescent;
 	private JRadioButton planePrecipice;
 	private JComboBox cbGravity;
+	public static final String sPlane = "Plano";
+	public static final String sPlaneClimb = "Plano e Subida";
+	public static final String sPlanoDescent = "Plano e Descida";
+	public static final String sPlanoPrecipice = "Plano e Precipício";
 	
 	public ConfigurationView(){
 		
@@ -91,22 +95,22 @@ public class ConfigurationView extends JPanel{
 		lbSurface.setBounds(10, 0, 100, 20);
 		lbSurface.setForeground(Color.WHITE);
 		
-		plane = new JRadioButton("Plano");
+		plane = new JRadioButton(sPlane);
 		plane.setBounds(5, 5, 160, 15);
 		plane.setBackground(Color.WHITE);
-		plane.setActionCommand("Plano");
-		planeClimb = new JRadioButton("Plano e Subida");
+		plane.setActionCommand(sPlane);
+		planeClimb = new JRadioButton(sPlaneClimb);
 		planeClimb.setBounds(5, 25, 160, 15);
 		planeClimb.setBackground(Color.WHITE);
-		planeClimb.setActionCommand("Plano e Subida");
-		planeDescent = new JRadioButton("Plano e Descida");
+		planeClimb.setActionCommand(sPlaneClimb);
+		planeDescent = new JRadioButton(sPlanoDescent);
 		planeDescent.setBounds(5, 45, 160, 15);
 		planeDescent.setBackground(Color.WHITE);
-		planeDescent.setActionCommand("Plano e Descida");
-		planePrecipice = new JRadioButton("Plano e Precipício");
+		planeDescent.setActionCommand(sPlanoDescent);
+		planePrecipice = new JRadioButton(sPlanoPrecipice);
 		planePrecipice.setBounds(5, 65, 160, 15);
 		planePrecipice.setBackground(Color.WHITE);
-		planePrecipice.setActionCommand("Plano e Precipício");
+		planePrecipice.setActionCommand(sPlanoPrecipice);
 		
 		buttonGroupPlane = new ButtonGroup();
 		buttonGroupPlane.add(plane);
