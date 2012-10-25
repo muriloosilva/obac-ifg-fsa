@@ -28,7 +28,7 @@ public class ObjectPlaneControl implements Runnable{
                 		delayS)+((environment.getObjeto().getAceleracao())*(delayS*delayS))/2))));
 //                    double espaco = ((mainApplet.getcuboX()-mainApplet.posicaoObjeto)* mainApplet.escala);
                 environment.getObjeto().setEspacoTemporario((environment.getObjeto().getPosicaoAtual()-
-                		environment.getObjeto().getPosicaoInicial()))
+                		environment.getObjeto().getPosicaoInicial()));
                 //                    vel = Math.sqrt((velI*velI)+(2*ac*espaco));
 //                    System.out.println("Velocidade: "+vel);
 //                    System.out.println("auxxxx: "+aux);
