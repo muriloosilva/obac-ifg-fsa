@@ -13,7 +13,16 @@ public class Object {
 	private double movimento;
 	private double espacoTemporario;
 	private double posicaoAtual;
+	private int propulsao;
 	
+	
+	
+	public int getPropulsao() {
+		return propulsao;
+	}
+	public void setPropulsao(int propulsao) {
+		this.propulsao = propulsao;
+	}
 	public double getMassa() {
 		return massa;
 	}

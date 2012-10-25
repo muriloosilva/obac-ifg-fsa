@@ -1,5 +1,6 @@
 package br.edu.ifg.formosa.obac.main;
 
+import br.edu.ifg.formosa.obac.controls.ConfigurationControl;
 import br.edu.ifg.formosa.obac.view.ConfigurationView;
 import br.edu.ifg.formosa.obac.view.EnvironmentView;
 
@@ -10,7 +11,10 @@ public class InterfaceBuilder {
 	
 	public InterfaceBuilder(Obac obac){
 		
-		obac.add(new ConfigurationView());
+		ConfigurationView configurationView = new ConfigurationView();
+		new ConfigurationControl(obac, configurationView);
+		
+		obac.add(configurationView);
 		obac.add(new EnvironmentView());
 		
 //		obac.setLayout(new java.awt.BorderLayout());
