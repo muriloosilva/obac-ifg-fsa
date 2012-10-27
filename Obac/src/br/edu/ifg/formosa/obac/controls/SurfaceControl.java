@@ -20,6 +20,9 @@ public class SurfaceControl {
 	
 	public void calculaEscala(){
 		
+		System.out.println("calculaEscala");
+		System.out.println("posiçãoFinal: "+environment.getObjeto().getPosicaoFinal());
+		
 		if(environment.getObjeto().getPosicaoFinal() < 100){
             //desenhaEscala(g, 100);
             environment.getSurface().setEscala(100/Surface.width);
@@ -31,6 +34,8 @@ public class SurfaceControl {
      else if(environment.getObjeto().getPosicaoFinal() > 1000 && environment.getObjeto().getPosicaoFinal() < 10000){
     	 environment.getSurface().setEscala(10000/Surface.width);
      }
-		
+     else if(environment.getObjeto().getPosicaoFinal() > 10000){
+    	 environment.getSurface().setEscala(100000/Surface.width);
+     }
 	}
 }

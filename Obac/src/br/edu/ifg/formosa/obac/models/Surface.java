@@ -4,7 +4,7 @@ public class Surface {
 	public static final double woodFriction = 0.62;
 	public static final double asphalt = 0.80;
 	private double coefFriction;
-	public static int width = 550;
+	public static double width = 550.00;
 	private double forcaAtrito;
 	private double escala;
 	
@@ -14,12 +14,7 @@ public class Surface {
 	public void setCoefFriction(double coefFriction) {
 		this.coefFriction = coefFriction;
 	}
-	public int getWidth() {
-		return width;
-	}
-	public void setWidth(int width) {
-		this.width = width;
-	}
+	
 	public double getForcaAtrito() {
 		return forcaAtrito;
 	}
@@ -31,6 +26,7 @@ public class Surface {
 	}
 	public void setEscala(double escala) {
 		this.escala = escala;
+		System.out.println("Escala: "+escala);
 	}
 	
 	

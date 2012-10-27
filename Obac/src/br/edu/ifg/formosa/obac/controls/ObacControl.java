@@ -15,6 +15,8 @@ public class ObacControl {
 		surfaceControl.calculaAtrito();
 		objectControl.calculaAceleracao();
 		objectControl.calculaPosicaoFinal();
+		surfaceControl.calculaEscala();
+		objectControl.calculaPosicaoFinalPixel();
 		objectControl.calculaTempo();
 		
 	}
@@ -22,11 +24,4 @@ public class ObacControl {
 	public ObjectControl getObjectControl(){
 		return objectControl;
 	}
-	
-	
-	
-	
-	
-	
-
 }

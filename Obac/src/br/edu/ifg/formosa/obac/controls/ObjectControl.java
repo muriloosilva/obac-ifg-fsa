@@ -27,10 +27,16 @@ public class ObjectControl {
 	
 	public void calculaPosicaoFinal(){
 		//((velI*velI)*(-1))/(2*(ac));
-		environment.getObjeto().setPosicaoFinal(((
+		environment.getObjeto().setPosicaoFinal((((
 				environment.getObjeto().getVelocidadeInicial()*
 				environment.getObjeto().getVelocidadeInicial())*-1)/(2*(
-						environment.getObjeto().getAceleracao()))/environment.getSurface().getEscala());
+						environment.getObjeto().getAceleracao()))));
+	}
+	
+	public void calculaPosicaoFinalPixel(){
+		System.out.println("Escala: "+environment.getSurface().getEscala());
+		environment.getObjeto().setPosicaoFinalPixel(environment.getObjeto().getPosicaoFinal()/environment.getSurface().getEscala());
+		
 	}
 	
 	public void calculaTempo(){
@@ -41,7 +47,7 @@ public class ObjectControl {
 	}
 
 	public boolean parada(){
-		if(environment.getObjeto().getPosicaoAtual()>=environment.getObjeto().getPosicaoFinal())
+		if(environment.getObjeto().getPosicaoAtual()>=environment.getObjeto().getPosicaoFinalPixel())
 			return true;
 		else
 			return false;
