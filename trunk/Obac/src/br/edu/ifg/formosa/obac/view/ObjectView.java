@@ -17,9 +17,7 @@ public class ObjectView extends Panel {
 	public ObjectView(){
 		//imgCubo = new ImageIcon("cubo.png");
 		this.setLayout(null);
-		this.setSize(600, 450);
-		this.setBackground(Color.BLUE);
-		this.setLocation(0, 0);
+		this.setBackground(Color.black);
 	}
 	
 	public void repinta(Object objeto){
@@ -31,9 +29,9 @@ public class ObjectView extends Panel {
 	
 		g.setColor(Color.black);
 		if(objeto!=null)
-			g.fillRect((int)objeto.getPosicaoAtual()+50, 400, 30, 30);
+			g.fillRect((int)objeto.getPosicaoAtual()+50, 0, 30, 30);
 		else
-			g.fillRect(50, 400, 30, 30);
+			g.fillRect(50, 0, 30, 30);
 		
 	}
 	
