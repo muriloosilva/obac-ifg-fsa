@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.controls;
 
 import br.edu.ifg.formosa.obac.models.Environment;
+import br.edu.ifg.formosa.obac.models.Surface;
 
 public class SurfaceControl {
 	
@@ -19,19 +20,17 @@ public class SurfaceControl {
 	
 	public void calculaEscala(){
 		
-//		if(environment.getObjeto().getPosicaoFinal() < 100){
-//            //desenhaEscala(g, 100);
-//            escala = 100/tamanhoLinha;
-//     }
-//     else if(posicaoFinal > 100 && posicaoFinal < 1000){
-//         desenhaEscala(g, 1000);
-//         escala = 1000/tamanhoLinha;
-//
-//     }
-//     else if(posicaoFinal > 1000 && posicaoFinal < 10000){
-//         desenhaEscala(g, 10000);        
-//         escala = 10000/tamanhoLinha;
-     //}
+		if(environment.getObjeto().getPosicaoFinal() < 100){
+            //desenhaEscala(g, 100);
+            environment.getSurface().setEscala(100/Surface.width);
+     }
+     else if(environment.getObjeto().getPosicaoFinal() > 100 && environment.getObjeto().getPosicaoFinal() < 1000){
+    	 environment.getSurface().setEscala(1000/Surface.width);
+
+     }
+     else if(environment.getObjeto().getPosicaoFinal() > 1000 && environment.getObjeto().getPosicaoFinal() < 10000){
+    	 environment.getSurface().setEscala(10000/Surface.width);
+     }
 		
 	}
 }

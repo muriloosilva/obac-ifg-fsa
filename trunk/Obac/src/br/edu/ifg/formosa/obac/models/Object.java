@@ -1,5 +1,7 @@
 package br.edu.ifg.formosa.obac.models;
 
+import br.edu.ifg.formosa.obac.utils.Conversion;
+
 public class Object {
 	
 	private double massa;
@@ -10,7 +12,7 @@ public class Object {
 	private double posicaoInicial;
 	private double posicaoFinal;
 	private double tempo;
-	private double movimento;
+	private double movimento = 50;
 	private double espacoTemporario;
 	private double posicaoAtual;
 	private int propulsao;
@@ -54,7 +56,7 @@ public class Object {
 		this.forcaNormal = forcaNormal;
 	}
 	public double getPosicaoFinal() {
-		return posicaoFinal;
+		return Conversion.rounding(2, posicaoFinal);
 	}
 	public void setPosicaoFinal(double posicaoFinal) {
 		this.posicaoFinal = posicaoFinal;
@@ -78,12 +80,13 @@ public class Object {
 		this.espacoTemporario = espacoTemporario;
 	}
 	public double getPosicaoAtual() {
-		return posicaoAtual;
+		return Conversion.rounding(2, posicaoAtual);
 	}
 	public void setPosicaoAtual(double posicaoAtual) {
 		this.posicaoAtual = posicaoAtual;
 	}
 	public double getPosicaoInicial() {
+		
 		return posicaoInicial;
 	}
 	public void setPosicaoInicial(double posicaoInicial) {

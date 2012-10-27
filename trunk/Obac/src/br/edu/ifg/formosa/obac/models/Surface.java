@@ -4,7 +4,7 @@ public class Surface {
 	public static final double woodFriction = 0.62;
 	public static final double asphalt = 0.80;
 	private double coefFriction;
-	private int width;
+	public static int width = 550;
 	private double forcaAtrito;
 	private double escala;
 	
