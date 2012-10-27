@@ -9,16 +9,21 @@ public class Object {
 	private int velocidade;
 	private double aceleracao;
 	private double forcaNormal;
-	private double posicaoInicial;
-	private double posicaoFinal;
+	private double posicaoInicial = 0;
+	private double posicaoFinal = 0;
 	private double tempo;
 	private double movimento = 50;
 	private double espacoTemporario;
 	private double posicaoAtual;
 	private int propulsao;
+	private double posicaoFinalPixel = 0;
 	
-	
-	
+	public double getPosicaoFinalPixel() {
+		return Conversion.rounding(2, posicaoFinalPixel);
+	}
+	public void setPosicaoFinalPixel(double posicaoFinalPixel) {
+		this.posicaoFinalPixel = posicaoFinalPixel;
+	}
 	public int getPropulsao() {
 		return propulsao;
 	}
