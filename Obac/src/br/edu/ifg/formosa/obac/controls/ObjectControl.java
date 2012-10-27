@@ -30,7 +30,7 @@ public class ObjectControl {
 		environment.getObjeto().setPosicaoFinal(((
 				environment.getObjeto().getVelocidadeInicial()*
 				environment.getObjeto().getVelocidadeInicial())*-1)/(2*(
-						environment.getObjeto().getAceleracao())));
+						environment.getObjeto().getAceleracao()))/environment.getSurface().getEscala());
 	}
 	
 	public void calculaTempo(){
@@ -38,5 +38,12 @@ public class ObjectControl {
 		environment.getObjeto().setTempo((0-
 				environment.getObjeto().getVelocidadeInicial())/
 				environment.getObjeto().getAceleracao());
+	}
+
+	public boolean parada(){
+		if(environment.getObjeto().getPosicaoAtual()>=environment.getObjeto().getPosicaoFinal())
+			return true;
+		else
+			return false;
 	}
 }

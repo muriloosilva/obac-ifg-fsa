@@ -10,6 +10,7 @@ import br.edu.ifg.formosa.obac.main.Obac;
 import br.edu.ifg.formosa.obac.models.Environment;
 import br.edu.ifg.formosa.obac.models.Surface;
 import br.edu.ifg.formosa.obac.view.ConfigurationView;
+import br.edu.ifg.formosa.obac.view.ObjectView;
 import br.edu.ifg.formosa.obac.models.Object;
 
 public class ConfigurationControl {
@@ -19,12 +20,12 @@ public class ConfigurationControl {
 	private Object objeto;
 	private Surface surface;
 	private Obac obac;
+	private ObjectView objectView;
 		
-	public ConfigurationControl(Obac obac, ConfigurationView configurationView, Environment environment){
+	public ConfigurationControl(Obac obac, ConfigurationView configurationView, Environment environment, ObjectView objectView){
 		this.environment = environment;
 		this.configurationView = configurationView;
-		
-		
+		this.objectView = objectView;
 		
 		addActionListeners();		
 	}
@@ -88,23 +89,41 @@ public class ConfigurationControl {
 
 					environment.getObjeto().setMassa(Double.parseDouble(configurationView.getTxMass().getText()));
 
-					if(configurationView.getCbPropulsion().getSelectedItem() == "Manual"){
+					if(configurationView.getCbPropulsion().getSelectedItem().equals("Manual")){
 						
 						environment.getObjeto().setPropulsao(0);
-						environment.getObjeto().setVelocidade(Integer.parseInt(configurationView.getTxVelocity().getText()));
+						environment.getObjeto().setVelocidadeInicial(Integer.parseInt(configurationView.getTxVelocity().getText()));
 					}
 					else{
 						environment.getObjeto().setPropulsao(1);
-						environment.getObjeto().setVelocidade(0);
+						environment.getObjeto().setVelocidadeInicial(0);
 						//configurationView.getTxVelocity().setEditable(false);
 					}
 					
 					
 				}
+				
+				if(configurationView.getCbFriction().getSelectedItem() == "Asfalto"){
+					environment.getSurface().setCoefFriction(Surface.asphalt);
+				}
+				else if(configurationView.getCbFriction().getSelectedItem() == "Madeira"){
+					environment.getSurface().setCoefFriction(Surface.woodFriction);
+				}
+				
+				if(configurationView.getCbGravity().getSelectedItem() == "Terra"){
+					environment.setGravidade(Environment.earth);
+				}
+				else if(configurationView.getCbGravity().getSelectedItem() == "Lua"){
+					environment.setGravidade(Environment.moon);
+				}
+				else if(configurationView.getCbGravity().getSelectedItem() == "Marte"){
+					environment.setGravidade(Environment.mars);
+				}
+				
 				ObacControl obacControl = new ObacControl(environment);
 				
 				if(configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlane)){
-					new ObjectPlaneControl(obacControl, environment);
+					new ObjectPlaneControl(obacControl, environment, objectView);
 				}
 				
 				
@@ -121,37 +140,6 @@ public class ConfigurationControl {
 				}
 				else{
 					configurationView.getTxVelocity().setEditable(true);
-				}
-			}
-		});
-	
-		//evento da seleção do atrito
-		configurationView.getCbFriction().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				if(configurationView.getCbFriction().getSelectedItem() == "Asfalto"){
-					environment.getSurface().setCoefFriction(Surface.asphalt);
-				}
-				else if(configurationView.getCbFriction().getSelectedItem() == "Madeira"){
-					environment.getSurface().setCoefFriction(Surface.woodFriction);
-				}
-			}
-		});
-		
-		//evento da seleção da gravidade
-		configurationView.getCbGravity().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(configurationView.getCbGravity().getSelectedItem() == "Terra"){
-					environment.setGravidade(Environment.earth);
-				}
-				else if(configurationView.getCbGravity().getSelectedItem() == "Lua"){
-					environment.setGravidade(Environment.moon);
-				}
-				else if(configurationView.getCbGravity().getSelectedItem() == "Marte"){
-					environment.setGravidade(Environment.mars);
 				}
 			}
 		});

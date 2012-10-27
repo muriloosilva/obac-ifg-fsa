@@ -6,6 +6,7 @@ import br.edu.ifg.formosa.obac.models.Object;
 import br.edu.ifg.formosa.obac.models.Surface;
 import br.edu.ifg.formosa.obac.view.ConfigurationView;
 import br.edu.ifg.formosa.obac.view.EnvironmentView;
+import br.edu.ifg.formosa.obac.view.ObjectView;
 
 
 public class InterfaceBuilder {
@@ -17,12 +18,15 @@ public class InterfaceBuilder {
 		ConfigurationView configurationView = new ConfigurationView();
 		Object objeto = new Object();
 		Surface surface = new Surface();
+		ObjectView objectView = new ObjectView();
 		Environment environment = new Environment();
-		new ConfigurationControl(obac, configurationView, environment);
+		environment.setObjeto(objeto);
+		environment.setSurface(surface);
+		new ConfigurationControl(obac, configurationView, environment, objectView);
 		
 		
 		obac.add(configurationView);
-		obac.add(new EnvironmentView(objeto));
+		obac.add(new EnvironmentView(objectView));
 		
 //		obac.setLayout(new java.awt.BorderLayout());
 //		obac.add(new GravityView(), java.awt.BorderLayout.CENTER);
