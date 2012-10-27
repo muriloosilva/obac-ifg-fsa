@@ -1,13 +1,15 @@
 package br.edu.ifg.formosa.obac.view;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextField;
 
-
-import javax.swing.*;
-
-
-import org.w3c.dom.CDATASection;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 public class ConfigurationView extends JPanel{
 	/**
@@ -294,8 +296,4 @@ public class ConfigurationView extends JPanel{
 	public void setCbGravity(JComboBox cbGravity) {
 		this.cbGravity = cbGravity;
 	}
-	
-	
-	
-	
 }
