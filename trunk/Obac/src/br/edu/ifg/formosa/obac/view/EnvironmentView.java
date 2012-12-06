@@ -12,19 +12,19 @@ import javax.swing.JPanel;
 public class EnvironmentView extends JPanel{
 	
 	private ImageIcon img;
+	private SurfaceView surfaceView;
 	
-	public EnvironmentView(ObjectView objectView){
+	public EnvironmentView(ObjectView objectView, SurfaceView surfaceView){
 		img = new ImageIcon("asfaltoreto.png");
 		this.setLayout(null);
 		this.setSize(600, 600);
+		this.surfaceView = surfaceView;
 		JLabel jLabel = new JLabel(img);
 		jLabel.setBounds(0, 0, 600, 600);
 		//this.add(jLabel);
 		this.setLocation(200, 0);
-		SurfaceView surface = new SurfaceView(objectView);
-		
-		surface.setBounds(0, 450, 600, 150);
-		this.add(surface, 0);
+		surfaceView.setBounds(0, 449, 600, 150);
+		this.add(surfaceView, 0);
 		this.add(jLabel, 1);
 		
 		

@@ -7,7 +7,16 @@ public class Surface {
 	public static double width = 550.00;
 	private double forcaAtrito;
 	private double escala;
+	private long posicaoFinal;
 	
+	
+	
+	public long getPontoFinal() {
+		return posicaoFinal;
+	}
+	public void setPontoFinal(long pontoFinal) {
+		this.posicaoFinal = pontoFinal;
+	}
 	public double getCoefFriction() {
 		return coefFriction;
 	}
