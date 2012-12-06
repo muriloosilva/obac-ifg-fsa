@@ -11,6 +11,7 @@ import br.edu.ifg.formosa.obac.models.Environment;
 import br.edu.ifg.formosa.obac.models.Surface;
 import br.edu.ifg.formosa.obac.view.ConfigurationView;
 import br.edu.ifg.formosa.obac.view.ObjectView;
+import br.edu.ifg.formosa.obac.view.SurfaceView;
 import br.edu.ifg.formosa.obac.models.Object;
 
 public class ConfigurationControl {
@@ -21,12 +22,13 @@ public class ConfigurationControl {
 	private Surface surface;
 	private Obac obac;
 	private ObjectView objectView;
-		
-	public ConfigurationControl(Obac obac, ConfigurationView configurationView, Environment environment, ObjectView objectView){
+	private SurfaceView surfaceView;	
+	
+	public ConfigurationControl(Obac obac, ConfigurationView configurationView, Environment environment, ObjectView objectView, SurfaceView surfaceView){
 		this.environment = environment;
 		this.configurationView = configurationView;
 		this.objectView = objectView;
-		
+		this.surfaceView = surfaceView;
 		addActionListeners();		
 	}
 	
@@ -124,6 +126,7 @@ public class ConfigurationControl {
 				
 				if(configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlane)){
 					new ObjectPlaneControl(obacControl, environment, objectView);
+					surfaceView.alteraEscala(environment.getSurface().getPontoFinal());
 				}
 				
 				

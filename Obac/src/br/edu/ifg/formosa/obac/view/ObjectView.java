@@ -13,6 +13,7 @@ public class ObjectView extends Panel {
 	private Image offScreenImage; // imagem auxiliar declarada na classe
 	private	ImageIcon imgCubo;
 	private Object objeto;
+	private boolean ver = false;
 
 	public ObjectView(){
 		//imgCubo = new ImageIcon("cubo.png");
@@ -22,16 +23,21 @@ public class ObjectView extends Panel {
 	
 	public void repinta(Object objeto){
 		this.objeto = objeto;
+		this.ver = true;
+		this.setBounds((int)objeto.getPosicaoAtual()+50, 0, 30, 30);
 		this.repaint();
 	}
 	
 	public void paint(Graphics g){
 	
 		g.setColor(Color.black);
-		if(objeto!=null)
+		if(ver){
 			g.fillRect((int)objeto.getPosicaoAtual()+50, 0, 30, 30);
-		else
+			System.out.println("entrei aqui IF...");
+		}
+		else{
 			g.fillRect(50, 0, 30, 30);
+		}
 		
 	}
 	
