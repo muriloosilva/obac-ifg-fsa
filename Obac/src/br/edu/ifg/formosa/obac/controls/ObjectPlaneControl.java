@@ -1,7 +1,8 @@
 package br.edu.ifg.formosa.obac.controls;
 
 import br.edu.ifg.formosa.obac.models.Environment;
-import br.edu.ifg.formosa.obac.view.ObjectView;
+import br.edu.ifg.formosa.obac.view.ScaleView;
+import br.edu.ifg.formosa.obac.view.SurfaceView;
 
 public class ObjectPlaneControl implements Runnable{
 	
@@ -11,12 +12,14 @@ public class ObjectPlaneControl implements Runnable{
 	private boolean movendo = false;
 	private Environment environment;
 	private ObacControl obacControl;
-	private ObjectView objectView;
+	private ScaleView scaleView;
+	private SurfaceView surfaceView;
 	
-	public ObjectPlaneControl(ObacControl obacControl, Environment environment, ObjectView objectView){
+	public ObjectPlaneControl(ObacControl obacControl, Environment environment, ScaleView scaleView, SurfaceView surfaceView){
 		this.obacControl = obacControl;
 		this.environment = environment;
-		this.objectView = objectView;
+		this.scaleView = scaleView;
+		this.surfaceView = surfaceView;
 		t = new Thread(this);
 		movendo = true;
 		t.start();
@@ -34,8 +37,9 @@ public class ObjectPlaneControl implements Runnable{
 //                    double espaco = ((mainApplet.getcuboX()-mainApplet.posicaoObjeto)* mainApplet.escala);
 //                environment.getObjeto().setEspacoTemporario((environment.getObjeto().getPosicaoAtual()-
 //                		environment.getObjeto().getPosicaoInicial()));
-                
-                objectView.repinta(environment.getObjeto());
+                surfaceView.repinta(environment.getObjeto());
+               // objectView.repinta(environment.getObjeto());
+                //surfaceView.repaint();
 //              System.out.println("Escala: "+ environment.getSurface().getEscala());
                 System.out.println("Posição atual: "+ environment.getObjeto().getPosicaoAtual());
                 System.out.println("Posição final pixel: "+environment.getObjeto().getPosicaoFinalPixel());
