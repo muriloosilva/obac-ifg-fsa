@@ -3,16 +3,16 @@ package br.edu.ifg.formosa.obac.controls;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.print.attribute.standard.JobMessageFromOperator;
 import javax.swing.JOptionPane;
 
 import br.edu.ifg.formosa.obac.main.Obac;
 import br.edu.ifg.formosa.obac.models.Environment;
+import br.edu.ifg.formosa.obac.models.Object;
 import br.edu.ifg.formosa.obac.models.Surface;
 import br.edu.ifg.formosa.obac.view.ConfigurationView;
 import br.edu.ifg.formosa.obac.view.ObjectView;
+import br.edu.ifg.formosa.obac.view.ScaleView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
-import br.edu.ifg.formosa.obac.models.Object;
 
 public class ConfigurationControl {
 	
@@ -21,13 +21,13 @@ public class ConfigurationControl {
 	private Object objeto;
 	private Surface surface;
 	private Obac obac;
-	private ObjectView objectView;
+	private ScaleView scaleView;
 	private SurfaceView surfaceView;	
 	
-	public ConfigurationControl(Obac obac, ConfigurationView configurationView, Environment environment, ObjectView objectView, SurfaceView surfaceView){
+	public ConfigurationControl(Obac obac, ConfigurationView configurationView, Environment environment, ScaleView scaleView, SurfaceView surfaceView){
 		this.environment = environment;
 		this.configurationView = configurationView;
-		this.objectView = objectView;
+		this.scaleView = scaleView;
 		this.surfaceView = surfaceView;
 		addActionListeners();		
 	}
@@ -125,8 +125,8 @@ public class ConfigurationControl {
 				ObacControl obacControl = new ObacControl(environment);
 				
 				if(configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlane)){
-					new ObjectPlaneControl(obacControl, environment, objectView);
-					surfaceView.alteraEscala(environment.getSurface().getPontoFinal());
+					new ObjectPlaneControl(obacControl, environment, scaleView, surfaceView);
+					scaleView.alteraEscala(environment.getSurface().getPontoFinal());
 				}
 				
 				
