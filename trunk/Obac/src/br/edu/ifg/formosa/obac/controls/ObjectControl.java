@@ -39,6 +39,10 @@ public class ObjectControl {
 		
 	}
 	
+	public void calculaMomentoQueda(){
+		
+	}
+	
 	public void calculaTempo(){
 		//(0 - velI)/ac;
 		environment.getObjeto().setTempo((0-
