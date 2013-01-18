@@ -36,6 +36,10 @@ public class SurfaceView extends JPanel{
 	private int posTracoEscalaY = posTracoEscalaDown;
 	private int posTextoEscalaY =  posTextoEscalaDown;
 	
+	public static final int widthPlaneCliffPx = 150;
+	public static final int widthPlaneCliff = 150;
+	public static final int widthCliff = 400;
+	
 	
 	public SurfaceView(ScaleView scaleView){
 		this.setLayout(null);
@@ -85,7 +89,7 @@ public class SurfaceView extends JPanel{
 		//super.paint(g);
 		g.setColor(Color.BLACK);
 		if(ver && objeto!=null){
-			g.fillRect((int)objeto.getPosicaoAtual()+50, posObjetoY, 30, 30);
+			g.fillRect((int)objeto.getPosicaoAtual()+50, (int)(posObjetoY + objeto.getPosicaoAtualY()), 30, 30);
 		}
 		else{
 			g.fillRect(50, posObjetoY, 30, 30);

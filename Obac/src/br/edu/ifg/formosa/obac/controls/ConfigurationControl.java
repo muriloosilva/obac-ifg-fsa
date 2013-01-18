@@ -297,44 +297,32 @@ public class ConfigurationControl {
 						}
 
 						if (configurationView.getCbFriction().getSelectedItem() == atritoAsfalto) {
-							environment.getSurface().setCoefFriction(
-									Surface.asphalt);
-						} else if (configurationView.getCbFriction()
-								.getSelectedItem() == atritoMadeira) {
-							environment.getSurface().setCoefFriction(
-									Surface.woodFriction);
+							environment.getSurface().setCoefFriction(Surface.asphalt);
+						} else if (configurationView.getCbFriction().getSelectedItem() == atritoMadeira) {
+							environment.getSurface().setCoefFriction(Surface.woodFriction);
 						}
 
 						if (configurationView.getCbGravity().getSelectedItem() == planetaTerra) {
 							environment.setGravidade(Environment.earth);
-						} else if (configurationView.getCbGravity()
-								.getSelectedItem() == planetaLua) {
+						} else if (configurationView.getCbGravity().getSelectedItem() == planetaLua) {
 							environment.setGravidade(Environment.moon);
-						} else if (configurationView.getCbGravity()
-								.getSelectedItem() == planetaMarte) {
+						} else if (configurationView.getCbGravity().getSelectedItem() == planetaMarte) {
 							environment.setGravidade(Environment.mars);
 						}
 
 						ObacControl obacControl = new ObacControl(environment);
 
-						if (configurationView.getButtonGroupPlane()
-								.getSelection().getActionCommand()
-								.equalsIgnoreCase(ConfigurationView.sPlane)) {
-							new ObjectPlaneControl(obacControl, environment,
-									scaleView, surfaceView);
-							surfaceView.alteraEscala(environment.getSurface()
-									.getPontoFinal());
+						if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlane)) {
+							obacControl.planControl();
+							new ObjectPlaneControl(obacControl, environment, scaleView, surfaceView);
+							surfaceView.alteraEscala(environment.getSurface().getPontoFinal());
 
-						} else if (configurationView.getButtonGroupPlane()
-								.getSelection().getActionCommand()
-								.equalsIgnoreCase(ConfigurationView.sPlaneCliff)) {
-							new ObjectPlaneCliffControl(obacControl, environment,
-									scaleView, surfaceView);
-							surfaceView.alteraEscala(environment.getSurface()
-									.getPontoFinal());
-							{
-
-							}
+						} else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlaneCliff)) {
+							
+							obacControl.cliffControl();
+							new ObjectPlaneCliffControl(obacControl, environment, scaleView, surfaceView);
+							environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
+							//surfaceView.alteraEscala(environment.getSurface().getPontoFinal());
 
 						}
 

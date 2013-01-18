@@ -6,11 +6,15 @@ public class ObacControl {
 	
 	private Environment environment;
 	private ObjectControl objectControl;
+	private SurfaceControl surfaceControl;
 	
 	public ObacControl(Environment environment){
-		
 		this.objectControl = new ObjectControl(environment);
-		SurfaceControl surfaceControl = new SurfaceControl(environment);
+		this.surfaceControl = new SurfaceControl(environment);
+	}
+	
+	public void planControl(){
+		
 		objectControl.calculaNormal();
 		surfaceControl.calculaAtrito();
 		objectControl.calculaAceleracao();
@@ -18,7 +22,18 @@ public class ObacControl {
 		surfaceControl.calculaEscala();
 		objectControl.calculaPosicaoFinalPixel();
 		objectControl.calculaTempo();
+	}
+	
+	public void cliffControl(){
+
+		objectControl.calculaNormal();
+		surfaceControl.calculaAtrito();
+		objectControl.calculaAceleracao();
+		objectControl.calculaPosicaoFinal();
 		
+		surfaceControl.calculaEscala();
+		objectControl.calculaPosicaoFinalPixel();
+//		objectControl.calculaTempo();
 	}
 	
 	public ObjectControl getObjectControl(){
