@@ -29,26 +29,26 @@ public class ObjectPlaneCliffControl implements Runnable{
 	public void run() {
 		while (true) {
             if(!obacControl.getObjectControl().parada()){
-                System.out.println("qualquer coisa");
+            	
+                System.out.println("qualquer coisa cliff");
                 //aux = (((((velI)*i)+((ac)*(i*i))/2)));
                 environment.getObjeto().setPosicaoAtual(((((((environment.getObjeto().getVelocidadeInicial())*
                 		delayS)+((environment.getObjeto().getAceleracao())*(delayS*delayS))/2))))/environment.getSurface().getEscala());
-//                double espaco = ((mainApplet.getcuboX()-mainApplet.posicaoObjeto)* mainApplet.escala);
-//                environment.getObjeto().setEspacoTemporario((environment.getObjeto().getPosicaoAtual()-
-//                environment.getObjeto().getPosicaoInicial()));
+                
                 surfaceView.repinta(environment.getObjeto());
-                // objectView.repinta(environment.getObjeto());
-                //surfaceView.repaint();
-//              System.out.println("Escala: "+ environment.getSurface().getEscala());
+                
+                if( environment.getObjeto().getPosicaoAtual() >= SurfaceView.widthPlaneCliff){
+                	 System.out.println("cliff 2");
+                	environment.getObjeto().setAceleracao(0);
+                	environment.getObjeto().setAceleracaoY(environment.getGravidade());
+                	environment.getObjeto().setPosicaoAtualY(((((((0)*
+                    		delayS)+((environment.getObjeto().getAceleracaoY())*(delayS*delayS))/2))))/environment.getSurface().getEscala());
+                	
+                }
+               
                 System.out.println("Posição atual: "+ environment.getObjeto().getPosicaoAtual());
                 System.out.println("Posição final pixel: "+environment.getObjeto().getPosicaoFinalPixel());
-                //    vel = Math.sqrt((velI*velI)+(2*ac*espaco));
-//                    System.out.println("Velocidade: "+vel);
-//                    System.out.println("auxxxx: "+aux);
-//                    movendo = mainApplet.moveDireita(aux,vel);
-//                    mainApplet.repaint();
-//                    jt6.setText(""+df.format(vel)+"m/s");
-//                    jt5.setText(""+df.format(((vel - velI)/ac))+"s");
+
                 
                 
                 	
