@@ -16,7 +16,6 @@ public class ScaleView extends JPanel{
 	
 	public ScaleView(){
 		this.setLayout(null);
-		
 		//this.setOpaque(false);
 	}
 	

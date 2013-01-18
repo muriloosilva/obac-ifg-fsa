@@ -2,6 +2,7 @@ package br.edu.ifg.formosa.obac.view;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -18,12 +19,29 @@ public class SurfaceView extends JPanel{
 	private Object objeto;
 	private boolean ver = false;
 	private boolean desenhaEscala = true;
+
+	public static final int posObjetoDown = 450;
+	public static final int posObjetoUp = 160;
+	public static final int escalaUp = 1;
+	public static final int escalaDown = 2;
+	private static final int poslinhaEscalaDown =  525;
+	private static final int poslinhaEscalaUp = 550;
+	private static final int posTracoEscalaDown = 530;
+	private static final int posTracoEscalaUp = 555;
+	private static final int posTextoEscalaDown = 550;
+	private static final int posTextoEscalaUp = 575;
+	
+	private int posObjetoY = posObjetoDown;
+	private int posLinhaEscalaY = poslinhaEscalaDown;
+	private int posTracoEscalaY = posTracoEscalaDown;
+	private int posTextoEscalaY =  posTextoEscalaDown;
+	
 	
 	public SurfaceView(ScaleView scaleView){
 		this.setLayout(null);
 		//objectView.setBounds(50, 0, 30, 30);
 		//this.add(objectView);
-		scaleView.setBounds(0, 100, 600, 50);
+		scaleView.setBounds(0, 50, 600, 400);
 		this.add(scaleView);
 		//this.setBackground(Color.blue);
 		this.setOpaque(false);
@@ -38,41 +56,58 @@ public class SurfaceView extends JPanel{
 		this.repaint();
 	}
 	
-//	public void alteraEscala(long pontoFinal){
-//		desenhaEscala = true;
-//		escala = pontoFinal;
-//		repaint();		
-//	}
+	public void alteraEscala(long pontoFinal){
+		desenhaEscala = true;
+		escala = pontoFinal;
+		repaint();		
+	}
+	
+	public void setPosObjetoY(int posicao){
+		posObjetoY = posicao;
+	}
+	
+	public void setPosEscalaY(int posicao){
+		if(posicao == escalaUp){
+			posLinhaEscalaY = poslinhaEscalaUp;
+			posTracoEscalaY = posTracoEscalaUp;
+			posTextoEscalaY = posTextoEscalaUp;
+		}
+		else{
+			posLinhaEscalaY = poslinhaEscalaDown;
+			posTracoEscalaY = posTracoEscalaDown;
+			posTextoEscalaY = posTextoEscalaDown;
+		}
+	}
 	
 	@Override
 	public void paint(Graphics g) {
 		
 		//super.paint(g);
 		g.setColor(Color.BLACK);
-		if(ver){
-			g.fillRect((int)objeto.getPosicaoAtual()+50, 0, 30, 30);
+		if(ver && objeto!=null){
+			g.fillRect((int)objeto.getPosicaoAtual()+50, posObjetoY, 30, 30);
 		}
 		else{
-			g.fillRect(50, 0, 30, 30);
+			g.fillRect(50, posObjetoY, 30, 30);
 			ver = true;
 		}
 	
-//		if(desenhaEscala){
-//			g.setColor(Color.white);
-//			g.drawLine(0, 50, 600, 50);
-//			g.drawString("|", 50, 55);
-//			g.drawString("|", 175, 55);
-//			g.drawString("|", 300, 55);
-//			g.drawString("|", 425, 55);
-//			g.drawString("|", 550, 55);
-//			
-//			g.drawString("0", 50, 70);
-//			g.drawString(""+(escala*0.25), 175, 70);
-//			g.drawString(""+(escala*0.5), 300, 70);
-//			g.drawString(""+(escala*0.75), 425, 70);
-//			g.drawString(""+(escala), 550, 70);
-//			desenhaEscala = false;
-//		}
+
+		g.setColor(Color.white);
+		Font estiloFonte = new Font("Arial", Font.BOLD, 14);
+		g.setFont(estiloFonte);
+		g.drawLine(0, posLinhaEscalaY, 600, posLinhaEscalaY);
+		g.drawString("|", 50, posTracoEscalaY);
+		g.drawString("|", 175, posTracoEscalaY);
+		g.drawString("|", 300, posTracoEscalaY);
+		g.drawString("|", 425, posTracoEscalaY);
+		g.drawString("|", 550, posTracoEscalaY);
+		
+		g.drawString("0", 50, posTextoEscalaY);
+		g.drawString(""+(escala*0.25), 175, posTextoEscalaY);
+		g.drawString(""+(escala*0.5), 300, posTextoEscalaY);
+		g.drawString(""+(escala*0.75), 425, posTextoEscalaY);
+		g.drawString(""+(escala), 550, posTextoEscalaY);
 		
 	}
 

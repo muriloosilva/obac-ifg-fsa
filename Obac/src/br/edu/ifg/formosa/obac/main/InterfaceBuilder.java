@@ -27,11 +27,13 @@ public class InterfaceBuilder {
 		Environment environment = new Environment();
 		environment.setObjeto(objeto);
 		environment.setSurface(surface);
+		EnvironmentView environmentView = new EnvironmentView(scaleView, surfaceView); 
 		
-		new ConfigurationControl(obac, configurationView, environment, scaleView, surfaceView);
 		
 		obac.add(configurationView);
-		obac.add(new EnvironmentView(scaleView, surfaceView));		
+		obac.add(environmentView);	
+		
+		new ConfigurationControl(obac, configurationView, environment, scaleView, surfaceView, environmentView);
 	}
 
 }

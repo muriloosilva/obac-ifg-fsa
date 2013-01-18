@@ -30,8 +30,8 @@ public class ConfigurationView extends JPanel{
 	private JComboBox cbGravity;
 	public static final String sPlane = "Plano";
 	public static final String sPlaneClimb = "Plano e Subida";
-	public static final String sPlanoDescent = "Plano e Descida";
-	public static final String sPlanoPrecipice = "Plano e Precipício";
+	public static final String sPlaneDescent = "Plano e Descida";
+	public static final String sPlaneCliff = "Plano e Precipício";
 	
 	public ConfigurationView(){
 		
@@ -105,14 +105,14 @@ public class ConfigurationView extends JPanel{
 		planeClimb.setBounds(5, 25, 160, 15);
 		planeClimb.setBackground(Color.WHITE);
 		planeClimb.setActionCommand(sPlaneClimb);
-		planeDescent = new JRadioButton(sPlanoDescent);
+		planeDescent = new JRadioButton(sPlaneDescent);
 		planeDescent.setBounds(5, 45, 160, 15);
 		planeDescent.setBackground(Color.WHITE);
-		planeDescent.setActionCommand(sPlanoDescent);
-		planePrecipice = new JRadioButton(sPlanoPrecipice);
+		planeDescent.setActionCommand(sPlaneDescent);
+		planePrecipice = new JRadioButton(sPlaneCliff);
 		planePrecipice.setBounds(5, 65, 160, 15);
 		planePrecipice.setBackground(Color.WHITE);
-		planePrecipice.setActionCommand(sPlanoPrecipice);
+		planePrecipice.setActionCommand(sPlaneCliff);
 		
 		buttonGroupPlane = new ButtonGroup();
 		buttonGroupPlane.add(plane);
@@ -125,7 +125,7 @@ public class ConfigurationView extends JPanel{
 		lbFriction.setBounds(10, 105, 100, 20);
 		lbFriction.setForeground(Color.WHITE);
 		
-		String[] options1 = {"Madeira", "Asfalto"}; 
+		String[] options1 = {"Asfalto", "Madeira"}; 
 		cbFriction = new JComboBox(options1);
 		cbFriction.setBounds(10, 10, 100, 20);
 		
@@ -281,7 +281,7 @@ public class ConfigurationView extends JPanel{
 		this.planeDescent = planeDescent;
 	}
 
-	public JRadioButton getPlanePrecipice() {
+	public JRadioButton getPlaneCliff() {
 		return planePrecipice;
 	}
 
