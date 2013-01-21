@@ -14,7 +14,7 @@ import br.edu.ifg.formosa.obac.models.Object;
 
 public class SurfaceView extends JPanel{
 	
-	private long escala=100;
+	private long pontoFinalEscala=100;
 	private Image offScreenImage; //imagem auxiliar declarada na classe
 	private Object objeto;
 	private boolean ver = false;
@@ -38,7 +38,7 @@ public class SurfaceView extends JPanel{
 	
 	public static final int widthPlaneCliffPx = 150;
 	public static final int widthPlaneCliff = 150;
-	public static final int widthCliff = 400;
+	public static final int widthCliffPx = 400;
 	
 	
 	public SurfaceView(ScaleView scaleView){
@@ -60,9 +60,9 @@ public class SurfaceView extends JPanel{
 		this.repaint();
 	}
 	
-	public void alteraEscala(long pontoFinal){
+	public void alteraPontosEscala(long pontoFinal){
 		desenhaEscala = true;
-		escala = pontoFinal;
+		pontoFinalEscala = pontoFinal;
 		repaint();		
 	}
 	
@@ -108,10 +108,10 @@ public class SurfaceView extends JPanel{
 		g.drawString("|", 550, posTracoEscalaY);
 		
 		g.drawString("0", 50, posTextoEscalaY);
-		g.drawString(""+(escala*0.25), 175, posTextoEscalaY);
-		g.drawString(""+(escala*0.5), 300, posTextoEscalaY);
-		g.drawString(""+(escala*0.75), 425, posTextoEscalaY);
-		g.drawString(""+(escala), 550, posTextoEscalaY);
+		g.drawString(""+(pontoFinalEscala*0.25), 175, posTextoEscalaY);
+		g.drawString(""+(pontoFinalEscala*0.5), 300, posTextoEscalaY);
+		g.drawString(""+(pontoFinalEscala*0.75), 425, posTextoEscalaY);
+		g.drawString(""+(pontoFinalEscala), 550, posTextoEscalaY);
 		
 	}
 
