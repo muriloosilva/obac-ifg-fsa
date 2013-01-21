@@ -22,7 +22,6 @@ public class ObjectPlaneCliffControl implements Runnable{
 		t = new Thread(this);
 		movendo = true;
 		t.start();
-		
 	}
 		
 	@Override
@@ -38,7 +37,10 @@ public class ObjectPlaneCliffControl implements Runnable{
                 surfaceView.repinta(environment.getObjeto());
                 
                 if( environment.getObjeto().getPosicaoAtual() >= SurfaceView.widthPlaneCliff){
-                	 System.out.println("cliff 2");
+                	environment.getSurface().setEscala((environment.getObjeto().getPosicaoFinal()-SurfaceView.widthPlaneCliff)/SurfaceView.widthCliffPx);
+                	environment.getObjeto().setPosicaoFinalPixel(environment.getObjeto().getPosicaoFinal()/environment.getSurface().getEscala());
+                	System.out.println("se...");
+                	System.out.println("cliff 2");
                 	environment.getObjeto().setAceleracao(0);
                 	environment.getObjeto().setAceleracaoY(environment.getGravidade());
                 	environment.getObjeto().setPosicaoAtualY(((((((0)*
@@ -49,10 +51,6 @@ public class ObjectPlaneCliffControl implements Runnable{
                 System.out.println("Posição atual: "+ environment.getObjeto().getPosicaoAtual());
                 System.out.println("Posição final pixel: "+environment.getObjeto().getPosicaoFinalPixel());
 
-                
-                
-                	
-                
                     try {
                         Thread.sleep(delayMs);
                     }

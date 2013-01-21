@@ -34,6 +34,7 @@ public class ObjectControl {
 	}
 	
 	public void calculaPosicaoFinalPixel(){
+		System.out.println("getPosicaoFinal: "+ environment.getObjeto().getPosicaoFinal());
 		System.out.println("Escala: "+environment.getSurface().getEscala());
 		environment.getObjeto().setPosicaoFinalPixel(environment.getObjeto().getPosicaoFinal()/environment.getSurface().getEscala());
 		
