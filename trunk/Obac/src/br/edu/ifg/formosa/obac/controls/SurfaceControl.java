@@ -19,10 +19,6 @@ public class SurfaceControl {
 				environment.getSurface().getCoefFriction());
 	}
 	
-	public void calculaEscalaSuperficie(){
-		
-	}
-	
 	public void calculaEscala(){
 		
 		System.out.println("calculaEscala");
