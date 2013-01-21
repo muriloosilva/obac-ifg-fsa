@@ -82,6 +82,7 @@ public class ObjectPlaneControl implements Runnable, ObjectGenericControl{
 	@Override
 	public void parar() {
 		pausar();
+		t.interrupt();
 		t.stop();
 		System.out.println("thread: "+ t.isInterrupted());
 		
