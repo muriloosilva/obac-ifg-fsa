@@ -4,7 +4,7 @@ import br.edu.ifg.formosa.obac.models.Environment;
 import br.edu.ifg.formosa.obac.view.ScaleView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
 
-public class ObjectPlaneControl implements Runnable{
+public class ObjectPlaneControl implements Runnable, ObjectGenericControl{
 	
 	private Thread t;
 	private final int delayMs = 40;
@@ -14,6 +14,7 @@ public class ObjectPlaneControl implements Runnable{
 	private ObacControl obacControl;
 	private ScaleView scaleView;
 	private SurfaceView surfaceView;
+	private boolean continuar = true;
 	
 	public ObjectPlaneControl(ObacControl obacControl, Environment environment, ScaleView scaleView, SurfaceView surfaceView){
 		this.obacControl = obacControl;
@@ -29,7 +30,8 @@ public class ObjectPlaneControl implements Runnable{
 	@Override
 	public void run() {
 		while (true) {
-            if(!obacControl.getObjectControl().parada()){
+			if(continuar){
+				if(!obacControl.getObjectControl().parada()) {
                 System.out.println("qualquer coisa");
                 //aux = (((((velI)*i)+((ac)*(i*i))/2)));
                 environment.getObjeto().setPosicaoAtual(((((((environment.getObjeto().getVelocidadeInicial())*
@@ -56,7 +58,32 @@ public class ObjectPlaneControl implements Runnable{
                     catch (InterruptedException e){}
                 delayS+=0.04;
             }
+            else
+					t.interrupt();
+					}
         }
+		
+	}
+
+	@Override
+	public void pausar() {
+		System.out.println("Pausando ...");
+		continuar = false;
+		
+	}
+
+	@Override
+	public void continuar() {
+		System.out.println("Continuando ...");
+		continuar = true;
+		
+	}
+	
+	@Override
+	public void parar() {
+		pausar();
+		t.stop();
+		System.out.println("thread: "+ t.isInterrupted());
 		
 	}
 }
