@@ -4,7 +4,7 @@ import br.edu.ifg.formosa.obac.models.Environment;
 import br.edu.ifg.formosa.obac.view.ScaleView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
 
-public class ObjectPlaneCliffControl implements Runnable{
+public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
 	private Thread t;
 	private final int delayMs = 40;
 	private double delayS = 0.04;
@@ -13,6 +13,7 @@ public class ObjectPlaneCliffControl implements Runnable{
 	private ObacControl obacControl;
 	private ScaleView scaleView;
 	private SurfaceView surfaceView;
+	private boolean continuar = true;
 	
 	public ObjectPlaneCliffControl(ObacControl obacControl, Environment environment, ScaleView scaleView, SurfaceView surfaceView){
 		this.obacControl = obacControl;
@@ -22,12 +23,14 @@ public class ObjectPlaneCliffControl implements Runnable{
 		t = new Thread(this);
 		movendo = true;
 		t.start();
+		
 	}
 		
 	@Override
 	public void run() {
 		while (true) {
-            if(!obacControl.getObjectControl().parada()){
+			if(continuar){
+				if(!obacControl.getObjectControl().parada() ) {
             	
                 System.out.println("qualquer coisa cliff");
                 //aux = (((((velI)*i)+((ac)*(i*i))/2)));
@@ -57,7 +60,31 @@ public class ObjectPlaneCliffControl implements Runnable{
                     catch (InterruptedException e){}
                 delayS+=0.04;
             }
+            else
+					t.interrupt();
+            }
         }
+		
+	}
+
+
+	@Override
+	public void pausar() {
+		System.out.println("Pausando ...");
+		continuar = false;
+		
+	}
+
+	@Override
+	public void continuar() {
+		System.out.println("Continuando ...");
+		continuar = true;
+		
+	}
+	
+	@Override
+	public void parar() {
+		t.interrupt();
 		
 	}
 
