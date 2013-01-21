@@ -31,6 +31,7 @@ public class ConfigurationControl {
 	private final String planetaTerra = "Terra";
 	private final String planetaLua = "lua";
 	private final String planetaMarte = "marte";
+	private ObjectGenericControl objectGenericControl = null;
 
 	public ConfigurationControl(Obac obac, ConfigurationView configurationView,
 			Environment environment, ScaleView scaleView,
@@ -274,6 +275,22 @@ public class ConfigurationControl {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						
+						if (configurationView.getBtSimulation().getText() == "Simular"){
+							configurationView.getBtSimulation().setText("Parar");
+							
+						}
+						else if (configurationView.getBtSimulation().getText() == "Parar"){
+							configurationView.getBtSimulation().setText("Continuar");
+							objectGenericControl.pausar();
+							return;
+							
+						}
+						else if (configurationView.getBtSimulation().getText() == "Continuar"){
+							configurationView.getBtSimulation().setText("Parar");
+							objectGenericControl.continuar();
+							return;
+						}
 
 						if (verificaCampos() == true) {
 
@@ -342,7 +359,19 @@ public class ConfigurationControl {
 										}
 									}
 								});
+
 					}
+				});
+		
+		configurationView.getBtRestart().addActionListener(
+				new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+							configurationView.getTxVelocity().setText("");
+							configurationView.getTxMass().setText("");
+							objectGenericControl.parar();
+						}
 				});
 	}
 }
