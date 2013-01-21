@@ -2,6 +2,7 @@ package br.edu.ifg.formosa.obac.controls;
 
 import br.edu.ifg.formosa.obac.models.Environment;
 import br.edu.ifg.formosa.obac.models.Surface;
+import br.edu.ifg.formosa.obac.view.SurfaceView;
 
 public class SurfaceControl {
 	
@@ -19,21 +20,25 @@ public class SurfaceControl {
 				environment.getSurface().getCoefFriction());
 	}
 	
+	public void calculaEscalaSuperficie(){
+		
+	}
+	
 	public void calculaEscala(){
 		
 		System.out.println("calculaEscala");
 		System.out.println("posiçãoFinal: "+environment.getObjeto().getPosicaoFinal());
-		long escala=0;
+		long pontoFinalEscala=0;
 		
 		for(int i = 1; i<=environment.getObjeto().getPosicaoFinal(); i*=10){
-			escala=i;			
+			pontoFinalEscala=i;			
 		}
-		escala*=10;
-		System.out.println("escala:....."+escala);
+		pontoFinalEscala*=10;
+		System.out.println("pontoFinalEscala:....."+pontoFinalEscala);
 		
 		
-		environment.getSurface().setEscala(escala/Surface.width);
-		environment.getSurface().setPontoFinal(escala);
+		environment.getSurface().setEscala(pontoFinalEscala/Surface.width);
+		environment.getSurface().setPontoFinal(pontoFinalEscala);
 		
 //		if(environment.getObjeto().getPosicaoFinal() < 100){
 //            //desenhaEscala(g, 100);
@@ -49,5 +54,23 @@ public class SurfaceControl {
 //     else if(environment.getObjeto().getPosicaoFinal() > 10000){
 //    	 environment.getSurface().setEscala(10000000/Surface.width);
 //     }
+	}
+	
+public void calculaEscalaCliff(){
+		
+		System.out.println("calculaEscalaCliff");
+		System.out.println("posiçãoFinal: "+environment.getObjeto().getPosicaoFinal());
+		long pontoFinalEscala=0;
+		
+		for(int i = 1; i<=environment.getObjeto().getPosicaoFinal(); i*=10){
+			pontoFinalEscala=i;			
+		}
+		pontoFinalEscala*=10;
+		System.out.println("pontoFinalEscala:....."+pontoFinalEscala);
+		
+		
+		environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
+		environment.getSurface().setPontoFinal(pontoFinalEscala);
+		
 	}
 }
