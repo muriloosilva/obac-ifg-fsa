@@ -331,13 +331,13 @@ public class ConfigurationControl {
 
 						if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlane)) {
 							obacControl.planControl();
-							new ObjectPlaneControl(obacControl, environment, scaleView, surfaceView);
+							objectGenericControl = new ObjectPlaneControl(obacControl, environment, scaleView, surfaceView);
 							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
 
 						} else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlaneCliff)) {
 							
 							obacControl.cliffControl();
-							new ObjectPlaneCliffControl(obacControl, environment, scaleView, surfaceView);
+							objectGenericControl = new ObjectPlaneCliffControl(obacControl, environment, scaleView, surfaceView);
 							//environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
 							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
 
