@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.controls;
 
 import br.edu.ifg.formosa.obac.models.Environment;
+import br.edu.ifg.formosa.obac.view.SurfaceView;
 
 public class ObjectControl {
 	
@@ -53,6 +54,14 @@ public class ObjectControl {
 
 	public boolean parada(){
 		if(environment.getObjeto().getPosicaoAtual()>=environment.getObjeto().getPosicaoFinalPixel())
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean paradaCliff(){
+		if(environment.getObjeto().getPosicaoAtual()>=environment.getObjeto().getPosicaoFinalPixel()
+				&& environment.getObjeto().getPosicaoAtualY()>=SurfaceView.poslinhaEscalaDown)
 			return true;
 		else
 			return false;

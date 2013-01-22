@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.controls;
 
 import br.edu.ifg.formosa.obac.models.Environment;
+import br.edu.ifg.formosa.obac.models.Surface;
 import br.edu.ifg.formosa.obac.view.ScaleView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
 
@@ -30,7 +31,7 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
 	public void run() {
 		while (true) {
 			if(continuar){
-				if(!obacControl.getObjectControl().parada() ) {
+				if(!obacControl.getObjectControl().paradaCliff() ) {
             	
                 System.out.println("qualquer coisa cliff");
                 //aux = (((((velI)*i)+((ac)*(i*i))/2)));
@@ -39,11 +40,7 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 
                 surfaceView.repinta(environment.getObjeto());
                 
-                if( environment.getObjeto().getPosicaoAtual() >= SurfaceView.widthPlaneCliff){
-                	environment.getSurface().setEscala((environment.getObjeto().getPosicaoFinal()-SurfaceView.widthPlaneCliff)/SurfaceView.widthCliffPx);
-                	environment.getObjeto().setPosicaoFinalPixel(environment.getObjeto().getPosicaoFinal()/environment.getSurface().getEscala());
-                	System.out.println("se...");
-                	System.out.println("cliff 2");
+                if( environment.getObjeto().getPosicaoAtual() >= Surface.widthPlaneCliffPx){
                 	environment.getObjeto().setAceleracao(0);
                 	environment.getObjeto().setAceleracaoY(environment.getGravidade());
                 	environment.getObjeto().setPosicaoAtualY(((((((0)*
