@@ -24,7 +24,7 @@ public class SurfaceView extends JPanel{
 	public static final int posObjetoUp = 160;
 	public static final int escalaUp = 1;
 	public static final int escalaDown = 2;
-	private static final int poslinhaEscalaDown =  525;
+	public static final int poslinhaEscalaDown =  525;
 	private static final int poslinhaEscalaUp = 550;
 	private static final int posTracoEscalaDown = 530;
 	private static final int posTracoEscalaUp = 555;
@@ -36,9 +36,7 @@ public class SurfaceView extends JPanel{
 	private int posTracoEscalaY = posTracoEscalaDown;
 	private int posTextoEscalaY =  posTextoEscalaDown;
 	
-	public static final int widthPlaneCliffPx = 150;
-	public static final int widthPlaneCliff = 150;
-	public static final int widthCliffPx = 400;
+
 	
 	
 	public SurfaceView(ScaleView scaleView){

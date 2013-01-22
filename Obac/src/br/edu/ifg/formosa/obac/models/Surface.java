@@ -11,6 +11,15 @@ public class Surface {
 	private double escala;
 	private long posicaoFinal;
 	
+	public static final double widthPlaneCliffPx = 150;
+	public static final double widthCliffPx = 350;
+	
+	public static final double widthPlaneCliffPc = 30;
+	public static final double widthCliffPc = 70;
+	
+	public static double widthPlaneCliff = 0;
+	public static double widthCliff = 0;
+	
 	
 	
 	public long getPontoFinal() {
