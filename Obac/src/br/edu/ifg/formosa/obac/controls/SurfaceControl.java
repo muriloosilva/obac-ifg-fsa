@@ -60,6 +60,13 @@ public void calculaEscalaCliff(){
 		
 		System.out.println("calculaEscalaCliff");
 		System.out.println("posiçãoFinal: "+environment.getObjeto().getPosicaoFinal());
+		
+		/*Calcula o ponto final da escala
+		Exemplo: se o ponto final do objeto for 50 o ponto final da escala será 100
+				 se o ponto final do objeto for 200, o ponto final da escala será 1000
+				 se o ponto final do objetor for 4500, o ponto final da escala serpa 10000
+				 e assim por diante*/
+		
 		long pontoFinalEscala=0;
 		
 		for(int i = 1; i<=environment.getObjeto().getPosicaoFinal(); i*=10){
@@ -68,8 +75,15 @@ public void calculaEscalaCliff(){
 		pontoFinalEscala*=10;
 		System.out.println("pontoFinalEscala:....."+pontoFinalEscala);
 		
+		//Calcula o comprimento do plano do precipício de acordo com o ponto final da escala
+		Surface.widthPlaneCliff = (pontoFinalEscala*Surface.widthPlaneCliffPc)/100;
+		//Calcula o comprimento do precipício de acordo com o ponto final da escala
+		Surface.widthCliff = (pontoFinalEscala*Surface.widthCliffPc)/100;
 		
-		environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
+		System.out.println("widthPlaneCliff:....."+Surface.widthPlaneCliff);
+		System.out.println("widthCliff:....."+Surface.widthCliff);
+		
+		environment.getSurface().setEscala(pontoFinalEscala/Surface.width);
 		environment.getSurface().setPontoFinal(pontoFinalEscala);
 		
 	}
