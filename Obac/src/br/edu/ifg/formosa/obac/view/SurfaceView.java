@@ -21,7 +21,7 @@ public class SurfaceView extends JPanel{
 	private boolean desenhaEscala = true;
 
 	public static final int posObjetoDown = 450;
-	public static final int posObjetoUp = 160;
+	public static final int posObjetoUp = 170;
 	public static final int escalaUp = 1;
 	public static final int escalaDown = 2;
 	public static final int poslinhaEscalaDown =  525;
