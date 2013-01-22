@@ -7,7 +7,7 @@ import br.edu.ifg.formosa.obac.view.SurfaceView;
 public class ObjectPlaneControl implements Runnable, ObjectGenericControl{
 	
 	private Thread t;
-	private final int delayMs = 40;
+	private final int delayMs = 20;
 	private double delayS = 0.04;
 	private boolean movendo = false;
 	private Environment environment;

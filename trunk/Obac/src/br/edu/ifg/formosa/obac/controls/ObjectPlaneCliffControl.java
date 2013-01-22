@@ -7,8 +7,9 @@ import br.edu.ifg.formosa.obac.view.SurfaceView;
 
 public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
 	private Thread t;
-	private final int delayMs = 40;
+	private final int delayMs = 20;
 	private double delayS = 0.04;
+	private double delaySY = 0.04;
 	private boolean movendo = false;
 	private Environment environment;
 	private ObacControl obacControl;
@@ -44,8 +45,9 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 	environment.getObjeto().setAceleracao(0);
                 	environment.getObjeto().setAceleracaoY(environment.getGravidade());
                 	environment.getObjeto().setPosicaoAtualY(((((((0)*
-                    		delayS)+((environment.getObjeto().getAceleracaoY())*(delayS*delayS))/2))))/environment.getSurface().getEscala());
+                    		delaySY)+((environment.getObjeto().getAceleracaoY())*(delaySY*delaySY))/2))))/environment.getSurface().getEscala());
                 	
+                	delaySY+=0.04;
                 }
                
                 System.out.println("Posição atual: "+ environment.getObjeto().getPosicaoAtual());
