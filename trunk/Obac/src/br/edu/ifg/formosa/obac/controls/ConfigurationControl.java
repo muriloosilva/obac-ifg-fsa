@@ -51,15 +51,18 @@ public class ConfigurationControl {
 				&& configurationView.getTxVelocity().getText().equals("")) {
 			JOptionPane.showMessageDialog(obac,
 					"Preencha o campo: 'Velocidade Inicial'");
+			
 			return false;
 		}else if(configurationView.getTxMass().getText().equals("")){
 			JOptionPane.showMessageDialog(obac,
 					"Preencha o campo: 'Massa'");
+			return false;
 		}
 		return true;
 	}
 	
 	public void verificaImage(){
+		surfaceView.resetPosObjetoX();
 		if(configurationView.getPlane().isSelected()){
 			surfaceView.setPosObjetoY(SurfaceView.posObjetoDown);
 			surfaceView.setPosEscalaY(SurfaceView.escalaDown);
@@ -276,23 +279,24 @@ public class ConfigurationControl {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						
-						if (configurationView.getBtSimulation().getText() == "Simular"){
-							configurationView.getBtSimulation().setText("Parar");
-							
-						}
-						else if (configurationView.getBtSimulation().getText() == "Parar"){
-							configurationView.getBtSimulation().setText("Continuar");
-							objectGenericControl.pausar();
-							return;
-							
-						}
-						else if (configurationView.getBtSimulation().getText() == "Continuar"){
-							configurationView.getBtSimulation().setText("Parar");
-							objectGenericControl.continuar();
-							return;
-						}
-
 						if (verificaCampos() == true) {
+							
+							if (configurationView.getBtSimulation().getText() == "Iniciar Simulação"){
+								configurationView.getBtSimulation().setText("Parar Simulação");
+								configurationView.add(configurationView.getBtNewsimulation());
+								configurationView.repaint();
+							}
+							else if (configurationView.getBtSimulation().getText() == "Parar Simulação"){
+								configurationView.getBtSimulation().setText("Continuar Simulação");
+								objectGenericControl.pausar();
+								return;
+								
+							}
+							else if (configurationView.getBtSimulation().getText() == "Continuar Simulação"){
+								configurationView.getBtSimulation().setText("Parar Simulação");
+								objectGenericControl.continuar();
+								return;
+							}
 
 							environment.getObjeto().setMassa(
 									Double.parseDouble(configurationView
@@ -308,10 +312,10 @@ public class ConfigurationControl {
 							} else {
 								environment.getObjeto().setPropulsao(1);
 								environment.getObjeto().setVelocidadeInicial(0);
-								// configurationView.getTxVelocity().setEditable(false);
+								configurationView.getTxVelocity().setEditable(false);
 							}
 
-						}
+						
 
 						if (configurationView.getCbFriction().getSelectedItem() == atritoAsfalto) {
 							environment.getSurface().setCoefFriction(Surface.asphalt);
@@ -348,7 +352,7 @@ public class ConfigurationControl {
 								new ActionListener() {
 
 									@Override
-									public void actionPerformed(ActionEvent arg0) {
+									public void actionPerformed(ActionEvent e) {
 										if (configurationView.getCbPropulsion()
 												.getSelectedItem() == "Mola") {
 											configurationView.getTxVelocity()
@@ -359,18 +363,23 @@ public class ConfigurationControl {
 										}
 									}
 								});
-
-					}
+						}
+					}	
 				});
 		
-		configurationView.getBtRestart().addActionListener(
+		configurationView.getBtNewsimulation().addActionListener(
 				new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
 							configurationView.getTxVelocity().setText("");
 							configurationView.getTxMass().setText("");
+							configurationView.getBtSimulation().setText("Iniciar Simulação");
 							objectGenericControl.parar();
+							surfaceView.alteraPontosEscala(SurfaceView.pontoFinalEscala);
+							verificaImage();
+							configurationView.remove(configurationView.getBtNewsimulation());
+							configurationView.repaint();
 						}
 				});
 	}

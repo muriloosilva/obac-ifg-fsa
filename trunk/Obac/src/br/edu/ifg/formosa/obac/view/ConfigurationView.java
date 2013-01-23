@@ -23,7 +23,7 @@ public class ConfigurationView extends JPanel{
 	private ButtonGroup buttonGroupObstacle;
 	private TextField txMass;
 	private JButton btSimulation;
-    private JButton btRestart;
+    private JButton btNewsimulation;
 	private JRadioButton plane;
 	private JRadioButton planeClimb;
 	private JRadioButton planeDescent;
@@ -165,10 +165,10 @@ public class ConfigurationView extends JPanel{
 		txMass = new TextField("");
 		txMass.setBounds(10, 20, 100, 20);
 		
-		btSimulation = new JButton("Simular");
-		btSimulation.setBounds(80, 520, 100, 20);
-		btRestart = new JButton("Reiniciar");
-		btRestart.setBounds(80, 545, 100, 20);
+		btSimulation = new JButton("Iniciar Simulação");
+		btSimulation.setBounds(10, 520, 155, 20);
+		btNewsimulation = new JButton("Nova Simulação");
+		btNewsimulation.setBounds(10, 545, 155, 20);
 	    
 		
 		
@@ -202,7 +202,7 @@ public class ConfigurationView extends JPanel{
 	    pObject.add(lbMass);
 	    pObject.add(txMass);
 	    this.add(btSimulation);
-	    this.add(btRestart);
+	   
 	}
 
 	public JComboBox getCbPropulsion() {
@@ -301,11 +301,11 @@ public class ConfigurationView extends JPanel{
 		this.cbGravity = cbGravity;
 	}
 	
-	public JButton getBtRestart() {
-		return btRestart;
+	public JButton getBtNewsimulation() {
+		return btNewsimulation;
 	}
 
-	public void setBtRestart(JButton btRestart) {
-		this.btRestart = btRestart;
+	public void setBtNewsimulation(JButton btNewsimulation) {
+		this.btNewsimulation = btNewsimulation;
 	}
 }
