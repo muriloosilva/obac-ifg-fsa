@@ -11,7 +11,6 @@ public class Conversion {
 		}
 		else
 			return 0;
-		
 	}
 	
 }

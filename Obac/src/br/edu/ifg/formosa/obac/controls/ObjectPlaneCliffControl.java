@@ -83,8 +83,9 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
 	
 	@Override
 	public void parar() {
-		t.interrupt();
-		
+		pausar();
+		//t.interrupt();
+		t.stop();	
 	}
 
 }

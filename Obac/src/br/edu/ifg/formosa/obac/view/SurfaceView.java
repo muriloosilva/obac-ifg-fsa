@@ -14,7 +14,7 @@ import br.edu.ifg.formosa.obac.models.Object;
 
 public class SurfaceView extends JPanel{
 	
-	private long pontoFinalEscala=100;
+	public static long pontoFinalEscala=100;
 	private Image offScreenImage; //imagem auxiliar declarada na classe
 	private Object objeto;
 	private boolean ver = false;
@@ -35,9 +35,6 @@ public class SurfaceView extends JPanel{
 	private int posLinhaEscalaY = poslinhaEscalaDown;
 	private int posTracoEscalaY = posTracoEscalaDown;
 	private int posTextoEscalaY =  posTextoEscalaDown;
-	
-
-	
 	
 	public SurfaceView(ScaleView scaleView){
 		this.setLayout(null);
@@ -66,6 +63,16 @@ public class SurfaceView extends JPanel{
 	
 	public void setPosObjetoY(int posicao){
 		posObjetoY = posicao;
+		if(objeto!=null){
+			objeto.setPosicaoAtualY(0);
+		}
+	}
+	
+	public void resetPosObjetoX(){
+		if(objeto!=null){
+			objeto.setPosicaoAtual(0);
+		}
+		
 	}
 	
 	public void setPosEscalaY(int posicao){
@@ -110,7 +117,6 @@ public class SurfaceView extends JPanel{
 		g.drawString(""+(pontoFinalEscala*0.5), 300, posTextoEscalaY);
 		g.drawString(""+(pontoFinalEscala*0.75), 425, posTextoEscalaY);
 		g.drawString(""+(pontoFinalEscala), 550, posTextoEscalaY);
-		
 	}
 
 	
