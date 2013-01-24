@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.utils;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JLabel;
@@ -16,6 +17,7 @@ public class TransparentLabel extends JLabel{
 	public TransparentLabel(String text) {
 		this.setText(text);
 		this.setForeground(Color.white);
+		this.setFont(new Font("Arial", Font.BOLD, 10));
 	}
 	
 	@Override
