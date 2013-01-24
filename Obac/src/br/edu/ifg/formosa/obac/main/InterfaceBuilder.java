@@ -6,6 +6,7 @@ import br.edu.ifg.formosa.obac.models.Object;
 import br.edu.ifg.formosa.obac.models.Surface;
 import br.edu.ifg.formosa.obac.view.ConfigurationView;
 import br.edu.ifg.formosa.obac.view.EnvironmentView;
+import br.edu.ifg.formosa.obac.view.InfoPanelView;
 import br.edu.ifg.formosa.obac.view.ObjectView;
 import br.edu.ifg.formosa.obac.view.ScaleView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
@@ -20,6 +21,7 @@ public class InterfaceBuilder {
 		Object objeto = new Object();
 		Surface surface = new Surface();
 		
+		
 		//ObjectView objectView = new ObjectView();
 		ScaleView scaleView = new ScaleView();
 		SurfaceView surfaceView = new SurfaceView(scaleView);
@@ -30,8 +32,12 @@ public class InterfaceBuilder {
 		EnvironmentView environmentView = new EnvironmentView(scaleView, surfaceView); 
 		
 		
+		
+		
 		obac.add(configurationView);
-		obac.add(environmentView);	
+		//obac.add(infoPanelView);
+		obac.add(environmentView);
+		
 		
 		new ConfigurationControl(obac, configurationView, environment, scaleView, surfaceView, environmentView);
 	}

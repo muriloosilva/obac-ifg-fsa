@@ -70,10 +70,13 @@ public class EnvironmentView extends JPanel{
 		this.setLocation(200, 0);
 		this.surfaceView = surfaceView;
 		this.surfaceView.setBounds(0, 0, 600, 600);
-		this.add(this.surfaceView, 0);
+		
+		InfoPanelView infoPanelView = new InfoPanelView();
+		this.add(infoPanelView, 0);
+		this.add(this.surfaceView, 1);
 		
 		jLabel = new JLabel(img);
 		jLabel.setBounds(0, 0, 600, 600);
-		this.add(jLabel, 1);		
+		this.add(jLabel, 2);		
 	}
 }
