@@ -32,10 +32,15 @@ public class SurfaceView extends JPanel{
 	private static final int posTextoEscalaDown = 550;
 	private static final int posTextoEscalaUp = 575;
 	
+	private static final int posTextoDown = 520;
+	private static final int posTextoUp = 545;
+	
 	private int posObjetoY = posObjetoDown;
 	private int posLinhaEscalaY = poslinhaEscalaDown;
 	private int posTracoEscalaY = posTracoEscalaDown;
 	private int posTextoEscalaY =  posTextoEscalaDown;
+	
+	private int posTextoY = posTextoDown;
 	
 	public SurfaceView(ScaleView scaleView){
 		this.setLayout(null);
@@ -81,11 +86,13 @@ public class SurfaceView extends JPanel{
 			posLinhaEscalaY = poslinhaEscalaUp;
 			posTracoEscalaY = posTracoEscalaUp;
 			posTextoEscalaY = posTextoEscalaUp;
+			posTextoY = posTextoUp;
 		}
 		else{
 			posLinhaEscalaY = poslinhaEscalaDown;
 			posTracoEscalaY = posTracoEscalaDown;
 			posTextoEscalaY = posTextoEscalaDown;
+			posTextoY = posTextoDown;
 		}
 	}
 	
@@ -105,6 +112,7 @@ public class SurfaceView extends JPanel{
 
 		g.setColor(Color.white);
 		Font estiloFonte = new Font("Arial", Font.BOLD, 14);
+		Font estiloFonteMetros = new Font("Arial", Font.PLAIN, 10);
 		g.setFont(estiloFonte);
 		g.drawLine(0, posLinhaEscalaY, 600, posLinhaEscalaY);
 		g.drawString("|", 50, posTracoEscalaY);
@@ -118,8 +126,11 @@ public class SurfaceView extends JPanel{
 		g.drawString(""+(pontoFinalEscala*0.5), 300, posTextoEscalaY);
 		g.drawString(""+(pontoFinalEscala*0.75), 425, posTextoEscalaY);
 		g.drawString(""+(pontoFinalEscala), 550, posTextoEscalaY);
+		g.setFont(estiloFonteMetros);
+		g.drawString("(metros)", 560, posTextoY);
 		
 		if(posLinhaEscalaY == poslinhaEscalaUp){
+			g.setFont(estiloFonte);
 			double pontoFinalEscalaPlaneCliff = (pontoFinalEscala*30)/100;
 			g.setColor(Color.white);
 			g.setFont(estiloFonte);
@@ -143,7 +154,7 @@ public class SurfaceView extends JPanel{
 	     	offScreenGraphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.1f));
 	     	// limpar a imagem auxiliar
 	     	offScreenGraphics.setColor( getBackground() ); 
-	     	offScreenGraphics.fillRect( 0, 0, getSize().width, getSize().height ); 
+	     	offScreenGraphics.fillRect( 0, 0, getSize().width, getSize().height); 
 	     	// pintar a imagem auxiliar
 	     	offScreenGraphics.setColor( g.getColor() ); 
 	     	paint( offScreenGraphics ); 
