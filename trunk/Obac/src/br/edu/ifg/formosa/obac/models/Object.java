@@ -5,7 +5,7 @@ import br.edu.ifg.formosa.obac.utils.Conversion;
 public class Object {
 	
 	private double massa;
-	private int velocidadeInicial;
+	private double velocidadeInicial;
 	private int velocidade;
 	private double aceleracao;
 	private double aceleracaoY;
@@ -51,10 +51,10 @@ public class Object {
 	public void setMassa(double massa) {
 		this.massa = massa;
 	}
-	public int getVelocidadeInicial() {
+	public double getVelocidadeInicial() {
 		return velocidadeInicial;
 	}
-	public void setVelocidadeInicial(int velocidadeInicial) {
+	public void setVelocidadeInicial(double velocidadeInicial) {
 		this.velocidadeInicial = velocidadeInicial;
 	}
 	public int getVelocidade() {

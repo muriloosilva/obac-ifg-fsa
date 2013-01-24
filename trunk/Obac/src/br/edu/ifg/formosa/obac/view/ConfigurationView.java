@@ -126,16 +126,16 @@ public class ConfigurationView extends JPanel{
 		lbFriction.setBounds(10, 105, 100, 20);
 		lbFriction.setForeground(Color.WHITE);
 		
-		String[] options1 = {"Asfalto", "Madeira"}; 
-		cbFriction = new JComboBox(options1);
+		String[] optionsFriction = {"Asfalto", "Madeira", "Aluminio"}; 
+		cbFriction = new JComboBox(optionsFriction);
 		cbFriction.setBounds(10, 10, 100, 20);
 		
 		Label lbGravity = new Label("Gravidade");
 		lbGravity.setBounds(10, 165, 100, 20);
 		lbGravity.setForeground(Color.WHITE);
 		
-		String[] options2 = {"Terra", "Lua", "Marte"}; 
-		cbGravity = new JComboBox(options2);
+		String[] optionsPlanet = {"Terra", "Lua", "Marte"}; 
+		cbGravity = new JComboBox(optionsPlanet);
 		cbGravity.setBounds(10, 10, 100, 20);
 		
 		Label lbObstacle = new Label("Obstaculo?");
