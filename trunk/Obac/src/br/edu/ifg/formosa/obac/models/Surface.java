@@ -1,5 +1,6 @@
 package br.edu.ifg.formosa.obac.models;
 
+import br.edu.ifg.formosa.obac.controls.InfoPanelControl;
 import br.edu.ifg.formosa.obac.utils.Conversion;
 
 public class Surface {
@@ -19,6 +20,11 @@ public class Surface {
 	
 	public static double widthPlaneCliff = 0;
 	public static double widthCliff = 0;
+	private InfoPanelControl infoPanelControl;
+	
+	public Surface(InfoPanelControl infoPanelControl){
+		this.infoPanelControl = infoPanelControl;
+	}
 	
 	public long getPontoFinal() {
 		return posicaoFinal;
@@ -31,6 +37,7 @@ public class Surface {
 	}
 	public void setCoefFriction(double coefFriction) {
 		this.coefFriction = coefFriction;
+		infoPanelControl.changeValueCoefAtrito(Conversion.rounding(1, coefFriction));
 	}
 	
 	public double getForcaAtrito() {
@@ -38,6 +45,7 @@ public class Surface {
 	}
 	public void setForcaAtrito(double forcaAtrito) {
 		this.forcaAtrito = forcaAtrito;
+		infoPanelControl.changeValueForçaAtrito(Conversion.rounding(1, forcaAtrito));
 	}
 	public double getEscala() {
 		return Conversion.rounding(2, escala);
