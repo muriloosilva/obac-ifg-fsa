@@ -7,9 +7,12 @@ import java.awt.Label;
 
 import javax.swing.JPanel;
 
+import br.edu.ifg.formosa.obac.controls.InfoPanelControl;
 import br.edu.ifg.formosa.obac.utils.TransparentLabel;
 
 public class InfoPanelView extends JPanel{
+	
+	private InfoPanelControl infoPanelControl;
 	
 	
 	public InfoPanelView(){
@@ -24,7 +27,7 @@ public class InfoPanelView extends JPanel{
 		lbGravity.setBounds(10, 2, 70, 20);
 		this.add(lbGravity);
 		
-		TransparentLabel lbGravityValue = new TransparentLabel("1.1");
+		TransparentLabel lbGravityValue = new TransparentLabel("0");
 		lbGravityValue.setBounds(70, 2, 70, 20);
 		this.add(lbGravityValue);
 		
@@ -33,7 +36,7 @@ public class InfoPanelView extends JPanel{
 		lbCoefAtrito.setBounds(10, 18, 70, 20);
 		this.add(lbCoefAtrito);
 		
-		TransparentLabel lbCoefAtritoValue = new TransparentLabel("1.1");
+		TransparentLabel lbCoefAtritoValue = new TransparentLabel("0");
 		lbCoefAtritoValue.setBounds(70, 18, 70, 20);
 		this.add(lbCoefAtritoValue);
 		
@@ -42,7 +45,7 @@ public class InfoPanelView extends JPanel{
 		lbForçaAtrito.setBounds(110, 2, 70, 20);
 		this.add(lbForçaAtrito);
 		
-		TransparentLabel lbForçaAtritoValue = new TransparentLabel("1.1");
+		TransparentLabel lbForçaAtritoValue = new TransparentLabel("0");
 		lbForçaAtritoValue.setBounds(185, 2, 70, 20);
 		this.add(lbForçaAtritoValue);
 		
@@ -51,7 +54,7 @@ public class InfoPanelView extends JPanel{
 		lbForçaNormal.setBounds(110, 18, 80, 20);
 		this.add(lbForçaNormal);
 		
-		TransparentLabel lbForçaNormalValue = new TransparentLabel("1.1");
+		TransparentLabel lbForçaNormalValue = new TransparentLabel("0");
 		lbForçaNormalValue.setBounds(185, 18, 80, 20);
 		this.add(lbForçaNormalValue);
 		
@@ -60,7 +63,7 @@ public class InfoPanelView extends JPanel{
 		lbPosFinal.setBounds(250, 2, 70, 20);
 		this.add(lbPosFinal);
 		
-		TransparentLabel lbPosFinalValue = new TransparentLabel("1.1");
+		TransparentLabel lbPosFinalValue = new TransparentLabel("0");
 		lbPosFinalValue.setBounds(315, 2, 70, 20);
 		this.add(lbPosFinalValue);
 		
@@ -69,7 +72,7 @@ public class InfoPanelView extends JPanel{
 		lbAceleração.setBounds(250, 18, 80, 20);
 		this.add(lbAceleração);
 		
-		TransparentLabel lbAceleraçãoValue = new TransparentLabel("1.1");
+		TransparentLabel lbAceleraçãoValue = new TransparentLabel("0");
 		lbAceleraçãoValue.setBounds(315, 18, 80, 20);
 		this.add(lbAceleraçãoValue);
 		
@@ -78,7 +81,7 @@ public class InfoPanelView extends JPanel{
 		lbTempo.setBounds(360, 2, 45, 20);
 		this.add(lbTempo);
 		
-		TransparentLabel lbTempoValue = new TransparentLabel("1.1");
+		TransparentLabel lbTempoValue = new TransparentLabel("0");
 		lbTempoValue.setBounds(402, 2, 45, 20);
 		this.add(lbTempoValue);
 		
@@ -87,7 +90,7 @@ public class InfoPanelView extends JPanel{
 		lbPosAtualEixox.setBounds(445, 2, 100, 20);
 		this.add(lbPosAtualEixox);
 		
-		TransparentLabel lbPosAtualEixoxValue = new TransparentLabel("1.1");
+		TransparentLabel lbPosAtualEixoxValue = new TransparentLabel("0");
 		lbPosAtualEixoxValue.setBounds(537, 2, 100, 20);
 		this.add(lbPosAtualEixoxValue);
 		
@@ -96,13 +99,26 @@ public class InfoPanelView extends JPanel{
 		lbPosAtualEixoy.setBounds(445, 18, 100, 20);
 		this.add(lbPosAtualEixoy);
 				
-		TransparentLabel lbPosAtualEixoyValue = new TransparentLabel("1.1");
+		TransparentLabel lbPosAtualEixoyValue = new TransparentLabel("0");
 		lbPosAtualEixoyValue.setBounds(537, 18, 100, 20);
 		this.add(lbPosAtualEixoyValue);
+		
+		infoPanelControl = new InfoPanelControl(lbGravityValue, lbCoefAtritoValue, lbForçaAtritoValue, 
+				lbForçaNormalValue, lbPosFinalValue, lbAceleraçãoValue, lbTempoValue, lbPosAtualEixoxValue, lbPosAtualEixoyValue);
+		
+
 		
 		
 	}
 	
+	public InfoPanelControl getInfoPanelControl() {
+		return infoPanelControl;
+	}
+
+	public void setInfoPanelControl(InfoPanelControl infoPanelControl) {
+		this.infoPanelControl = infoPanelControl;
+	}
+
 	public void paintComponent(Graphics g)
     {
         super.paintComponent(g);

@@ -63,7 +63,7 @@ public class EnvironmentView extends JPanel{
 		jLabel.repaint();
 	}
 	
-	public EnvironmentView(ScaleView scaleView, SurfaceView surfaceView){
+	public EnvironmentView(ScaleView scaleView, SurfaceView surfaceView, InfoPanelView infoPanelView){
 		img = new ImageIcon("terraasfaltoplano.png");
 		this.setLayout(null);
 		this.setSize(600, 600);
@@ -71,7 +71,7 @@ public class EnvironmentView extends JPanel{
 		this.surfaceView = surfaceView;
 		this.surfaceView.setBounds(0, 0, 600, 600);
 		
-		InfoPanelView infoPanelView = new InfoPanelView();
+		
 		this.add(infoPanelView, 0);
 		this.add(this.surfaceView, 1);
 		
