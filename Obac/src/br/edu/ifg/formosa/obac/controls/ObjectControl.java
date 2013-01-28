@@ -53,14 +53,14 @@ public class ObjectControl {
 	}
 
 	public boolean parada(){
-		if(environment.getObjeto().getPosicaoAtual()>=environment.getObjeto().getPosicaoFinalPixel())
+		if(environment.getObjeto().getPosicaoAtualPixel()>=environment.getObjeto().getPosicaoFinalPixel())
 			return true;
 		else
 			return false;
 	}
 	
 	public boolean paradaCliff(){
-		if(environment.getObjeto().getPosicaoAtual()>=environment.getObjeto().getPosicaoFinalPixel()
+		if(environment.getObjeto().getPosicaoAtualPixel()>=environment.getObjeto().getPosicaoFinalPixel()
 				&& environment.getObjeto().getPosicaoAtualY()>=SurfaceView.poslinhaEscalaDown)
 			return true;
 		else

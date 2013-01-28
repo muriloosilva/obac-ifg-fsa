@@ -74,7 +74,7 @@ public class SurfaceView extends JPanel{
 	
 	public void resetPosObjetoX(){
 		if(objeto!=null){
-			objeto.setPosicaoAtual(0);
+			objeto.setPosicaoAtualPixel(0);
 		}
 		
 	}
@@ -100,7 +100,7 @@ public class SurfaceView extends JPanel{
 		//super.paint(g);
 		g.setColor(Color.BLACK);
 		if(ver && objeto!=null){
-			g.fillRect((int)objeto.getPosicaoAtual()+50, (int)(posObjetoY + objeto.getPosicaoAtualY()), 30, 30);
+			g.fillRect((int)objeto.getPosicaoAtualPixel()+50, (int)(posObjetoY + objeto.getPosicaoAtualY()), 30, 30);
 		}
 		else{
 			g.fillRect(50, posObjetoY, 30, 30);

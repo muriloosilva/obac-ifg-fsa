@@ -1,5 +1,6 @@
 package br.edu.ifg.formosa.obac.models;
 
+import br.edu.ifg.formosa.obac.controls.InfoPanelControl;
 import br.edu.ifg.formosa.obac.utils.Conversion;
 
 public class Object {
@@ -19,6 +20,22 @@ public class Object {
 	private double posicaoAtualY;
 	private int propulsao;
 	private double posicaoFinalPixel = 0;
+	private double posicaoAtualPixel;
+	
+	private InfoPanelControl infoPanelControl;
+	
+	public Object(InfoPanelControl infoPanelControl){
+		this.infoPanelControl = infoPanelControl;
+	}
+	
+	public double getPosicaoAtualPixel() {
+		return posicaoAtualPixel;
+	}
+
+
+	public void setPosicaoAtualPixel(double posicaoAtualPixel) {
+		this.posicaoAtualPixel = posicaoAtualPixel;
+	}
 	
 	
 	public double getAceleracaoY() {
@@ -26,12 +43,14 @@ public class Object {
 	}
 	public void setAceleracaoY(double aceleracaoY) {
 		this.aceleracaoY = aceleracaoY;
+		
 	}
 	public double getPosicaoAtualY() {
 		return posicaoAtualY;
 	}
 	public void setPosicaoAtualY(double posicaoAtualY) {
 		this.posicaoAtualY = posicaoAtualY;
+		infoPanelControl.changeValuePosAtualEixoy(Conversion.rounding(1, posicaoAtualY));
 	}
 	public double getPosicaoFinalPixel() {
 		return Conversion.rounding(2, posicaoFinalPixel);
@@ -68,24 +87,28 @@ public class Object {
 	}
 	public void setAceleracao(double aceleracao) {
 		this.aceleracao = aceleracao;
+		infoPanelControl.changeValueAceleração(Conversion.rounding(1, aceleracao));
 	}
 	public double getForcaNormal() {
 		return forcaNormal;
 	}
 	public void setForcaNormal(double forcaNormal) {
 		this.forcaNormal = forcaNormal;
+		infoPanelControl.changeValueForçaNormal(Conversion.rounding(1, forcaNormal));
 	}
 	public double getPosicaoFinal() {
 		return Conversion.rounding(2, posicaoFinal);
 	}
 	public void setPosicaoFinal(double posicaoFinal) {
 		this.posicaoFinal = posicaoFinal;
+		infoPanelControl.changeValuePosFinal(Conversion.rounding(1, posicaoFinal));
 	}
 	public double getTempo() {
 		return tempo;
 	}
 	public void setTempo(double tempo) {
 		this.tempo = tempo;
+		infoPanelControl.changeValueTempo(Conversion.rounding(1, tempo));
 	}
 	public double getMovimento() {
 		return movimento;
@@ -104,6 +127,7 @@ public class Object {
 	}
 	public void setPosicaoAtual(double posicaoAtual) {
 		this.posicaoAtual = posicaoAtual;
+		infoPanelControl.changeValuePosAtualEixox(Conversion.rounding(1, posicaoAtual));
 	}
 	public double getPosicaoInicial() {
 		
