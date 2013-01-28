@@ -34,8 +34,9 @@ public class ObjectPlaneControl implements Runnable, ObjectGenericControl{
 				if(!obacControl.getObjectControl().parada()) {
                 System.out.println("qualquer coisa");
                 //aux = (((((velI)*i)+((ac)*(i*i))/2)));
-                environment.getObjeto().setPosicaoAtual(((((((environment.getObjeto().getVelocidadeInicial())*
-                		delayS)+((environment.getObjeto().getAceleracao())*(delayS*delayS))/2))))/environment.getSurface().getEscala());
+                environment.getObjeto().setPosicaoAtual((((((environment.getObjeto().getVelocidadeInicial())*
+                		delayS)+((environment.getObjeto().getAceleracao())*(delayS*delayS))/2))));
+                environment.getObjeto().setPosicaoAtualPixel(environment.getObjeto().getPosicaoAtual()/environment.getSurface().getEscala());
 //                    double espaco = ((mainApplet.getcuboX()-mainApplet.posicaoObjeto)* mainApplet.escala);
 //                environment.getObjeto().setEspacoTemporario((environment.getObjeto().getPosicaoAtual()-
 //                		environment.getObjeto().getPosicaoInicial()));
@@ -43,7 +44,7 @@ public class ObjectPlaneControl implements Runnable, ObjectGenericControl{
                // objectView.repinta(environment.getObjeto());
                 //surfaceView.repaint();
 //              System.out.println("Escala: "+ environment.getSurface().getEscala());
-                System.out.println("Posição atual: "+ environment.getObjeto().getPosicaoAtual());
+                System.out.println("Posição atual: "+ environment.getObjeto().getPosicaoAtualPixel());
                 System.out.println("Posição final pixel: "+environment.getObjeto().getPosicaoFinalPixel());
                 //                    vel = Math.sqrt((velI*velI)+(2*ac*espaco));
 //                    System.out.println("Velocidade: "+vel);
