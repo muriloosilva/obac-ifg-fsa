@@ -16,6 +16,7 @@ import br.edu.ifg.formosa.obac.utils.CheckImages;
 import br.edu.ifg.formosa.obac.utils.KeyBoardControl;
 import br.edu.ifg.formosa.obac.view.ConfigurationView;
 import br.edu.ifg.formosa.obac.view.EnvironmentView;
+import br.edu.ifg.formosa.obac.view.InfoPanelView;
 import br.edu.ifg.formosa.obac.view.ObjectView;
 import br.edu.ifg.formosa.obac.view.ScaleView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
@@ -23,6 +24,7 @@ import br.edu.ifg.formosa.obac.view.SurfaceView;
 public class ConfigurationControl {
 
 	private EnvironmentView environmentView;
+	private InfoPanelView infoPanelView;
 	private ConfigurationView configurationView;
 	private Environment environment;
 	private Object objeto;
@@ -40,12 +42,13 @@ public class ConfigurationControl {
 
 	public ConfigurationControl(Obac obac, ConfigurationView configurationView,
 			Environment environment, ScaleView scaleView,
-			SurfaceView surfaceView, EnvironmentView environmentView) {
+			SurfaceView surfaceView, EnvironmentView environmentView, InfoPanelView infoPanelView) {
 		this.environment = environment;
 		this.configurationView = configurationView;
 		this.scaleView = scaleView;
 		this.surfaceView = surfaceView;
 		this.environmentView = environmentView;
+		this.infoPanelView = infoPanelView;
 		addActionListeners();
 	}
 
@@ -93,6 +96,19 @@ public class ConfigurationControl {
 		configurationView.getNotobstacle().setEnabled(true);
 		configurationView.getYesobstacle().setEnabled(true);
 		configurationView.getTxMass().setEnabled(true);
+	}
+	
+	public void resetInfoPanel(){
+		System.out.println("Funfolation");
+		infoPanelView.getInfoPanelControl().changeValueGravity(0);
+		infoPanelView.getInfoPanelControl().changeValueCoefAtrito(0); 
+		infoPanelView.getInfoPanelControl().changeValueForçaAtrito(0);
+		infoPanelView.getInfoPanelControl().changeValueForçaNormal(0);
+		infoPanelView.getInfoPanelControl().changeValuePosFinal(0);
+		infoPanelView.getInfoPanelControl().changeValueAceleração(0);
+		infoPanelView.getInfoPanelControl().changeValueTempo(0);
+		infoPanelView.getInfoPanelControl().changeValuePosAtualEixox(0);
+		infoPanelView.getInfoPanelControl().changeValuePosAtualEixoy(0);
 	}
 
 	public void addActionListeners() {
@@ -302,6 +318,7 @@ public class ConfigurationControl {
 							configurationView.remove(configurationView.getBtNewsimulation());
 							configurationView.repaint();
 							unLockAll();
+							resetInfoPanel();
 						}
 				});
 	}
