@@ -10,8 +10,12 @@ public class CheckImages {
 	private final static String planetaLua = "lua";
 	private final static String planetaMarte = "Marte";
 	
+	//Verifica todas as configurações do usuário e troca o plano de fundo de acordo com as mesmas
 	public static void checkImageSelected(ConfigurationView configurationView, EnvironmentView environmentView, SurfaceView surfaceView){
+		//Coloca o objeto na posição inicial do eixo X
 		surfaceView.resetPosObjetoX();
+		
+		//Caso.: Plano
 		if(configurationView.getPlane().isSelected()){
 			surfaceView.setPosObjetoY(SurfaceView.posObjetoDown);
 			surfaceView.setPosEscalaY(SurfaceView.escalaDown);
@@ -46,9 +50,9 @@ public class CheckImages {
 					environmentView.changeImage(EnvironmentView.marteAluminioPlano);
 				}
 			}
-			
 		}
 		
+		//Caso.: Plano e Precipício
 		else if(configurationView.getPlaneCliff().isSelected()){
 			surfaceView.setPosObjetoY(SurfaceView.posObjetoUp);
 			surfaceView.setPosEscalaY(SurfaceView.escalaUp);
@@ -83,9 +87,9 @@ public class CheckImages {
 					environmentView.changeImage(EnvironmentView.marteAluminioPlanoPrecipicio);
 				}
 			}
-			
 		}
 		
+		//Caso.: Plano e Subida
 		else if(configurationView.getPlaneClimb().isSelected()){
 			surfaceView.setPosObjetoY(SurfaceView.posObjetoDown);
 			surfaceView.setPosEscalaY(SurfaceView.escalaDown);
@@ -123,6 +127,8 @@ public class CheckImages {
 			
 		}
 		
+		
+		//Caso.: Plano e Descida
 		else if(configurationView.getPlaneDescent().isSelected()){
 			surfaceView.setPosObjetoY(SurfaceView.posObjetoUp);
 			surfaceView.setPosEscalaY(SurfaceView.escalaUp);

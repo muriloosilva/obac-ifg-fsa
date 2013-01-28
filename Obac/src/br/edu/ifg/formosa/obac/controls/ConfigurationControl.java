@@ -50,7 +50,7 @@ public class ConfigurationControl {
 	}
 
 	public boolean verificaCampos() {
-		// verifica se a velocidade inicial está preenchida quando a propulsão
+		// verifica se a velocidade inicial e a massa foram preenchidas quando a propulsão
 		// for manual
 		if (configurationView.getCbPropulsion().getSelectedItem().toString() == "Manual"
 				&& configurationView.getTxVelocity().getText().equals("")) {
@@ -64,6 +64,35 @@ public class ConfigurationControl {
 			return false;
 		}
 		return true;
+	}
+	
+	public void lockAll(){
+		configurationView.getCbPropulsion().setEnabled(false);
+		configurationView.getTxVelocity().setEnabled(false);
+		configurationView.getPlane().setEnabled(false);
+		configurationView.getPlaneClimb().setEnabled(false);
+		configurationView.getPlaneDescent().setEnabled(false);
+		configurationView.getPlaneCliff().setEnabled(false);
+		configurationView.getCbFriction().setEnabled(false);
+		configurationView.getCbGravity().setEnabled(false);
+		configurationView.getNotobstacle().setEnabled(false);
+		configurationView.getYesobstacle().setEnabled(false);
+		configurationView.getTxMass().setEnabled(false);
+	}
+	
+	public void unLockAll(){
+		configurationView.getCbPropulsion().setEnabled(true);
+		configurationView.getPlaneClimb().setEnabled(true);
+		configurationView.getTxVelocity().setEnabled(true);
+		configurationView.getPlane().setEnabled(true);
+		configurationView.getPlaneClimb().setEnabled(true);
+		configurationView.getPlaneDescent().setEnabled(true);
+		configurationView.getPlaneCliff().setEnabled(true);
+		configurationView.getCbFriction().setEnabled(true);
+		configurationView.getCbGravity().setEnabled(true);
+		configurationView.getNotobstacle().setEnabled(true);
+		configurationView.getYesobstacle().setEnabled(true);
+		configurationView.getTxMass().setEnabled(true);
 	}
 
 	public void addActionListeners() {
@@ -178,6 +207,7 @@ public class ConfigurationControl {
 								configurationView.getBtSimulation().setText("Parar Simulação");
 								configurationView.add(configurationView.getBtNewsimulation());
 								configurationView.repaint();
+								lockAll();
 							}
 							else if (configurationView.getBtSimulation().getText() == "Parar Simulação"){
 								configurationView.getBtSimulation().setText("Continuar Simulação");
@@ -207,7 +237,6 @@ public class ConfigurationControl {
 								configurationView.getTxVelocity().setEditable(false);
 							}
 
-						
 
 						if (configurationView.getCbFriction().getSelectedItem() == atritoAsfalto) {
 							environment.getSurface().setCoefFriction(Surface.asphalt);
@@ -272,6 +301,7 @@ public class ConfigurationControl {
 							CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
 							configurationView.remove(configurationView.getBtNewsimulation());
 							configurationView.repaint();
+							unLockAll();
 						}
 				});
 	}

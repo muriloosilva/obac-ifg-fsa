@@ -20,8 +20,6 @@ public class Surface {
 	public static double widthPlaneCliff = 0;
 	public static double widthCliff = 0;
 	
-	
-	
 	public long getPontoFinal() {
 		return posicaoFinal;
 	}
