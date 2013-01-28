@@ -10,5 +10,5 @@ public class KeyBoardControl {
 		}else{
 			tx.setText("");
 		}
-	} 
+	}
 }

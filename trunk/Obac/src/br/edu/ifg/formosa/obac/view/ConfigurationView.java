@@ -28,6 +28,9 @@ public class ConfigurationView extends JPanel{
 	private JRadioButton planeClimb;
 	private JRadioButton planeDescent;
 	private JRadioButton planePrecipice;
+	private JRadioButton notObstacle = new JRadioButton("Não");
+	private JRadioButton yesObstacle = new JRadioButton("Sim");
+
 	private JComboBox cbGravity;
 	public static final String sPlane = "Plano";
 	public static final String sPlaneClimb = "Plano e Subida";
@@ -142,10 +145,8 @@ public class ConfigurationView extends JPanel{
 		lbObstacle.setBounds(10, 225, 100, 20);
 		lbObstacle.setForeground(Color.WHITE);
 		
-		JRadioButton notObstacle = new JRadioButton("Não");
 		notObstacle.setBounds(10, 12, 50, 15);
 		notObstacle.setBackground(Color.WHITE);
-		JRadioButton yesObstacle = new JRadioButton("Sim");
 		yesObstacle.setBounds(80, 12, 50, 15);
 		yesObstacle.setBackground(Color.WHITE);
 		notObstacle.setSelected(true);
@@ -307,5 +308,21 @@ public class ConfigurationView extends JPanel{
 
 	public void setBtNewsimulation(JButton btNewsimulation) {
 		this.btNewsimulation = btNewsimulation;
+	}
+	
+	public void setNotobstacle(JRadioButton notObstacle){
+		this.notObstacle = notObstacle;
+	}
+	
+	public JRadioButton getNotobstacle(){
+		return notObstacle;
+	}
+	
+	public void setYesobstacle(JRadioButton yesObstacle){
+		this.yesObstacle = yesObstacle;
+	}
+
+	public JRadioButton getYesobstacle() {
+		return yesObstacle;
 	}
 }

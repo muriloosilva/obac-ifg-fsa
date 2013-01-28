@@ -112,6 +112,4 @@ public class Object {
 	public void setPosicaoInicial(double posicaoInicial) {
 		this.posicaoInicial = posicaoInicial;
 	}
-	
-	
 }
