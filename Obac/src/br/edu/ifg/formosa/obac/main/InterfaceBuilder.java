@@ -44,7 +44,7 @@ public class InterfaceBuilder {
 		obac.add(environmentView);
 		
 		
-		new ConfigurationControl(obac, configurationView, environment, scaleView, surfaceView, environmentView);
+		new ConfigurationControl(obac, configurationView, environment, scaleView, surfaceView, environmentView, infoPanelView);
 	}
 
 }
