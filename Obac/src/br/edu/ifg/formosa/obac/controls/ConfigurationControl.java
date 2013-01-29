@@ -131,6 +131,7 @@ public class ConfigurationControl {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+						configurationView.getCbFriction().setEnabled(true);
 					}
 				});
 
@@ -141,6 +142,7 @@ public class ConfigurationControl {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+						configurationView.getCbFriction().setEnabled(true);
 					}
 				});
 
@@ -151,6 +153,17 @@ public class ConfigurationControl {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+						configurationView.getCbFriction().setEnabled(true);
+					}
+				});
+		
+		configurationView.getFall().addActionListener(
+				new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+						configurationView.getCbFriction().setEnabled(false);
 					}
 				});
 		
@@ -272,7 +285,7 @@ public class ConfigurationControl {
 
 						if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlane)) {
 							obacControl.planControl();
-							objectGenericControl = new ObjectPlaneControl(obacControl, environment, scaleView, surfaceView);
+							objectGenericControl = new ObjectFallControl(obacControl, environment, scaleView, surfaceView);
 							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
 
 						} else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlaneCliff)) {

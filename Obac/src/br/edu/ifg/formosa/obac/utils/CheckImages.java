@@ -165,6 +165,24 @@ public class CheckImages {
 			}
 			
 		}
+		//Caso.: Plano e Descida
+				else if(configurationView.getPlaneDescent().isSelected()){
+					surfaceView.setPosObjetoY(SurfaceView.posObjetoUp);
+					surfaceView.setPosEscalaY(SurfaceView.escalaUp);
+					
+					if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
+						environmentView.changeImage(EnvironmentView.terraAsfaltoPlanoDescida);
+					}
+					if(configurationView.getCbGravity().getSelectedItem() == planetaLua){
+						environmentView.changeImage(EnvironmentView.luaAsfaltoPlanoDescida);
+					}
+					if(configurationView.getCbGravity().getSelectedItem() == planetaMarte){
+						environmentView.changeImage(EnvironmentView.marteAsfaltoPlanoDescida);
+					}
+					
+					
+				}
+		
 		
 	}
 }

@@ -25,17 +25,21 @@ public class ConfigurationView extends JPanel{
 	private JButton btSimulation;
     private JButton btNewsimulation;
 	private JRadioButton plane;
-	private JRadioButton planeClimb;
-	private JRadioButton planeDescent;
+	private JRadioButton Climb;
+	private JRadioButton Descent;
 	private JRadioButton planePrecipice;
+	private JRadioButton fall;
+	
+
 	private JRadioButton notObstacle = new JRadioButton("Não");
 	private JRadioButton yesObstacle = new JRadioButton("Sim");
 
 	private JComboBox cbGravity;
 	public static final String sPlane = "Plano";
-	public static final String sPlaneClimb = "Plano e Subida";
-	public static final String sPlaneDescent = "Plano e Descida";
+	public static final String sPlaneClimb = "Subida";
+	public static final String sPlaneDescent = "Descida";
 	public static final String sPlaneCliff = "Plano e Precipício";
+	public static final String sFall = "Queda";
 	
 	public ConfigurationView(){
 		
@@ -48,27 +52,27 @@ public class ConfigurationView extends JPanel{
 		pPropulsion.setBackground(Color.GRAY);
 		
 		Panel pAmbient = new Panel(null);
-		pAmbient.setBounds(10, 140, 180, 295);
+		pAmbient.setBounds(10, 140, 180, 325);
 		pAmbient.setBackground(Color.GRAY);
 		
-		Panel pSurface = new Panel(null);
-		pSurface.setBounds(10, 20, 160, 85);
-		pSurface.setBackground(Color.WHITE);
+		Panel pSimulation = new Panel(null);
+		pSimulation.setBounds(10, 20, 160, 105);
+		pSimulation.setBackground(Color.WHITE);
 		
 		Panel pFriction = new Panel(null);
-		pFriction.setBounds(10, 125, 160, 40);
+		pFriction.setBounds(10, 155, 160, 40);
 		pFriction.setBackground(Color.WHITE);
 		
 		Panel pGravity = new Panel(null);
-		pGravity.setBounds(10, 185, 160, 40);
+		pGravity.setBounds(10, 215, 160, 40);
 		pGravity.setBackground(Color.WHITE);
 		
 		Panel pObstacle = new Panel(null);
-		pObstacle.setBounds(10, 245, 160, 40);
+		pObstacle.setBounds(10, 275, 160, 40);
 		pObstacle.setBackground(Color.WHITE);
 		
 		Panel pObject = new Panel(null);
-		pObject.setBounds(10, 460, 180, 50);
+		pObject.setBounds(10, 490, 180, 50);
 		pObject.setBackground(Color.GRAY);
 		
 		
@@ -97,36 +101,40 @@ public class ConfigurationView extends JPanel{
 		lbAmbient.setBounds(10, 120, 100, 20);
 		lbAmbient.setForeground(Color.WHITE);
 		
-		Label lbSurface = new Label("Superfície");
-		lbSurface.setBounds(10, 0, 100, 20);
-		lbSurface.setForeground(Color.WHITE);
+		Label lbSimulation = new Label("Simulação");
+		lbSimulation.setBounds(10, 0, 100, 20);
+		lbSimulation.setForeground(Color.WHITE);
 		
 		plane = new JRadioButton(sPlane);
 		plane.setBounds(5, 5, 160, 15);
 		plane.setBackground(Color.WHITE);
 		plane.setActionCommand(sPlane);
-		planeClimb = new JRadioButton(sPlaneClimb);
-		planeClimb.setBounds(5, 25, 160, 15);
-		planeClimb.setBackground(Color.WHITE);
-		planeClimb.setActionCommand(sPlaneClimb);
-		planeDescent = new JRadioButton(sPlaneDescent);
-		planeDescent.setBounds(5, 45, 160, 15);
-		planeDescent.setBackground(Color.WHITE);
-		planeDescent.setActionCommand(sPlaneDescent);
+		Climb = new JRadioButton(sPlaneClimb);
+		Climb.setBounds(5, 25, 160, 15);
+		Climb.setBackground(Color.WHITE);
+		Climb.setActionCommand(sPlaneClimb);
+		Descent = new JRadioButton(sPlaneDescent);
+		Descent.setBounds(5, 45, 160, 15);
+		Descent.setBackground(Color.WHITE);
+		Descent.setActionCommand(sPlaneDescent);
 		planePrecipice = new JRadioButton(sPlaneCliff);
 		planePrecipice.setBounds(5, 65, 160, 15);
 		planePrecipice.setBackground(Color.WHITE);
 		planePrecipice.setActionCommand(sPlaneCliff);
+		fall = new JRadioButton(sFall);
+		fall.setBounds(5, 85, 160, 15);
+		fall.setBackground(Color.WHITE);
 		
 		buttonGroupPlane = new ButtonGroup();
 		buttonGroupPlane.add(plane);
-		buttonGroupPlane.add(planeClimb);
-		buttonGroupPlane.add(planeDescent);
+		buttonGroupPlane.add(Climb);
+		buttonGroupPlane.add(Descent);
 		buttonGroupPlane.add(planePrecipice);
+		buttonGroupPlane.add(fall);
 	    plane.setSelected(true);
 	    
 	    Label lbFriction = new Label("Atrito");
-		lbFriction.setBounds(10, 105, 100, 20);
+		lbFriction.setBounds(10, 135, 100, 20);
 		lbFriction.setForeground(Color.WHITE);
 		
 		String[] optionsFriction = {"Asfalto", "Madeira", "Aluminio"}; 
@@ -134,7 +142,7 @@ public class ConfigurationView extends JPanel{
 		cbFriction.setBounds(10, 10, 100, 20);
 		
 		Label lbGravity = new Label("Gravidade");
-		lbGravity.setBounds(10, 165, 100, 20);
+		lbGravity.setBounds(10, 195, 100, 20);
 		lbGravity.setForeground(Color.WHITE);
 		
 		String[] optionsPlanet = {"Terra", "Lua", "Marte"}; 
@@ -142,7 +150,7 @@ public class ConfigurationView extends JPanel{
 		cbGravity.setBounds(10, 10, 100, 20);
 		
 		Label lbObstacle = new Label("Obstaculo?");
-		lbObstacle.setBounds(10, 225, 100, 20);
+		lbObstacle.setBounds(10, 255, 100, 20);
 		lbObstacle.setForeground(Color.WHITE);
 		
 		notObstacle.setBounds(10, 12, 50, 15);
@@ -156,7 +164,7 @@ public class ConfigurationView extends JPanel{
 		buttonGroupObstacle.add(notObstacle);
 		
 		Label lbObject = new Label("Objeto");
-		lbObject.setBounds(10, 440, 100, 20);
+		lbObject.setBounds(10, 470, 100, 20);
 		lbObject.setForeground(Color.WHITE);
 		
 		Label lbMass = new Label("Massa");
@@ -167,9 +175,9 @@ public class ConfigurationView extends JPanel{
 		txMass.setBounds(10, 20, 100, 20);
 		
 		btSimulation = new JButton("Iniciar Simulação");
-		btSimulation.setBounds(10, 520, 155, 20);
+		btSimulation.setBounds(10, 550, 155, 20);
 		btNewsimulation = new JButton("Nova Simulação");
-		btNewsimulation.setBounds(10, 545, 155, 20);
+		btNewsimulation.setBounds(10, 575, 155, 20);
 	    
 		
 		
@@ -182,12 +190,12 @@ public class ConfigurationView extends JPanel{
 	    pPropulsion.add(txVelocity);
 	    this.add(lbAmbient);
 	    this.add(pAmbient);
-	    pAmbient.add(lbSurface);
-	    pAmbient.add(pSurface);	    
-	    pSurface.add(plane);
-	    pSurface.add(planeClimb);
-	    pSurface.add(planeDescent);
-	    pSurface.add(planePrecipice);
+	    pAmbient.add(lbSimulation);
+	    pAmbient.add(pSimulation);	    
+	    pSimulation.add(plane);
+	    pSimulation.add(Climb);
+	    pSimulation.add(Descent);
+	    pSimulation.add(planePrecipice);
 	    pAmbient.add(lbFriction);
 	    pAmbient.add(pFriction);
 	    pFriction.add(cbFriction);
@@ -203,6 +211,7 @@ public class ConfigurationView extends JPanel{
 	    pObject.add(lbMass);
 	    pObject.add(txMass);
 	    this.add(btSimulation);
+	    pSimulation.add(fall);
 	   
 	}
 
@@ -271,19 +280,19 @@ public class ConfigurationView extends JPanel{
 	}
 
 	public JRadioButton getPlaneClimb() {
-		return planeClimb;
+		return Climb;
 	}
 
 	public void setPlaneClimb(JRadioButton planeClimb) {
-		this.planeClimb = planeClimb;
+		this.Climb = planeClimb;
 	}
 
 	public JRadioButton getPlaneDescent() {
-		return planeDescent;
+		return Descent;
 	}
 
 	public void setPlaneDescent(JRadioButton planeDescent) {
-		this.planeDescent = planeDescent;
+		this.Descent = planeDescent;
 	}
 
 	public JRadioButton getPlaneCliff() {
@@ -324,5 +333,12 @@ public class ConfigurationView extends JPanel{
 
 	public JRadioButton getYesobstacle() {
 		return yesObstacle;
+	}
+	public JRadioButton getFall() {
+		return fall;
+	}
+
+	public void setFall(JRadioButton fall) {
+		this.fall = fall;
 	}
 }
