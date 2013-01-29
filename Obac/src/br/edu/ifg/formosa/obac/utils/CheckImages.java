@@ -17,8 +17,9 @@ public class CheckImages {
 		
 		//Caso.: Plano
 		if(configurationView.getPlane().isSelected()){
-			surfaceView.setPosObjetoY(SurfaceView.posObjetoDown);
-			surfaceView.setPosEscalaY(SurfaceView.escalaDown);
+			surfaceView.posicaoInicialObjetoEscalaPlane();
+			//surfaceView.setPosObjetoY(SurfaceView.posObjetoDown);
+			//surfaceView.setPosEscalaY(SurfaceView.escalaDown);
 			if(configurationView.getCbFriction().getSelectedItem() == atritoAsfalto){
 				if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
 					environmentView.changeImage(EnvironmentView.terraAsfaltoPlano);
@@ -54,8 +55,9 @@ public class CheckImages {
 		
 		//Caso.: Plano e Precipício
 		else if(configurationView.getPlaneCliff().isSelected()){
-			surfaceView.setPosObjetoY(SurfaceView.posObjetoUp);
-			surfaceView.setPosEscalaY(SurfaceView.escalaUp);
+			surfaceView.posicaoInicialObjetoEscalaPlaneCliff();
+			//surfaceView.setPosObjetoY(SurfaceView.posObjetoUp);
+			//surfaceView.setPosEscalaY(SurfaceView.escalaUp);
 			if(configurationView.getCbFriction().getSelectedItem() == atritoAsfalto){
 				if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
 					environmentView.changeImage(EnvironmentView.terraAsfaltoPlanoPrecipicio);
@@ -91,8 +93,9 @@ public class CheckImages {
 		
 		//Caso.: Plano e Subida
 		else if(configurationView.getPlaneClimb().isSelected()){
-			surfaceView.setPosObjetoY(SurfaceView.posObjetoDown);
-			surfaceView.setPosEscalaY(SurfaceView.escalaDown);
+			surfaceView.posicaoInicialObjetoEscalaClimb();
+			//surfaceView.setPosObjetoY(SurfaceView.posObjetoDown);
+			//surfaceView.setPosEscalaY(SurfaceView.escalaDown);
 			if(configurationView.getCbFriction().getSelectedItem() == atritoAsfalto){
 				if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
 					environmentView.changeImage(EnvironmentView.terraAsfaltoPlanoSubida);
@@ -130,8 +133,9 @@ public class CheckImages {
 		
 		//Caso.: Plano e Descida
 		else if(configurationView.getPlaneDescent().isSelected()){
-			surfaceView.setPosObjetoY(SurfaceView.posObjetoUp);
-			surfaceView.setPosEscalaY(SurfaceView.escalaUp);
+			surfaceView.posicaoInicialObjetoEscalaDescent();
+			//surfaceView.setPosObjetoY(SurfaceView.posObjetoUp);
+			//surfaceView.setPosEscalaY(SurfaceView.escalaUp);
 			if(configurationView.getCbFriction().getSelectedItem() == atritoAsfalto){
 				if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
 					environmentView.changeImage(EnvironmentView.terraAsfaltoPlanoDescida);
