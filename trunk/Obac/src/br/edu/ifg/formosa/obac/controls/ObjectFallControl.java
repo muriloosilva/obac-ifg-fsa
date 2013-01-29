@@ -40,7 +40,7 @@ public class ObjectFallControl implements Runnable, ObjectGenericControl{
 //                    double espaco = ((mainApplet.getcuboX()-mainApplet.posicaoObjeto)* mainApplet.escala);
 //                environment.getObjeto().setEspacoTemporario((environment.getObjeto().getPosicaoAtual()-
 //                		environment.getObjeto().getPosicaoInicial()));
-                surfaceView.repinta(environment.getObjeto());
+                surfaceView.repinta();
                // objectView.repinta(environment.getObjeto());
                 //surfaceView.repaint();
 //              System.out.println("Escala: "+ environment.getSurface().getEscala());

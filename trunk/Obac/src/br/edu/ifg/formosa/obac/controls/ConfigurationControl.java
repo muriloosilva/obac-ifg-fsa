@@ -285,13 +285,30 @@ public class ConfigurationControl {
 
 						if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlane)) {
 							obacControl.planControl();
-							objectGenericControl = new ObjectFallControl(obacControl, environment, scaleView, surfaceView);
+							objectGenericControl = new ObjectPlaneControl(obacControl, environment, scaleView, surfaceView);
 							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
+							
 
 						} else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sPlaneCliff)) {
 							
 							obacControl.cliffControl();
 							objectGenericControl = new ObjectPlaneCliffControl(obacControl, environment, scaleView, surfaceView);
+							//environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
+							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
+
+						} else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sDescent)) {
+							
+							obacControl.planControl();
+							objectGenericControl = new ObjectDescentControl(obacControl, environment, scaleView, surfaceView);
+							//environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
+							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
+
+						}
+						
+						else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sFall)) {
+							
+							obacControl.planControl();
+							objectGenericControl = new ObjectFallControl(obacControl, environment, scaleView, surfaceView);
 							//environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
 							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
 
