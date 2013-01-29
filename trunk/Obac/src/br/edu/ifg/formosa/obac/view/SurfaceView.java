@@ -40,6 +40,14 @@ public class SurfaceView extends JPanel{
 	private int posTextoEscalaY =  posTextoEscalaDown;
 	private int posTextoY = posTextoDown;
 	
+	private boolean isDescent = false;
+	private boolean isClimb = false;
+	private boolean isCliff = false;
+	
+	private int widthLinePlane = 600;
+	private int widthLineInclined = 691;
+	private int widthLine = 650;
+	
 	public SurfaceView(ScaleView scaleView){
 		this.setLayout(null);
 		//objectView.setBounds(50, 0, 30, 30);
@@ -50,7 +58,8 @@ public class SurfaceView extends JPanel{
 		this.setOpaque(false);
 	}
 	
-	public void repinta(Object objeto){
+	public void setObject(Object objeto){
+		
 		this.objeto = objeto;
 		this.ver = true;
 		//this.repaint();
@@ -58,6 +67,85 @@ public class SurfaceView extends JPanel{
 		//this.setLocation((int)objeto.getPosicaoAtual()+50, 0);
 		this.repaint();
 	}
+	
+	public void repinta(){
+		this.repaint();
+	}
+	
+	public void posicaoInicialObjetoEscalaPlane(){
+		
+		isDescent = false;
+		isClimb = false;
+		isCliff = false;
+		
+		//reposiciona objeto
+		posObjetoY = posObjetoDown;
+		
+		//reposiciona escala
+		setPosEscalaY(SurfaceView.escalaDown);
+		
+		repaint();
+		
+	}
+	
+	public void posicaoInicialObjetoEscalaPlaneCliff(){
+		
+		isDescent = false;
+		isClimb = false;
+		isCliff = true;
+		
+		//reposiciona objeto
+		posObjetoY = posObjetoUp;
+		
+		//reposiciona escala
+		setPosEscalaY(SurfaceView.escalaUp);
+		
+		repaint();
+		
+	}
+	
+	public void posicaoInicialObjetoEscalaDescent(){
+		
+		isDescent = true;
+		isClimb = false;
+		isCliff = false;
+		
+		//reposiciona objeto
+		posObjetoY = posObjetoUp;
+		
+		//reposiciona escala
+		setPosEscalaY(SurfaceView.escalaUp);
+		
+		repaint();
+		
+	}
+	
+	public void posicaoInicialObjetoEscalaClimb(){
+		
+		isDescent = false;
+		isClimb = true;
+		isCliff = false;
+		
+		//reposiciona objeto
+		posObjetoY = posObjetoDown;
+		
+		//reposiciona escala
+		setPosEscalaY(SurfaceView.escalaDown);
+		
+		repaint();
+		
+	}
+	
+	public void posicaoInicialObjetoEscalaFall(){
+		
+		isDescent = false;
+		isClimb = false;
+		isCliff = false;
+		
+		repaint();
+		
+	}
+
 	
 	public void alteraPontosEscala(long pontoFinal){
 		desenhaEscala = true;
@@ -94,26 +182,47 @@ public class SurfaceView extends JPanel{
 		}
 	}
 	
+	public void desenhaObjeto(Graphics2D g2d){
+		g2d.fillRect((int)objeto.getPosicaoAtualPixel()+50, (int)(posObjetoY + objeto.getPosicaoAtualY()), 30, 30);
+	}
+	
 	@Override
 	public void paint(Graphics g) {
 		//super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.BLACK);
+		g2d.setColor(Color.red);
 		if(ver && objeto!=null){
-			g2d.translate(180, -50);
-	        g2d.rotate(Math.PI/4);
-			g2d.fillRect((int)objeto.getPosicaoAtualPixel()+50, (int)(posObjetoY + objeto.getPosicaoAtualY()), 30, 30);
+			
+			if(isDescent){
+				g2d.translate(95, 8);
+				g2d.rotate(0.47);
+				desenhaObjeto(g2d);
+				g2d.translate(0, -300);
+				widthLine = widthLineInclined;
+			}
+			else if(isClimb){
+				g2d.translate(70, 13);
+				g2d.rotate(0.47);
+				desenhaObjeto(g2d);
+				g2d.translate(0, -300);
+				widthLine = widthLineInclined;
+			}
+			else{
+				widthLine = widthLinePlane;
+				desenhaObjeto(g2d);
+			}
+  
 		}
 		else{
 			g2d.fillRect(50, posObjetoY, 30, 30);
 			ver = true;
 		}
-	
+		
 		g.setColor(Color.white);
 		Font estiloFonte = new Font("Arial", Font.BOLD, 14);
 		Font estiloFonteMetros = new Font("Arial", Font.PLAIN, 10);
 		g.setFont(estiloFonte);
-		g.drawLine(0, posLinhaEscalaY, 600, posLinhaEscalaY);
+		g.drawLine(0, posLinhaEscalaY, widthLine, posLinhaEscalaY);
 		g.drawString("|", 50, posTracoEscalaY);
 		g.drawString("|", 175, posTracoEscalaY);
 		g.drawString("|", 300, posTracoEscalaY);
@@ -128,7 +237,7 @@ public class SurfaceView extends JPanel{
 		g.setFont(estiloFonteMetros);
 		g.drawString("(metros)", 560, posTextoY);
 		
-		if(posLinhaEscalaY == poslinhaEscalaUp){
+		if(isCliff){
 			g.setFont(estiloFonte);
 			double pontoFinalEscalaPlaneCliff = (pontoFinalEscala*30)/100;
 			g.setColor(Color.white);

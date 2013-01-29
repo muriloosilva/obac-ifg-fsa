@@ -4,7 +4,7 @@ import br.edu.ifg.formosa.obac.models.Environment;
 import br.edu.ifg.formosa.obac.view.ScaleView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
 
-public class ObjectPlaneControl implements Runnable, ObjectGenericControl{
+public class ObjectDescentControl implements Runnable, ObjectGenericControl{
 	
 	private Thread t;
 	private final int delayMs = 20;
@@ -16,7 +16,7 @@ public class ObjectPlaneControl implements Runnable, ObjectGenericControl{
 	private SurfaceView surfaceView;
 	private boolean continuar = true;
 	
-	public ObjectPlaneControl(ObacControl obacControl, Environment environment, ScaleView scaleView, SurfaceView surfaceView){
+	public ObjectDescentControl(ObacControl obacControl, Environment environment, ScaleView scaleView, SurfaceView surfaceView){
 		this.obacControl = obacControl;
 		this.environment = environment;
 		this.scaleView = scaleView;

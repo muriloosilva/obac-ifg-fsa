@@ -45,6 +45,7 @@ public class InterfaceBuilder {
 		
 		
 		new ConfigurationControl(obac, configurationView, environment, scaleView, surfaceView, environmentView, infoPanelView);
+		surfaceView.setObject(objeto);
 	}
 
 }

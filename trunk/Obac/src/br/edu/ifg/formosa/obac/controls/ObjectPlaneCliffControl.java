@@ -42,7 +42,7 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 //aux = (((((velI)*i)+((ac)*(i*i))/2)));
                 
                 
-                surfaceView.repinta(environment.getObjeto());
+                surfaceView.repinta();
                 
                 if( environment.getObjeto().getPosicaoAtualPixel() >= Surface.widthPlaneCliffPx){
                 	
