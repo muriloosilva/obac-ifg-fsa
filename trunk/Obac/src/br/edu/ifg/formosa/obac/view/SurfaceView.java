@@ -96,18 +96,19 @@ public class SurfaceView extends JPanel{
 	
 	@Override
 	public void paint(Graphics g) {
-		
 		//super.paint(g);
-		g.setColor(Color.BLACK);
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(Color.BLACK);
 		if(ver && objeto!=null){
-			g.fillRect((int)objeto.getPosicaoAtualPixel()+50, (int)(posObjetoY + objeto.getPosicaoAtualY()), 30, 30);
+			g2d.translate(180, -50);
+	        g2d.rotate(Math.PI/4);
+			g2d.fillRect((int)objeto.getPosicaoAtualPixel()+50, (int)(posObjetoY + objeto.getPosicaoAtualY()), 30, 30);
 		}
 		else{
-			g.fillRect(50, posObjetoY, 30, 30);
+			g2d.fillRect(50, posObjetoY, 30, 30);
 			ver = true;
 		}
 	
-
 		g.setColor(Color.white);
 		Font estiloFonte = new Font("Arial", Font.BOLD, 14);
 		Font estiloFonteMetros = new Font("Arial", Font.PLAIN, 10);
