@@ -36,8 +36,8 @@ public class ConfigurationView extends JPanel{
 
 	private JComboBox cbGravity;
 	public static final String sPlane = "Plano";
-	public static final String sPlaneClimb = "Subida";
-	public static final String sPlaneDescent = "Descida";
+	public static final String sClimb = "Subida";
+	public static final String sDescent = "Descida";
 	public static final String sPlaneCliff = "Plano e Precipício";
 	public static final String sFall = "Queda";
 	
@@ -109,14 +109,14 @@ public class ConfigurationView extends JPanel{
 		plane.setBounds(5, 5, 160, 15);
 		plane.setBackground(Color.WHITE);
 		plane.setActionCommand(sPlane);
-		Climb = new JRadioButton(sPlaneClimb);
+		Climb = new JRadioButton(sClimb);
 		Climb.setBounds(5, 25, 160, 15);
 		Climb.setBackground(Color.WHITE);
-		Climb.setActionCommand(sPlaneClimb);
-		Descent = new JRadioButton(sPlaneDescent);
+		Climb.setActionCommand(sClimb);
+		Descent = new JRadioButton(sDescent);
 		Descent.setBounds(5, 45, 160, 15);
 		Descent.setBackground(Color.WHITE);
-		Descent.setActionCommand(sPlaneDescent);
+		Descent.setActionCommand(sDescent);
 		planePrecipice = new JRadioButton(sPlaneCliff);
 		planePrecipice.setBounds(5, 65, 160, 15);
 		planePrecipice.setBackground(Color.WHITE);
