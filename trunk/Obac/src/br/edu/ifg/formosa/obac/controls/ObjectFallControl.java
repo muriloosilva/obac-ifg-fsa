@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.controls;
 
 import br.edu.ifg.formosa.obac.models.Environment;
+import br.edu.ifg.formosa.obac.models.Surface;
 import br.edu.ifg.formosa.obac.view.ScaleView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
 
@@ -15,6 +16,7 @@ public class ObjectFallControl implements Runnable, ObjectGenericControl{
 	private ScaleView scaleView;
 	private SurfaceView surfaceView;
 	private boolean continuar = true;
+	private boolean fall = true;
 	
 	public ObjectFallControl(ObacControl obacControl, Environment environment, ScaleView scaleView, SurfaceView surfaceView){
 		this.obacControl = obacControl;
@@ -31,36 +33,46 @@ public class ObjectFallControl implements Runnable, ObjectGenericControl{
 	public void run() {
 		while (true) {
 			if(continuar){
-				if(!obacControl.getObjectControl().parada()) {
+				//if(!obacControl.getObjectControl().parada()) {
+				double v1f;
+				if(environment.getObjeto().getPosicaoAtualYPixel() >= Surface.widthY){
+					//v1f = v1i*(m1-m2*e)/(m1+m2)
+					v1f = environment.getObjeto().getVelocidadeInicial()*(environment.getObjeto().getMassa()- 1000000000 *1)/(environment.getObjeto().getMassa() + 1000000000);
+					System.out.println("v1f: " + v1f);
+					environment.getObjeto().setVelocidadeInicial(v1f *(-1));
+					environment.getObjeto().setAceleracao(environment.getObjeto().getAceleracao() * (-1));
+					delayS = 0.04;
+					fall = false;
+					
+				}
+				
                 System.out.println("qualquer coisa");
-                //aux = (((((velI)*i)+((ac)*(i*i))/2)));
-                environment.getObjeto().setPosicaoAtual((((((environment.getObjeto().getVelocidadeInicial())*
-                		delayS)+((environment.getObjeto().getAceleracao())*(delayS*delayS))/2))));
-                environment.getObjeto().setPosicaoAtualPixel(environment.getObjeto().getPosicaoAtual()/environment.getSurface().getEscala());
-//                    double espaco = ((mainApplet.getcuboX()-mainApplet.posicaoObjeto)* mainApplet.escala);
-//                environment.getObjeto().setEspacoTemporario((environment.getObjeto().getPosicaoAtual()-
-//                		environment.getObjeto().getPosicaoInicial()));
+                
+                if(fall){
+                
+	                environment.getObjeto().setPosicaoAtualY((((((environment.getObjeto().getVelocidadeInicial())*
+	                		delayS)+((environment.getObjeto().getAceleracao())*(delayS*delayS))/2))));
+	                environment.getObjeto().setPosicaoAtualYPixel(environment.getObjeto().getPosicaoAtualY()/environment.getSurface().getEscala());
+	                
+                }
+                else{
+                	
+                	environment.getObjeto().setPosicaoAtualY((((((environment.getObjeto().getVelocidadeInicial())*
+	                		delayS)+((environment.getObjeto().getAceleracao())*(delayS*delayS))/2))));
+	                environment.getObjeto().setPosicaoAtualYPixel(environment.getObjeto().getPosicaoAtualYPixel() - (environment.getObjeto().getPosicaoAtualY()/environment.getSurface().getEscala()));
+                	
+                }
                 surfaceView.repinta();
-               // objectView.repinta(environment.getObjeto());
-                //surfaceView.repaint();
-//              System.out.println("Escala: "+ environment.getSurface().getEscala());
-                System.out.println("Posição atual: "+ environment.getObjeto().getPosicaoAtualPixel());
-                System.out.println("Posição final pixel: "+environment.getObjeto().getPosicaoFinalPixel());
-                //                    vel = Math.sqrt((velI*velI)+(2*ac*espaco));
-//                    System.out.println("Velocidade: "+vel);
-//                    System.out.println("auxxxx: "+aux);
-//                    movendo = mainApplet.moveDireita(aux,vel);
-//                    mainApplet.repaint();
-//                    jt6.setText(""+df.format(vel)+"m/s");
-//                    jt5.setText(""+df.format(((vel - velI)/ac))+"s");
+                System.out.println("Posição atual Y: "+ environment.getObjeto().getPosicaoAtualY());
+                System.out.println("Posição atual Y Pixel: "+environment.getObjeto().getPosicaoAtualYPixel());
                     try {
                         Thread.sleep(delayMs);
                     }
                     catch (InterruptedException e){}
                 delayS+=0.04;
-            }
-            else
-					t.interrupt();
+           // }
+           //else
+			//		t.interrupt();
 					}
         }
 		

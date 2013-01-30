@@ -8,6 +8,7 @@ public class Surface {
 	public static final double asphalt = 0.80;
 	private double coefFriction;
 	public static double width = 500.00;
+	public static double widthY = 420.00;
 	private double forcaAtrito;
 	private double escala;
 	private long posicaoFinal;

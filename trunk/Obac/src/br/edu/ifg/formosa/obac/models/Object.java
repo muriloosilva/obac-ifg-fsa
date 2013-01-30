@@ -18,6 +18,7 @@ public class Object {
 	private double espacoTemporario;
 	private double posicaoAtual;
 	private double posicaoAtualY;
+	private double posicaoAtualYPixel;
 	private int propulsao;
 	private double posicaoFinalPixel = 0;
 	private double posicaoAtualPixel;
@@ -48,9 +49,15 @@ public class Object {
 	public double getPosicaoAtualY() {
 		return posicaoAtualY;
 	}
+	public double getPosicaoAtualYPixel() {
+		return posicaoAtualYPixel;
+	}
 	public void setPosicaoAtualY(double posicaoAtualY) {
 		this.posicaoAtualY = posicaoAtualY;
 		infoPanelControl.changeValuePosAtualEixoy(Conversion.rounding(1, posicaoAtualY));
+	}
+	public void setPosicaoAtualYPixel(double posicaoAtualY) {
+		this.posicaoAtualYPixel = posicaoAtualY;
 	}
 	public double getPosicaoFinalPixel() {
 		return Conversion.rounding(2, posicaoFinalPixel);

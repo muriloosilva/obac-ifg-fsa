@@ -40,8 +40,8 @@ public class ObacControl {
 		
 		objectControl.calculaNormal();
 		surfaceControl.calculaAtrito();
-		objectControl.calculaAceleracao();
-		objectControl.calculaPosicaoFinal();
+		objectControl.calculaAceleracaoDescent();
+		objectControl.calculaPosicaoFinalDescida();
 		surfaceControl.calculaEscala();
 		objectControl.calculaPosicaoFinalPixel();
 		objectControl.calculaTempo();
@@ -51,7 +51,7 @@ public class ObacControl {
 		
 		objectControl.calculaNormal();
 		surfaceControl.calculaAtrito();
-		objectControl.calculaAceleracao();
+		objectControl.calculaAceleracaoClimb();
 		objectControl.calculaPosicaoFinal();
 		surfaceControl.calculaEscala();
 		objectControl.calculaPosicaoFinalPixel();
@@ -62,11 +62,11 @@ public class ObacControl {
 		
 		objectControl.calculaNormal();
 		surfaceControl.calculaAtrito();
-		objectControl.calculaAceleracao();
-		objectControl.calculaPosicaoFinal();
-		surfaceControl.calculaEscala();
-		objectControl.calculaPosicaoFinalPixel();
-		objectControl.calculaTempo();
+		objectControl.calculaAceleracaoFall();
+		//objectControl.calculaPosicaoFinal();
+		surfaceControl.calculaEscalaFall();
+		//objectControl.calculaPosicaoFinalPixel();
+		//objectControl.calculaTempo();
 	}
 	
 	public ObjectControl getObjectControl(){

@@ -124,6 +124,7 @@ public class ConfigurationView extends JPanel{
 		fall = new JRadioButton(sFall);
 		fall.setBounds(5, 85, 160, 15);
 		fall.setBackground(Color.WHITE);
+		fall.setActionCommand(sFall);
 		
 		buttonGroupPlane = new ButtonGroup();
 		buttonGroupPlane.add(plane);

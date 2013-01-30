@@ -91,7 +91,7 @@ public class CheckImages {
 			}
 		}
 		
-		//Caso.: Plano e Subida
+		//Caso.: Subida
 		else if(configurationView.getPlaneClimb().isSelected()){
 			surfaceView.posicaoInicialObjetoEscalaClimb();
 			//surfaceView.setPosObjetoY(SurfaceView.posObjetoDown);
@@ -131,7 +131,7 @@ public class CheckImages {
 		}
 		
 		
-		//Caso.: Plano e Descida
+		//Caso.: Descida
 		else if(configurationView.getPlaneDescent().isSelected()){
 			surfaceView.posicaoInicialObjetoEscalaDescent();
 			//surfaceView.setPosObjetoY(SurfaceView.posObjetoUp);
@@ -169,19 +169,40 @@ public class CheckImages {
 			}
 			
 		}
-		//Caso.: Plano e Descida
-				else if(configurationView.getPlaneDescent().isSelected()){
-					surfaceView.setPosObjetoY(SurfaceView.posObjetoUp);
-					surfaceView.setPosEscalaY(SurfaceView.escalaUp);
-					
-					if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
-						environmentView.changeImage(EnvironmentView.terraAsfaltoPlanoDescida);
-					}
-					if(configurationView.getCbGravity().getSelectedItem() == planetaLua){
-						environmentView.changeImage(EnvironmentView.luaAsfaltoPlanoDescida);
-					}
-					if(configurationView.getCbGravity().getSelectedItem() == planetaMarte){
-						environmentView.changeImage(EnvironmentView.marteAsfaltoPlanoDescida);
+		
+		//Caso.: Queda Livre
+		else if(configurationView.getFall().isSelected()){
+					surfaceView.posicaoInicialObjetoEscalaFall();
+					if(configurationView.getCbFriction().getSelectedItem() == atritoAsfalto){
+						if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
+							environmentView.changeImage(EnvironmentView.terraAsfaltoPlanoDescida);
+						}
+						if(configurationView.getCbGravity().getSelectedItem() == planetaLua){
+							environmentView.changeImage(EnvironmentView.luaAsfaltoPlanoDescida);
+						}
+						if(configurationView.getCbGravity().getSelectedItem() == planetaMarte){
+							environmentView.changeImage(EnvironmentView.marteAsfaltoPlanoDescida);
+						}
+					}else if(configurationView.getCbFriction().getSelectedItem() == atritoMadeira){
+						if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
+							environmentView.changeImage(EnvironmentView.terraMadeiraPlanoDescida);
+						}
+						if(configurationView.getCbGravity().getSelectedItem() == planetaLua){
+							environmentView.changeImage(EnvironmentView.luaMadeiraPlanoDescida);
+						}
+						if(configurationView.getCbGravity().getSelectedItem() == planetaMarte){
+							environmentView.changeImage(EnvironmentView.marteMadeiraPlanoDescida);
+						}
+					}else if(configurationView.getCbFriction().getSelectedItem() == atritoAluminio){
+						if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
+							environmentView.changeImage(EnvironmentView.terraAluminioPlanoDescida);
+						}
+						if(configurationView.getCbGravity().getSelectedItem() == planetaLua){
+							environmentView.changeImage(EnvironmentView.luaAluminioPlanoDescida);
+						}
+						if(configurationView.getCbGravity().getSelectedItem() == planetaMarte){
+							environmentView.changeImage(EnvironmentView.marteAluminioPlanoDescida);
+						}
 					}
 					
 					
