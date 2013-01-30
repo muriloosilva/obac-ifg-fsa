@@ -76,6 +76,7 @@ public class ConfigurationControl {
 		configurationView.getPlaneClimb().setEnabled(false);
 		configurationView.getPlaneDescent().setEnabled(false);
 		configurationView.getPlaneCliff().setEnabled(false);
+		configurationView.getFall().setEnabled(false);
 		configurationView.getCbFriction().setEnabled(false);
 		configurationView.getCbGravity().setEnabled(false);
 		configurationView.getNotobstacle().setEnabled(false);
@@ -91,11 +92,13 @@ public class ConfigurationControl {
 		configurationView.getPlaneClimb().setEnabled(true);
 		configurationView.getPlaneDescent().setEnabled(true);
 		configurationView.getPlaneCliff().setEnabled(true);
+		configurationView.getFall().setEnabled(true);
 		configurationView.getCbFriction().setEnabled(true);
 		configurationView.getCbGravity().setEnabled(true);
 		configurationView.getNotobstacle().setEnabled(true);
 		configurationView.getYesobstacle().setEnabled(true);
 		configurationView.getTxMass().setEnabled(true);
+		
 	}
 	
 	public void resetInfoPanel(){
@@ -298,7 +301,7 @@ public class ConfigurationControl {
 
 						} else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sDescent)) {
 							
-							obacControl.planControl();
+							obacControl.descentControl();
 							objectGenericControl = new ObjectDescentControl(obacControl, environment, scaleView, surfaceView);
 							//environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
 							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
@@ -307,7 +310,16 @@ public class ConfigurationControl {
 						
 						else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sFall)) {
 							
-							obacControl.planControl();
+							obacControl.fallControl();
+							objectGenericControl = new ObjectFallControl(obacControl, environment, scaleView, surfaceView);
+							//environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
+							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
+
+						}
+						
+						else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sClimb)) {
+							
+							obacControl.climbControl();
 							objectGenericControl = new ObjectFallControl(obacControl, environment, scaleView, surfaceView);
 							//environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
 							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
