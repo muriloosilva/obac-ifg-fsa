@@ -20,6 +20,13 @@ public class SurfaceControl {
 				environment.getSurface().getCoefFriction());
 	}
 	
+	public void calculaAtritoFall(){
+		//(normal*coef);
+		environment.getSurface().setForcaAtrito(
+				environment.getObjeto().getForcaNormal()*
+				0);
+	}
+	
 	public void calculaEscalaSuperficie(){
 		
 	}
@@ -35,6 +42,36 @@ public class SurfaceControl {
 		}
 		pontoFinalEscala*=10;
 		System.out.println("pontoFinalEscala:....."+pontoFinalEscala);
+		
+		
+		environment.getSurface().setEscala(pontoFinalEscala/Surface.widthY);
+		environment.getSurface().setPontoFinal(pontoFinalEscala);
+		
+//		if(environment.getObjeto().getPosicaoFinal() < 100){
+//            //desenhaEscala(g, 100);
+//            environment.getSurface().setEscala(100/Surface.width);
+//     }
+//     else if(environment.getObjeto().getPosicaoFinal() > 100 && environment.getObjeto().getPosicaoFinal() < 1000){
+//    	 environment.getSurface().setEscala(1000/Surface.width);
+//
+//     }
+//     else if(environment.getObjeto().getPosicaoFinal() > 1000 && environment.getObjeto().getPosicaoFinal() < 10000){
+//    	 environment.getSurface().setEscala(10000/Surface.width);
+//     }
+//     else if(environment.getObjeto().getPosicaoFinal() > 10000){
+//    	 environment.getSurface().setEscala(10000000/Surface.width);
+//     }
+	}
+	
+public void calculaEscalaFall(){
+		
+		long pontoFinalEscala=1000;
+		
+//		for(int i = 1; i<=1000; i*=10){
+//			pontoFinalEscala=i;			
+//		}
+//		pontoFinalEscala*=10;
+//		System.out.println("pontoFinalEscala:....."+pontoFinalEscala);
 		
 		
 		environment.getSurface().setEscala(pontoFinalEscala/Surface.width);

@@ -26,11 +26,38 @@ public class ObjectControl {
 				environment.getObjeto().getMassa()) * -1);
 	}
 	
+	public void calculaAceleracaoFall(){
+		//(fat/massa)*(-1);
+		environment.getObjeto().setAceleracao(environment.getGravidade());
+	}
+	
+	public void calculaAceleracaoClimb(){
+		//-ac = g*senâ°+CoefA*g*cosâ ;
+		environment.getObjeto().setAceleracao((environment.getGravidade() * Math.sin(26.9) + environment.getSurface().getCoefFriction() *
+				environment.getGravidade() * Math.cos(26.9)) * -1);
+		System.out.println("Aceleração subida:"+environment.getObjeto().getAceleracao());
+	}
+	
+	public void calculaAceleracaoDescent(){
+		//ac = g*senâ°+CoefA*g*cosâ ;
+		environment.getObjeto().setAceleracao((environment.getGravidade() * Math.sin(26.9) + environment.getSurface().getCoefFriction() *
+				environment.getGravidade() * Math.cos(26.9)));
+		System.out.println("Aceleração subida:"+environment.getObjeto().getAceleracao());
+	}
+	
 	public void calculaPosicaoFinal(){
 		//((velI*velI)*(-1))/(2*(ac));
 		environment.getObjeto().setPosicaoFinal((((
 				environment.getObjeto().getVelocidadeInicial()*
 				environment.getObjeto().getVelocidadeInicial())*-1)/(2*(
+						environment.getObjeto().getAceleracao()))));
+	}
+	
+	public void calculaPosicaoFinalDescida(){
+		//((velI*velI)*(-1))/(2*(ac));
+		environment.getObjeto().setPosicaoFinal((((
+				environment.getObjeto().getVelocidadeInicial()*
+				environment.getObjeto().getVelocidadeInicial()))/(2*(
 						environment.getObjeto().getAceleracao()))));
 	}
 	

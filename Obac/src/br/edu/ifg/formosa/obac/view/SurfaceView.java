@@ -20,9 +20,14 @@ public class SurfaceView extends JPanel{
 	private Object objeto;
 	private boolean ver = false;
 	private boolean desenhaEscala = true;
-
+ 
 	public static final int posObjetoDown = 450;
 	public static final int posObjetoUp = 170;
+	
+	public static int posObjetoXDefault = 50;
+	public static int posObjetoXFall = 285;
+	public static int posObjetoX = posObjetoXDefault;
+	public static final int posObjetoFallUp = 100;
 	public static final int escalaUp = 1;
 	public static final int escalaDown = 2;
 	public static final int poslinhaEscalaDown =  525;
@@ -80,7 +85,7 @@ public class SurfaceView extends JPanel{
 		
 		//reposiciona objeto
 		posObjetoY = posObjetoDown;
-		
+		posObjetoX = posObjetoXDefault;
 		//reposiciona escala
 		setPosEscalaY(SurfaceView.escalaDown);
 		
@@ -96,7 +101,7 @@ public class SurfaceView extends JPanel{
 		
 		//reposiciona objeto
 		posObjetoY = posObjetoUp;
-		
+		posObjetoX = posObjetoXDefault;
 		//reposiciona escala
 		setPosEscalaY(SurfaceView.escalaUp);
 		
@@ -112,7 +117,7 @@ public class SurfaceView extends JPanel{
 		
 		//reposiciona objeto
 		posObjetoY = posObjetoUp;
-		
+		posObjetoX = posObjetoXDefault;
 		//reposiciona escala
 		setPosEscalaY(SurfaceView.escalaUp);
 		
@@ -128,7 +133,7 @@ public class SurfaceView extends JPanel{
 		
 		//reposiciona objeto
 		posObjetoY = posObjetoDown;
-		
+		posObjetoX = posObjetoXDefault;
 		//reposiciona escala
 		setPosEscalaY(SurfaceView.escalaDown);
 		
@@ -137,13 +142,13 @@ public class SurfaceView extends JPanel{
 	}
 	
 	public void posicaoInicialObjetoEscalaFall(){
-		
+
 		isDescent = false;
 		isClimb = false;
 		isCliff = false;
-		
+		posObjetoY = posObjetoFallUp;
+		posObjetoX = posObjetoXFall;
 		repaint();
-		
 	}
 
 	
@@ -183,7 +188,7 @@ public class SurfaceView extends JPanel{
 	}
 	
 	public void desenhaObjeto(Graphics2D g2d){
-		g2d.fillRect((int)objeto.getPosicaoAtualPixel()+50, (int)(posObjetoY + objeto.getPosicaoAtualY()), 30, 30);
+		g2d.fillRect((int)objeto.getPosicaoAtualPixel()+posObjetoX, (int)(posObjetoY + objeto.getPosicaoAtualYPixel()), 30, 30);
 	}
 	
 	@Override

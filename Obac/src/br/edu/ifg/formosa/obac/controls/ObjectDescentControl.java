@@ -31,7 +31,7 @@ public class ObjectDescentControl implements Runnable, ObjectGenericControl{
 	public void run() {
 		while (true) {
 			if(continuar){
-				if(!obacControl.getObjectControl().parada()) {
+				//if(!obacControl.getObjectControl().parada()) {
                 System.out.println("qualquer coisa");
                 //aux = (((((velI)*i)+((ac)*(i*i))/2)));
                 environment.getObjeto().setPosicaoAtual((((((environment.getObjeto().getVelocidadeInicial())*
@@ -58,9 +58,9 @@ public class ObjectDescentControl implements Runnable, ObjectGenericControl{
                     }
                     catch (InterruptedException e){}
                 delayS+=0.04;
-            }
-            else
-					t.interrupt();
+            //}
+            //else
+			//		t.interrupt();
 					}
         }
 		

@@ -320,7 +320,7 @@ public class ConfigurationControl {
 						else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sClimb)) {
 							
 							obacControl.climbControl();
-							objectGenericControl = new ObjectFallControl(obacControl, environment, scaleView, surfaceView);
+							objectGenericControl = new ObjectClimbControl(obacControl, environment, scaleView, surfaceView);
 							//environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
 							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
 
