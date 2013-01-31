@@ -74,7 +74,7 @@ public void calculaEscalaFall(){
 //		System.out.println("pontoFinalEscala:....."+pontoFinalEscala);
 		
 		
-		environment.getSurface().setEscala(pontoFinalEscala/Surface.width);
+		environment.getSurface().setEscala(pontoFinalEscala/Surface.widthY);
 		environment.getSurface().setPontoFinal(pontoFinalEscala);
 		
 //		if(environment.getObjeto().getPosicaoFinal() < 100){
