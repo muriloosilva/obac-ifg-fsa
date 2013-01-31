@@ -36,7 +36,7 @@ public class ConfigurationControl {
 	private final String atritoMadeira = "Madeira";
 	private final String atritoAluminio = "Aluminio";
 	private final String planetaTerra = "Terra";
-	private final String planetaLua = "lua";
+	private final String planetaLua = "Lua";
 	private final String planetaMarte = "Marte";
 	private ObjectGenericControl objectGenericControl = null;
 
@@ -102,7 +102,6 @@ public class ConfigurationControl {
 	}
 	
 	public void resetInfoPanel(){
-		System.out.println("Funfolation");
 		infoPanelView.getInfoPanelControl().changeValueGravity(0);
 		infoPanelView.getInfoPanelControl().changeValueCoefAtrito(0); 
 		infoPanelView.getInfoPanelControl().changeValueForçaAtrito(0);

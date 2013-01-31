@@ -195,19 +195,19 @@ public class SurfaceView extends JPanel{
 	public void paint(Graphics g) {
 		//super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.DARK_GRAY);
+		g2d.setColor(Color.blue);
 		if(ver && objeto!=null){
 			
 			if(isDescent){
 				g2d.translate(95, 8);
-				g2d.rotate(0.47);
+				g2d.rotate(0.476);
 				desenhaObjeto(g2d);
 				g2d.translate(0, -294);
 				widthLine = widthLineInclined;
 			}
 			else if(isClimb){
-				g2d.translate(-197, 53);
-				g2d.rotate(-0.47);
+				g2d.translate(-192, 53);
+				g2d.rotate(-0.476);
 				desenhaObjeto(g2d);
 				g2d.translate(0, 0);
 				widthLine = widthLinePlane;

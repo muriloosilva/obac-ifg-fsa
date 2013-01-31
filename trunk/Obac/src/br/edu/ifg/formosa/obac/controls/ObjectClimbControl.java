@@ -31,7 +31,7 @@ public class ObjectClimbControl implements Runnable, ObjectGenericControl{
 	public void run() {
 		while (true) {
 			if(continuar){
-				//if(!obacControl.getObjectControl().parada()) {
+				if(!obacControl.getObjectControl().paradaClimb()) {
                 System.out.println("qualquer coisa");
                 environment.getObjeto().setPosicaoAtual((((((environment.getObjeto().getVelocidadeInicial())*
                 		delayS)+((environment.getObjeto().getAceleracao())*(delayS*delayS))/2))));
@@ -44,9 +44,9 @@ public class ObjectClimbControl implements Runnable, ObjectGenericControl{
                     }
                     catch (InterruptedException e){}
                 delayS+=0.04;
-            //}
-            //else
-			//		t.interrupt();
+            }
+            else
+					parar();
 					}
         }
 		

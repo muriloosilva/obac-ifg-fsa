@@ -19,9 +19,18 @@ public class Surface {
 	public static final double widthPlaneCliffPc = 30;
 	public static final double widthCliffPc = 70;
 	
+	public static final int pontoFinalObjetoDescent = 518;
+	public static final int pontoFinalObjetoClimb = 0;
+	
+	public static int getPontoFinalObjetoClimb() {
+		return pontoFinalObjetoClimb;
+	}
+
 	public static double widthPlaneCliff = 0;
 	public static double widthCliff = 0;
 	private InfoPanelControl infoPanelControl;
+	
+	
 	
 	public Surface(InfoPanelControl infoPanelControl){
 		this.infoPanelControl = infoPanelControl;
@@ -46,7 +55,9 @@ public class Surface {
 	}
 	public void setForcaAtrito(double forcaAtrito) {
 		this.forcaAtrito = forcaAtrito;
+		System.out.println("### Atrito Antes"+forcaAtrito);
 		infoPanelControl.changeValueForçaAtrito(Conversion.rounding(1, forcaAtrito));
+		System.out.println("### Atrito Depois"+ Conversion.rounding(1, forcaAtrito));
 	}
 	public double getEscala() {
 		return Conversion.rounding(2, escala);
@@ -56,5 +67,8 @@ public class Surface {
 		System.out.println("Escala: "+escala);
 	}
 	
+	public static int getPontoFinalObjetoDescent() {
+		return pontoFinalObjetoDescent;
+	}
 	
 }
