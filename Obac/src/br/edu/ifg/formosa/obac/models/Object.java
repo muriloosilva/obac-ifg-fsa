@@ -30,7 +30,7 @@ public class Object {
 	}
 	
 	public double getPosicaoAtualPixel() {
-		return posicaoAtualPixel;
+		return Conversion.rounding(0, posicaoAtualPixel);
 	}
 
 
@@ -60,7 +60,7 @@ public class Object {
 		this.posicaoAtualYPixel = posicaoAtualY;
 	}
 	public double getPosicaoFinalPixel() {
-		return Conversion.rounding(2, posicaoFinalPixel);
+		return Conversion.rounding(0, posicaoFinalPixel);
 	}
 	public void setPosicaoFinalPixel(double posicaoFinalPixel) {
 		this.posicaoFinalPixel = posicaoFinalPixel;

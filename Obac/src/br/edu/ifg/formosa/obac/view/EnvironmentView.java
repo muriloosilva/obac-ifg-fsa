@@ -17,44 +17,44 @@ public class EnvironmentView extends JPanel{
 	//Terra: Asfalto - Madeira - Alumínio: Plano - Plano e Precipício - Plano e Subida - Plano e Descida;
 	public static String terraAsfaltoPlano= "terraasfaltoplano.png";
 	public static String terraAsfaltoPlanoPrecipicio = "terraasfaltoplanoprecipicio.png";
-	public static String terraAsfaltoPlanoSubida = "terraasfaltoplanosubida.png";
-	public static String terraAsfaltoPlanoDescida = "terraasfaltoplanodescida.png";
+	public static String terraAsfaltoSubida = "terraasfaltoSubida.png";
+	public static String terraAsfaltoDescida = "terraasfaltoDescida.png";
 	public static String terraMadeiraPlano = "terramadeiraplano.png";
 	public static String terraMadeiraPlanoPrecipicio = "terramadeiraplanoprecipicio.png";
-	public static String terraMadeiraPlanoSubida = "terramadeiraplanosubida.png";
-	public static String terraMadeiraPlanoDescida = "terramadeiraplanodescida.png";
+	public static String terraMadeiraSubida = "terramadeiraSubida.png";
+	public static String terraMadeiraDescida = "terramadeiraDescida.png";
 	public static String terraAluminioPlano = "terraaluminioplano.png";
 	public static String terraAluminioPlanoPrecipicio = "terraaluminioplanoprecipicio.png";
-	public static String terraAluminioPlanoSubida = "terraaluminioplanosubida.png";
-	public static String terraAluminioPlanoDescida = "terraaluminioplanodescida.png";
+	public static String terraAluminioSubida = "terraaluminioSubida.png";
+	public static String terraAluminioDescida = "terraaluminioDescida.png";
 	
 	//Lua: Asfalto - Madeira - Alumínio: Plano - Plano e Precipício - Plano e Subida - Plano e Descida;
 	public static String luaAsfaltoPlano = "luaasfaltoplano.png";
 	public static String luaAsfaltoPlanoPrecipicio = "luaasfaltoplanoprecipicio.png";
-	public static String luaAsfaltoPlanoSubida = "luaasfaltoplanosubida.png";
-	public static String luaAsfaltoPlanoDescida = "luaasfaltoplanodescida.png";
+	public static String luaAsfaltoSubida = "luaasfaltoSubida.png";
+	public static String luaAsfaltoDescida = "luaasfaltoDescida.png";
 	public static String luaMadeiraPlano = "luamadeiraplano.png";
 	public static String luaMadeiraPlanoPrecipicio = "luamadeiraplanoprecipicio.png";
-	public static String luaMadeiraPlanoSubida = "luamadeiraplanosubida.png";
-	public static String luaMadeiraPlanoDescida = "luamadeiraplanodescida.png";
+	public static String luaMadeiraSubida = "luamadeiraSubida.png";
+	public static String luaMadeiraDescida = "luamadeiraDescida.png";
 	public static String luaAluminioPlano = "luaaluminioplano.png";
 	public static String luaAluminioPlanoPrecipicio= "luaaluminioplanoprecipicio.png";
-	public static String luaAluminioPlanoSubida = "luaaluminioplanosubida.png";
-	public static String luaAluminioPlanoDescida = "luaaluminioplanodescida.png";
+	public static String luaAluminioSubida = "luaaluminioSubida.png";
+	public static String luaAluminioDescida = "luaaluminioDescida.png";
 	
 	//Marte: Asfalto - Madeira - Alumínio: Plano - Plano e Precipício - Plano e Subida - Plano e Descida;
-	public static String marteAsfaltoPlano = "luaasfaltoplano.png";
-	public static String marteAsfaltoPlanoPrecipicio = "luaasfaltoplanoprecipicio.png";
-	public static String marteAsfaltoPlanoSubida = "luaasfaltoplanosubida.png";
-	public static String marteAsfaltoPlanoDescida = "luaasfaltoplanodescida.png";
-	public static String marteMadeiraPlano = "luamadeiraplano.png";
-	public static String marteMadeiraPlanoPrecipicio = "luamadeiraplanoprecipicio.png";
-	public static String marteMadeiraPlanoSubida = "luamadeiraplanosubida.png";
-	public static String marteMadeiraPlanoDescida = "luamadeiraplanodescida.png";
-	public static String marteAluminioPlano = "luaaluminioplano.png";
-	public static String marteAluminioPlanoPrecipicio = "luaaluminioplanoprecipicio.png";
-	public static String marteAluminioPlanoSubida = "luaaluminioplanosubida.png";
-	public static String marteAluminioPlanoDescida = "luaaluminioplanodescida.png";
+	public static String marteAsfaltoPlano = "marteasfaltoplano.png";
+	public static String marteAsfaltoPlanoPrecipicio = "marteasfaltoplanoprecipicio.png";
+	public static String marteAsfaltoSubida = "marteasfaltoSubida.png";
+	public static String marteAsfaltoDescida = "marteasfaltoDescida.png";
+	public static String marteMadeiraPlano = "martemadeiraplano.png";
+	public static String marteMadeiraPlanoPrecipicio = "martemadeiraplanoprecipicio.png";
+	public static String marteMadeiraSubida = "martemadeiraSubida.png";
+	public static String marteMadeiraDescida = "martemadeiraDescida.png";
+	public static String marteAluminioPlano = "martealuminioplano.png";
+	public static String marteAluminioPlanoPrecipicio = "martealuminioplanoprecipicio.png";
+	public static String marteAluminioSubida = "martealuminioSubida.png";
+	public static String marteAluminioDescida = "martealuminioDescida.png";
 	
 	
 	
@@ -64,7 +64,7 @@ public class EnvironmentView extends JPanel{
 	}
 	
 	public EnvironmentView(ScaleView scaleView, SurfaceView surfaceView, InfoPanelView infoPanelView){
-		img = new ImageIcon("terraasfaltoplano.png");
+		img = new ImageIcon(terraAsfaltoPlano);
 		this.setLayout(null);
 		this.setSize(600, 600);
 		this.setLocation(200, 0);

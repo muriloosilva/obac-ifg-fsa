@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.controls;
 
 import br.edu.ifg.formosa.obac.models.Environment;
+import br.edu.ifg.formosa.obac.models.Surface;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
 
 public class ObjectControl {
@@ -80,17 +81,43 @@ public class ObjectControl {
 	}
 
 	public boolean parada(){
-		if(environment.getObjeto().getPosicaoAtualPixel()>=environment.getObjeto().getPosicaoFinalPixel())
+		System.out.println("### PosicaoAtualPixel (parada): "+ environment.getObjeto().getPosicaoAtualPixel());
+		System.out.println("### PosicaoFinalPixel (parada): "+ environment.getObjeto().getPosicaoFinalPixel());
+		if(environment.getObjeto().getPosicaoAtualPixel() >= environment.getObjeto().getPosicaoFinalPixel())
 			return true;
 		else
 			return false;
 	}
 	
 	public boolean paradaCliff(){
-		if(environment.getObjeto().getPosicaoAtualPixel()>=environment.getObjeto().getPosicaoFinalPixel()
+		if(environment.getObjeto().getPosicaoAtualPixel() >= environment.getObjeto().getPosicaoFinalPixel()
 				&& environment.getObjeto().getPosicaoAtualY()>=SurfaceView.poslinhaEscalaDown)
 			return true;
 		else
 			return false;
 	}
+	
+	public boolean paradaClimb(){
+		environment.getSurface();
+		if(environment.getObjeto().getPosicaoAtualPixel() >= Surface.getPontoFinalObjetoClimb()){
+			return false;
+			}
+		else
+			return true;
+	}
+	
+	public boolean paradaDescent(){
+		environment.getSurface();
+		if(environment.getObjeto().getPosicaoAtualPixel() >= Surface.getPontoFinalObjetoDescent()){
+			System.out.println("### posicaoAtualPixel (paradaDescent): " + environment.getObjeto().getPosicaoAtualPixel());
+			System.out.println("###pontoFinalObjetoDescent (paradaDescent): " + Surface.getPontoFinalObjetoDescent());
+			environment.getObjeto().setPosicaoAtualPixel(Surface.getPontoFinalObjetoDescent());
+			System.out.println("### posicaoAtual (paradaDescent): " + environment.getObjeto().getPosicaoAtual());
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 }

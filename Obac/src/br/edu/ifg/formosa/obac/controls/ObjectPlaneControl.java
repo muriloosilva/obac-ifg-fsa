@@ -60,7 +60,7 @@ public class ObjectPlaneControl implements Runnable, ObjectGenericControl{
                 delayS+=0.04;
             }
             else
-					t.interrupt();
+            	    parar();
 					}
         }
 		
@@ -83,8 +83,7 @@ public class ObjectPlaneControl implements Runnable, ObjectGenericControl{
 	@Override
 	public void parar() {
 		pausar();
-		//t.interrupt();
+		t.interrupt();
 		t.stop();
-		System.out.println("thread: "+ t.isInterrupted());	
 	}
 }

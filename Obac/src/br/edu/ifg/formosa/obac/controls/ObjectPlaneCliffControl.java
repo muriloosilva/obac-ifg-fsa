@@ -51,7 +51,7 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 	
                 	
                 	if(first == false){
-                		 v = environment.getObjeto().getVelocidadeInicial() - (environment.getObjeto().getAceleracao()* (-1) * (tempo));
+                		v = environment.getObjeto().getVelocidadeInicial() - (environment.getObjeto().getAceleracao()* (-1) * (tempo));
                 		pos = environment.getObjeto().getPosicaoAtualPixel();
                 		tempo=0;
                 		//delayS = 0.0252217294900222;
@@ -69,9 +69,9 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 	
                 	double novaPosicao = (pos +(v*(tempo)));
                 	System.out.println("############# novaPosicao: " + novaPosicao);
-                	double diferenaPosicao = novaPosicao - environment.getObjeto().getPosicaoAtualPixel();
-                	System.out.println("############# diferenaPosicao: " + diferenaPosicao);
-                	double novaPosicaoEscala = environment.getObjeto().getPosicaoAtualPixel() + (diferenaPosicao/environment.getSurface().getEscala());
+                	double diferencaPosicao = novaPosicao - environment.getObjeto().getPosicaoAtualPixel();
+                	System.out.println("############# diferenaPosicao: " + diferencaPosicao);
+                	double novaPosicaoEscala = environment.getObjeto().getPosicaoAtualPixel() + (diferencaPosicao/environment.getSurface().getEscala());
                 	System.out.println("############# novaPosicaoEscala: " + novaPosicaoEscala);
                 	environment.getObjeto().setPosicaoAtual(novaPosicao*environment.getSurface().getEscala());
                 	environment.getObjeto().setPosicaoAtualPixel(novaPosicao);
