@@ -32,22 +32,21 @@ public class ObjectClimbControl implements Runnable, ObjectGenericControl{
 		while (true) {
 			if(continuar){
 				if(!obacControl.getObjectControl().paradaClimb()) {
-                System.out.println("qualquer coisa");
                 environment.getObjeto().setPosicaoAtual((((((environment.getObjeto().getVelocidadeInicial())*
                 		delayS)+((environment.getObjeto().getAceleracao())*(delayS*delayS))/2))));
                 environment.getObjeto().setPosicaoAtualPixel(environment.getObjeto().getPosicaoAtual()/environment.getSurface().getEscala());
                 surfaceView.repinta();
-                System.out.println("Posição atual: "+ environment.getObjeto().getPosicaoAtualPixel());
-                System.out.println("Posição final pixel: "+environment.getObjeto().getPosicaoFinalPixel());
                     try {
                         Thread.sleep(delayMs);
                     }
                     catch (InterruptedException e){}
                 delayS+=0.04;
             }
-            else
-					parar();
-					}
+            else{
+            	surfaceView.repinta();
+				parar();
+            	}
+			}
         }
 		
 	}
