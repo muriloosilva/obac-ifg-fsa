@@ -81,8 +81,6 @@ public class ObjectControl {
 	}
 
 	public boolean parada(){
-		System.out.println("### PosicaoAtualPixel (parada): "+ environment.getObjeto().getPosicaoAtualPixel());
-		System.out.println("### PosicaoFinalPixel (parada): "+ environment.getObjeto().getPosicaoFinalPixel());
 		if(environment.getObjeto().getPosicaoAtualPixel() >= environment.getObjeto().getPosicaoFinalPixel())
 			return true;
 		else
@@ -103,16 +101,14 @@ public class ObjectControl {
 			return false;
 			}
 		else
+			environment.getObjeto().setPosicaoAtualPixel(Surface.getPontoFinalObjetoClimb());
 			return true;
 	}
 	
 	public boolean paradaDescent(){
 		environment.getSurface();
 		if(environment.getObjeto().getPosicaoAtualPixel() >= Surface.getPontoFinalObjetoDescent()){
-			System.out.println("### posicaoAtualPixel (paradaDescent): " + environment.getObjeto().getPosicaoAtualPixel());
-			System.out.println("###pontoFinalObjetoDescent (paradaDescent): " + Surface.getPontoFinalObjetoDescent());
 			environment.getObjeto().setPosicaoAtualPixel(Surface.getPontoFinalObjetoDescent());
-			System.out.println("### posicaoAtual (paradaDescent): " + environment.getObjeto().getPosicaoAtual());
 			return true;
 		}
 		else{

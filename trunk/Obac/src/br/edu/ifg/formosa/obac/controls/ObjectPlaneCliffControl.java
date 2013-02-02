@@ -37,11 +37,8 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
 		while (true) {
 			if(continuar){
 				if(!obacControl.getObjectControl().paradaCliff() ) {
-            	
                 System.out.println("qualquer coisa cliff");
                 //aux = (((((velI)*i)+((ac)*(i*i))/2)));
-                
-                
                 surfaceView.repinta();
                 
                 if( environment.getObjeto().getPosicaoAtualPixel() >= Surface.widthPlaneCliffPx){
@@ -56,7 +53,6 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 		tempo=0;
                 		//delayS = 0.0252217294900222;
                 		first = true;
-                		
                 	}
                 	
                 	System.out.println("############# Nova velocidade: " + v);
@@ -70,7 +66,7 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 	double novaPosicao = (pos +(v*(tempo)));
                 	System.out.println("############# novaPosicao: " + novaPosicao);
                 	double diferencaPosicao = novaPosicao - environment.getObjeto().getPosicaoAtualPixel();
-                	System.out.println("############# diferenaPosicao: " + diferencaPosicao);
+                	System.out.println("############# diferencaPosicao: " + diferencaPosicao);
                 	double novaPosicaoEscala = environment.getObjeto().getPosicaoAtualPixel() + (diferencaPosicao/environment.getSurface().getEscala());
                 	System.out.println("############# novaPosicaoEscala: " + novaPosicaoEscala);
                 	environment.getObjeto().setPosicaoAtual(novaPosicao*environment.getSurface().getEscala());

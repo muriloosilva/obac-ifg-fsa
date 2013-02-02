@@ -19,18 +19,13 @@ public class Surface {
 	public static final double widthPlaneCliffPc = 30;
 	public static final double widthCliffPc = 70;
 	
-	public static final int pontoFinalObjetoDescent = 518;
-	public static final int pontoFinalObjetoClimb = 0;
-	
-	public static int getPontoFinalObjetoClimb() {
-		return pontoFinalObjetoClimb;
-	}
-
 	public static double widthPlaneCliff = 0;
 	public static double widthCliff = 0;
+	
+	public static final int pontoFinalObjetoDescent = 518;
+	public static final int pontoFinalObjetoClimb = -1;
+	
 	private InfoPanelControl infoPanelControl;
-	
-	
 	
 	public Surface(InfoPanelControl infoPanelControl){
 		this.infoPanelControl = infoPanelControl;
@@ -65,6 +60,10 @@ public class Surface {
 	public void setEscala(double escala) {
 		this.escala = escala;
 		System.out.println("Escala: "+escala);
+	}
+	
+	public static int getPontoFinalObjetoClimb() {
+		return pontoFinalObjetoClimb;
 	}
 	
 	public static int getPontoFinalObjetoDescent() {

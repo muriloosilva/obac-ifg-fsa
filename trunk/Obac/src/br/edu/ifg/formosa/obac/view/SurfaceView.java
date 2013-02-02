@@ -206,7 +206,7 @@ public class SurfaceView extends JPanel{
 				widthLine = widthLineInclined;
 			}
 			else if(isClimb){
-				g2d.translate(-192, 53);
+				g2d.translate(-192.7, 53);
 				g2d.rotate(-0.476);
 				desenhaObjeto(g2d);
 				g2d.translate(0, 0);
