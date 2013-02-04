@@ -88,8 +88,7 @@ public class ObjectControl {
 	}
 	
 	public boolean paradaCliff(){
-		if(environment.getObjeto().getPosicaoAtualPixel() >= environment.getObjeto().getPosicaoFinalPixel()
-				&& environment.getObjeto().getPosicaoAtualY()>=SurfaceView.poslinhaEscalaDown)
+		if(environment.getObjeto().getPosicaoAtualPixel() >= environment.getObjeto().getPosicaoFinalPixel())
 			return true;
 		else
 			return false;

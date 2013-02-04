@@ -23,7 +23,7 @@ public class Surface {
 	public static double widthCliff = 0;
 	
 	public static final int pontoFinalObjetoDescent = 518;
-	public static final int pontoFinalObjetoClimb = -1;
+	public static final int pontoFinalObjetoClimb = 0;
 	
 	private InfoPanelControl infoPanelControl;
 	
