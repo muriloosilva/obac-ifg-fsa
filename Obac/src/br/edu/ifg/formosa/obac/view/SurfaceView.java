@@ -102,9 +102,9 @@ public class SurfaceView extends JPanel{
 		//reposiciona objeto
 		posObjetoY = posObjetoUp;
 		posObjetoX = posObjetoXDefault;
+		resetPosObjetoY();
 		//reposiciona escala
 		setPosEscalaY(SurfaceView.escalaUp);
-		
 		repaint();
 		
 	}
@@ -158,16 +158,23 @@ public class SurfaceView extends JPanel{
 		repaint();		
 	}
 	
-	public void setPosObjetoY(int posicao){
-		posObjetoY = posicao;
-		if(objeto!=null){
-			objeto.setPosicaoAtualY(0);
-		}
-	}
+//	public void setPosObjetoY(int posicao){
+//		posObjetoY = posicao;
+//		if(objeto!=null){
+//			objeto.setPosicaoAtualY(0);
+//		}
+//	}
 	
 	public void resetPosObjetoX(){
 		if(objeto!=null){
 			objeto.setPosicaoAtualPixel(0);
+		}
+		
+	}
+	
+	public void resetPosObjetoY(){
+		if(objeto!=null){
+			objeto.setPosicaoAtualYPixel(0);
 		}
 		
 	}
