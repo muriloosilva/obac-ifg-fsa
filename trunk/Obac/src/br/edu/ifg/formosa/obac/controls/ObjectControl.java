@@ -34,16 +34,16 @@ public class ObjectControl {
 	
 	public void calculaAceleracaoClimb(){
 		//-ac = g*senâ°+CoefA*g*cosâ ;
-		environment.getObjeto().setAceleracao((environment.getGravidade() * Math.sin(26.9) + environment.getSurface().getCoefFriction() *
-				environment.getGravidade() * Math.cos(26.9)) * -1);
+		environment.getObjeto().setAceleracao((environment.getGravidade() * environment.getSurface().getSinAngulo() + environment.getSurface().getCoefFriction() *
+				environment.getGravidade() *  environment.getSurface().getCosAngulo()) * -1);
 		System.out.println("Aceleração subida:"+environment.getObjeto().getAceleracao());
 	}
 	
 	public void calculaAceleracaoDescent(){
 		//ac = g*senâ°+CoefA*g*cosâ ;
-		environment.getObjeto().setAceleracao((environment.getGravidade() * Math.sin(26.9) + environment.getSurface().getCoefFriction() *
-				environment.getGravidade() * Math.cos(26.9)));
-		System.out.println("Aceleração subida:"+environment.getObjeto().getAceleracao());
+		environment.getObjeto().setAceleracao((environment.getGravidade() * environment.getSurface().getSinAngulo() + environment.getSurface().getCoefFriction() *
+				environment.getGravidade() * environment.getSurface().getCosAngulo()));
+		System.out.println("Aceleração descida:"+environment.getObjeto().getAceleracao());
 	}
 	
 	public void calculaPosicaoFinal(){
@@ -88,7 +88,8 @@ public class ObjectControl {
 	}
 	
 	public boolean paradaCliff(){
-		if(environment.getObjeto().getPosicaoAtualPixel() >= environment.getObjeto().getPosicaoFinalPixel())
+		if(environment.getObjeto().getPosicaoAtualPixel() >= environment.getObjeto().getPosicaoFinalPixel() && 
+				environment.getObjeto().getPosicaoAtualYPixel() >= 550)
 			return true;
 		else
 			return false;

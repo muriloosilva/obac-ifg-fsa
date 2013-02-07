@@ -36,7 +36,7 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
 	public void run() {
 		while (true) {
 			if(continuar){
-				if(!obacControl.getObjectControl().paradaCliff() ) {
+				if(!obacControl.getObjectControl().paradaCliff()){
                 //aux = (((((velI)*i)+((ac)*(i*i))/2)));
                 surfaceView.repinta();
                 
@@ -44,7 +44,6 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 	
                 	//System.out.println("############# tempo: " + tempo);
                 	//System.out.println("############# Posicao atual: " + environment.getObjeto().getPosicaoAtual());
-                	
                 	
                 	if(first == false){
                 		v = environment.getObjeto().getVelocidadeInicial() - (environment.getObjeto().getAceleracao()* (-1) * (tempo));
@@ -55,13 +54,9 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 	}
                 	
                 	//System.out.println("############# Nova velocidade: " + v);
-                	
                 	//environment.getObjeto().setAceleracao(0);
-                	
                 	//System.out.println("############# pos: " + pos);
-                	
 
-                	
                 	double novaPosicao = (pos +(v*(tempo)));
                 	//System.out.println("############# novaPosicao: " + novaPosicao);
                 	double diferencaPosicao = novaPosicao - environment.getObjeto().getPosicaoAtualPixel();
