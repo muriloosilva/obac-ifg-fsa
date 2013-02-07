@@ -25,6 +25,9 @@ public class Surface {
 	public static final int pontoFinalObjetoDescent = 518;
 	public static final int pontoFinalObjetoClimb = 0;
 	
+	public static final double sinAngulo = Math.sin(26.9);
+	public static final double cosAngulo = Math.cos(26.9);
+
 	private InfoPanelControl infoPanelControl;
 	
 	public Surface(InfoPanelControl infoPanelControl){
@@ -68,6 +71,14 @@ public class Surface {
 	
 	public static int getPontoFinalObjetoDescent() {
 		return pontoFinalObjetoDescent;
+	}
+	
+	public static double getSinAngulo() {
+		return sinAngulo;
+	}
+	
+	public static double getCosAngulo() {
+		return cosAngulo;
 	}
 	
 }

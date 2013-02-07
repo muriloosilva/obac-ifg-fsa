@@ -56,7 +56,7 @@ public class ObjectFallControl implements Runnable, ObjectGenericControl{
 					double vf = Math.sqrt(vf2);
 					System.out.println("Velocidade ao tocar o chão: " + vf);
 					//v1f = v1i*(m1-m2*e)/(m1+m2)
-					v1f = vf*(environment.getObjeto().getMassa()- 1000000000 *1)/(environment.getObjeto().getMassa() + 1000000000)*(-1);
+					v1f = vf*(environment.getObjeto().getMassa()- 1000000000 *0.65)/(environment.getObjeto().getMassa() + 1000000000)*(-1);
 					System.out.println("Velocidade da volta: " + v1f);
 					if(v1f <=0)
 						continuar = false;
