@@ -69,21 +69,7 @@ public class EnvironmentView extends JPanel{
 	
 	public void changeImage(String image){
 		
-		final String location = image;
-
-		File f = (File) AccessController.doPrivileged(new PrivilegedAction()
-		{
-		public Object run()
-		{
-		  System.out.println("Getting File : " + location);
-		  File outputFile1 = new File(location);
-		  return outputFile1;
-		}
-		});
-		
-		System.out.println("obac.getCodeBase() + dir + f.getPath() : " + new File(obac.getCodeBase() + dir + f.getPath()).getAbsolutePath());
-		
-		jLabel.setIcon(new ImageIcon(dir + image));
+		jLabel.setIcon(new ImageIcon(obac.getImage(obac.getCodeBase(), dir + image)));
 		jLabel.repaint();
 	}
 	
