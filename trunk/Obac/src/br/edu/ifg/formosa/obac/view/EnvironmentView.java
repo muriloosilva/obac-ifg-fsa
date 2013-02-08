@@ -1,8 +1,14 @@
 package br.edu.ifg.formosa.obac.view;
 
+import java.io.File;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import br.edu.ifg.formosa.obac.main.Obac;
 
 public class EnvironmentView extends JPanel{
 	
@@ -13,6 +19,7 @@ public class EnvironmentView extends JPanel{
 	private SurfaceView surfaceView;
 	private ImageIcon img;
 	private JLabel jLabel;
+	private static String dir = "br/edu/ifg/formosa/obac/images/";
 	
 	//Terra: Asfalto - Madeira - Alumínio: Plano - Plano e Precipício - Plano e Subida - Plano e Descida;
 	public static String terraAsfaltoPlano= "terraasfaltoplano.png";
@@ -56,15 +63,35 @@ public class EnvironmentView extends JPanel{
 	public static String marteAluminioSubida = "martealuminioSubida.png";
 	public static String marteAluminioDescida = "martealuminioDescida.png";
 	
+	private Obac obac;
+	
 	
 	
 	public void changeImage(String image){
-		jLabel.setIcon(new ImageIcon(image));
+		
+		final String location = image;
+
+		File f = (File) AccessController.doPrivileged(new PrivilegedAction()
+		{
+		public Object run()
+		{
+		  System.out.println("Getting File : " + location);
+		  File outputFile1 = new File(location);
+		  return outputFile1;
+		}
+		});
+		
+		System.out.println("obac.getCodeBase() + dir + f.getPath() : " + new File(obac.getCodeBase() + dir + f.getPath()).getAbsolutePath());
+		
+		jLabel.setIcon(new ImageIcon(dir + image));
 		jLabel.repaint();
 	}
 	
-	public EnvironmentView(ScaleView scaleView, SurfaceView surfaceView, InfoPanelView infoPanelView){
-		img = new ImageIcon(terraAsfaltoPlano);
+	public EnvironmentView(ScaleView scaleView, SurfaceView surfaceView, InfoPanelView infoPanelView, Obac obac){
+		//System.out.println()
+		this.obac = obac;
+		img = new ImageIcon("");
+		
 		this.setLayout(null);
 		this.setSize(600, 600);
 		this.setLocation(200, 0);
@@ -77,6 +104,7 @@ public class EnvironmentView extends JPanel{
 		
 		jLabel = new JLabel(img);
 		jLabel.setBounds(0, 0, 600, 600);
-		this.add(jLabel, 2);		
+		this.add(jLabel, 2);	
+		changeImage(terraAsfaltoPlano);
 	}
 }

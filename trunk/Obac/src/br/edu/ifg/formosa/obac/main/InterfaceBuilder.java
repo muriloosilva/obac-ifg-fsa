@@ -17,7 +17,6 @@ public class InterfaceBuilder {
 	
 	
 	public InterfaceBuilder(Obac obac){
-		
 		ConfigurationView configurationView = new ConfigurationView();
 		
 		
@@ -34,7 +33,7 @@ public class InterfaceBuilder {
 		Surface surface = new Surface(infoPanelView.getInfoPanelControl());
 		environment.setObjeto(objeto);
 		environment.setSurface(surface);
-		EnvironmentView environmentView = new EnvironmentView(scaleView, surfaceView, infoPanelView); 
+		EnvironmentView environmentView = new EnvironmentView(scaleView, surfaceView, infoPanelView, obac); 
 		
 		
 		
