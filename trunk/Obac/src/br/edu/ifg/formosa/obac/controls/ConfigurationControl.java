@@ -121,6 +121,7 @@ public class ConfigurationControl {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+				configurationView.getCbFriction().setEnabled(true);
 			}
 		});
 		
