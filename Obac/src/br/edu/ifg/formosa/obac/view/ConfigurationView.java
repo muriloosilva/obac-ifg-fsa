@@ -109,6 +109,10 @@ public class ConfigurationView extends JPanel{
 		lbVelocity.setBounds(10, 30, 100, 20);
 		lbVelocity.setForeground(Color.WHITE);
 		
+		Label lbMS = new Label("M/s");
+		lbMS.setBounds(115, 50, 30, 20);
+		lbMS.setForeground(Color.WHITE);
+		
 		txVelocity = new TextField("");
 		txVelocity.setBounds(10, 50, 100, 20);
 		
@@ -206,6 +210,10 @@ public class ConfigurationView extends JPanel{
 		lbMass.setBounds(10, 0, 100, 20);
 		lbMass.setForeground(Color.WHITE);
 		
+		Label lbG = new Label("G");
+		lbG.setBounds(115, 20, 30, 20);
+		lbG.setForeground(Color.WHITE);
+		
 		txMass = new TextField("");
 		txMass.setBounds(10, 20, 100, 20);
 		
@@ -223,6 +231,7 @@ public class ConfigurationView extends JPanel{
 	    pPropulsion.add(cbPropulsion);
 	    pPropulsion.add(lbVelocity);
 	    pPropulsion.add(txVelocity);
+	    pPropulsion.add(lbMS);
 	    this.add(lbAmbient);
 	    this.add(pAmbient);
 	    pAmbient.add(lbSimulation);
@@ -247,6 +256,7 @@ public class ConfigurationView extends JPanel{
 	    this.add(pObject);
 	    pObject.add(lbMass);
 	    pObject.add(txMass);
+	    pObject.add(lbG);
 	    this.add(btSimulation);
 	    pSimulation.add(fall);
 	   
