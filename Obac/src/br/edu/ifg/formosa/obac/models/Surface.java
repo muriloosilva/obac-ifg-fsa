@@ -5,7 +5,8 @@ import br.edu.ifg.formosa.obac.utils.Conversion;
 
 public class Surface {
 	public static final double woodFriction = 0.62;
-	public static final double asphalt = 0.80;
+	public static final double asphaltFriction = 0.80;
+	public static final double aluminumFriction = 1.4;
 	private double coefFriction;
 	public static double width = 500.00;
 	public static double widthY = 420.00;

@@ -324,9 +324,11 @@ public class ConfigurationControl {
 
 
 						if (configurationView.getCbFriction().getSelectedItem() == atritoAsfalto) {
-							environment.getSurface().setCoefFriction(Surface.asphalt);
+							environment.getSurface().setCoefFriction(Surface.asphaltFriction);
 						} else if (configurationView.getCbFriction().getSelectedItem() == atritoMadeira) {
 							environment.getSurface().setCoefFriction(Surface.woodFriction);
+						} else if(configurationView.getCbFriction().getSelectedItem() == atritoAluminio){
+							environment.getSurface().setCoefFriction(Surface.aluminumFriction);
 						}
 
 						if (configurationView.getCbGravity().getSelectedItem() == planetaTerra) {
