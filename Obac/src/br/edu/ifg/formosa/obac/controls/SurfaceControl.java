@@ -41,6 +41,8 @@ public class SurfaceControl {
 			pontoFinalEscala=i;			
 		}
 		pontoFinalEscala*=10;
+		if(pontoFinalEscala == 10)
+			pontoFinalEscala = 100;
 		System.out.println("pontoFinalEscala:....."+pontoFinalEscala);
 		
 		
@@ -110,6 +112,8 @@ public void calculaEscalaCliff(){
 			pontoFinalEscala=i;			
 		}
 		pontoFinalEscala*=10;
+		if(pontoFinalEscala == 10)
+			pontoFinalEscala = 100;
 		System.out.println("pontoFinalEscala:....."+pontoFinalEscala);
 		
 		//Calcula o comprimento do plano do precipício de acordo com o ponto final da escala
