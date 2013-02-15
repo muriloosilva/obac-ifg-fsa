@@ -167,7 +167,7 @@ public class ConfigurationView extends JPanel{
 		cDeslizante.setMajorTickSpacing(25);  
 		//cDeslizante.setPaintTicks(true);  
 	    lbCurrentCoefRestitution = new Label("0.0");
-	    lbCurrentCoefRestitution.setBounds(50, 23, 50, 20);
+	    lbCurrentCoefRestitution.setBounds(5, 23, 50, 20);
 	    
 	    cDeslizante.addChangeListener(new javax.swing.event.ChangeListener(){  
 	        public void stateChanged(javax.swing.event.ChangeEvent ce){
