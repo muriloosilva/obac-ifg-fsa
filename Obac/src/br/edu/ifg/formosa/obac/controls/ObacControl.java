@@ -58,15 +58,14 @@ public class ObacControl {
 		objectControl.calculaTempo();
 	}
 	
-	public void fallControl(){
+	public void fallControl(double e){
 		
 		objectControl.calculaNormal();
 		surfaceControl.calculaAtrito();
 		objectControl.calculaAceleracaoFall();
-		//objectControl.calculaPosicaoFinal();
 		surfaceControl.calculaEscalaFall();
-		//objectControl.calculaPosicaoFinalPixel();
-		//objectControl.calculaTempo();
+		objectControl.calculaCoefRestituicao(e);
+
 	}
 	
 	public ObjectControl getObjectControl(){

@@ -8,8 +8,10 @@ import java.awt.TextField;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSlider;
 
 public class ConfigurationView extends JPanel{
 	/**
@@ -30,6 +32,15 @@ public class ConfigurationView extends JPanel{
 	private JRadioButton planePrecipice;
 	private JRadioButton fall;
 	
+	private Label lbFriction;
+	private Label lbCoefRestitution;
+	private final Label lbCurrentCoefRestitution;
+	
+	private final JSlider cDeslizante;
+	
+	private Panel pAmbient;
+	private Panel pFriction;
+	private Panel pCoefRestitution;
 
 	private JRadioButton notObstacle = new JRadioButton("Não");
 	private JRadioButton yesObstacle = new JRadioButton("Sim");
@@ -51,7 +62,7 @@ public class ConfigurationView extends JPanel{
 		pPropulsion.setBounds(10, 40, 180, 75);
 		pPropulsion.setBackground(Color.GRAY);
 		
-		Panel pAmbient = new Panel(null);
+		pAmbient = new Panel(null);
 		pAmbient.setBounds(10, 140, 180, 325);
 		pAmbient.setBackground(Color.GRAY);
 		
@@ -59,9 +70,13 @@ public class ConfigurationView extends JPanel{
 		pSimulation.setBounds(10, 20, 160, 105);
 		pSimulation.setBackground(Color.WHITE);
 		
-		Panel pFriction = new Panel(null);
+		pFriction = new Panel(null);
 		pFriction.setBounds(10, 155, 160, 40);
 		pFriction.setBackground(Color.WHITE);
+		
+		pCoefRestitution = new Panel(null);
+		pCoefRestitution.setBounds(10, 155, 160, 40);
+		pCoefRestitution.setBackground(Color.WHITE);
 		
 		Panel pGravity = new Panel(null);
 		pGravity.setBounds(10, 215, 160, 40);
@@ -134,13 +149,32 @@ public class ConfigurationView extends JPanel{
 		buttonGroupPlane.add(fall);
 	    plane.setSelected(true);
 	    
-	    Label lbFriction = new Label("Atrito");
+	    lbFriction = new Label("Atrito");
 		lbFriction.setBounds(10, 135, 100, 20);
 		lbFriction.setForeground(Color.WHITE);
+		
+		lbCoefRestitution = new Label("Coef. de Restituição");
+		lbCoefRestitution.setBounds(10, 135, 120, 20);
+		lbCoefRestitution.setForeground(Color.WHITE);
 		
 		String[] optionsFriction = {"Asfalto", "Madeira", "Aluminio"}; 
 		cbFriction = new JComboBox(optionsFriction);
 		cbFriction.setBounds(10, 10, 100, 20);
+		
+		cDeslizante = new JSlider(JSlider.HORIZONTAL, 0, 100, 1);
+		cDeslizante.setBounds(5, 5, 145, 18);
+		
+		cDeslizante.setMajorTickSpacing(25);  
+		//cDeslizante.setPaintTicks(true);  
+	    lbCurrentCoefRestitution = new Label("0.0");
+	    lbCurrentCoefRestitution.setBounds(50, 23, 50, 20);
+	    
+	    cDeslizante.addChangeListener(new javax.swing.event.ChangeListener(){  
+	        public void stateChanged(javax.swing.event.ChangeEvent ce){
+	        	lbCurrentCoefRestitution.setText("" + (cDeslizante.getValue()/100.0));
+	        	System.out.println(cDeslizante.getValue()/100.0);  
+	        }  
+	      }); 
 		
 		Label lbGravity = new Label("Gravidade");
 		lbGravity.setBounds(10, 195, 100, 20);
@@ -200,6 +234,8 @@ public class ConfigurationView extends JPanel{
 	    pAmbient.add(lbFriction);
 	    pAmbient.add(pFriction);
 	    pFriction.add(cbFriction);
+	    pCoefRestitution.add(cDeslizante);
+	    pCoefRestitution.add(lbCurrentCoefRestitution);
 	    pAmbient.add(lbGravity);
 	    pAmbient.add(pGravity);
 	    pGravity.add(cbGravity);
@@ -342,4 +378,54 @@ public class ConfigurationView extends JPanel{
 	public void setFall(JRadioButton fall) {
 		this.fall = fall;
 	}
+
+	public Panel getpFriction() {
+		return pFriction;
+	}
+
+	public void setpFriction(Panel pFriction) {
+		this.pFriction = pFriction;
+	}
+
+	public Panel getpCoefRestitution() {
+		return pCoefRestitution;
+	}
+
+	public void setpCoefRestitution(Panel pCoefRestitution) {
+		this.pCoefRestitution = pCoefRestitution;
+	}
+
+	public Label getLbFriction() {
+		return lbFriction;
+	}
+
+	public void setLbFriction(Label lbFriction) {
+		this.lbFriction = lbFriction;
+	}
+
+	public Label getLbCoefRestitution() {
+		return lbCoefRestitution;
+	}
+
+	public void setLbCoefRestitution(Label lbCoefRestitution) {
+		this.lbCoefRestitution = lbCoefRestitution;
+	}
+
+	public Panel getpAmbient() {
+		return pAmbient;
+	}
+
+	public void setpAmbient(Panel pAmbient) {
+		this.pAmbient = pAmbient;
+	}
+
+	public Label getLbCurrentCoefRestitution() {
+		return lbCurrentCoefRestitution;
+	}
+
+	public JSlider getcDeslizante() {
+		return cDeslizante;
+	}
+	
+	
 }
