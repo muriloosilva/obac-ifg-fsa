@@ -25,7 +25,7 @@ public class SurfaceView extends JPanel{
 	public static final int posObjetoUp = 170;
 	
 	public static int posObjetoXDefault = 50;
-	public static int posObjetoXFall = 285;
+	public static int posObjetoXFall = 287;
 	public static int posObjetoX = posObjetoXDefault;
 	public static final int posObjetoFallUp = 100;
 	public static final int escalaUp = 1;
@@ -146,6 +146,7 @@ public class SurfaceView extends JPanel{
 		isDescent = false;
 		isClimb = false;
 		isCliff = false;
+		resetPosObjetoY();
 		posObjetoY = posObjetoFallUp;
 		posObjetoX = posObjetoXFall;
 		repaint();

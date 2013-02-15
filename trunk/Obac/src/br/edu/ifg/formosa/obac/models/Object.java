@@ -11,6 +11,7 @@ public class Object {
 	private double aceleracao;
 	private double aceleracaoY;
 	private double forcaNormal;
+	private double coefRestituicao;
 	private double posicaoInicial = 0;
 	private double posicaoFinal = 0;
 	private double tempo;
@@ -102,6 +103,13 @@ public class Object {
 	public void setForcaNormal(double forcaNormal) {
 		this.forcaNormal = forcaNormal;
 		infoPanelControl.changeValueForçaNormal(Conversion.rounding(1, forcaNormal));
+	}
+	public double getCoefRestituicao() {
+		return coefRestituicao;
+	}
+
+	public void setCoefRestituicao(double coefRestituicao) {
+		this.coefRestituicao = coefRestituicao;
 	}
 	public double getPosicaoFinal() {
 		return Conversion.rounding(2, posicaoFinal);

@@ -11,7 +11,7 @@ public class CheckImages {
 	private final static String planetaMarte = "Marte";
 	
 	//Verifica todas as configurações do usuário e troca o plano de fundo de acordo com as mesmas
-	public static void checkImageSelected(ConfigurationView configurationView, EnvironmentView environmentView, SurfaceView surfaceView){
+	public static void checkImageSelected(ConfigurationView configurationView, EnvironmentView environmentView, SurfaceView surfaceView, boolean simulation){
 		//Coloca o objeto na posição inicial do eixo X
 		surfaceView.resetPosObjetoX();
 		
@@ -173,41 +173,23 @@ public class CheckImages {
 		//Caso.: Queda Livre
 		else if(configurationView.getFall().isSelected()){
 					surfaceView.posicaoInicialObjetoEscalaFall();
-					if(configurationView.getCbFriction().getSelectedItem() == atritoAsfalto){
-						if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
-							environmentView.changeImage(EnvironmentView.terraAsfaltoDescida);
-						}
-						if(configurationView.getCbGravity().getSelectedItem() == planetaLua){
-							environmentView.changeImage(EnvironmentView.luaAsfaltoDescida);
-						}
-						if(configurationView.getCbGravity().getSelectedItem() == planetaMarte){
-							environmentView.changeImage(EnvironmentView.marteAsfaltoDescida);
-						}
-					}else if(configurationView.getCbFriction().getSelectedItem() == atritoMadeira){
-						if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
-							environmentView.changeImage(EnvironmentView.terraMadeiraDescida);
-						}
-						if(configurationView.getCbGravity().getSelectedItem() == planetaLua){
-							environmentView.changeImage(EnvironmentView.luaMadeiraDescida);
-						}
-						if(configurationView.getCbGravity().getSelectedItem() == planetaMarte){
-							environmentView.changeImage(EnvironmentView.marteMadeiraDescida);
-						}
-					}else if(configurationView.getCbFriction().getSelectedItem() == atritoAluminio){
-						if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
-							environmentView.changeImage(EnvironmentView.terraAluminioDescida);
-						}
-						if(configurationView.getCbGravity().getSelectedItem() == planetaLua){
-							environmentView.changeImage(EnvironmentView.luaAluminioDescida);
-						}
-						if(configurationView.getCbGravity().getSelectedItem() == planetaMarte){
-							environmentView.changeImage(EnvironmentView.marteAluminioDescida);
-						}
+					if(configurationView.getCbGravity().getSelectedItem() == planetaTerra){
+						if(simulation)
+							environmentView.changeImage(EnvironmentView.terraQuedaLivreAberto);
+						else
+							environmentView.changeImage(EnvironmentView.terraQuedaLivreFechado);
 					}
-					
-					
-				}
-		
-		
+					else if(configurationView.getCbGravity().getSelectedItem() == planetaLua){
+						if(simulation)
+							environmentView.changeImage(EnvironmentView.luaQuedaLivreAberto);
+						else
+							environmentView.changeImage(EnvironmentView.luaQuedaLivreFechado);
+					}else if(configurationView.getCbGravity().getSelectedItem() == planetaMarte){
+						if(simulation)
+							environmentView.changeImage(EnvironmentView.marteQuedaLivreAberto);
+						else
+							environmentView.changeImage(EnvironmentView.marteQuedaLivreFechado);
+					}
 	}
+}
 }

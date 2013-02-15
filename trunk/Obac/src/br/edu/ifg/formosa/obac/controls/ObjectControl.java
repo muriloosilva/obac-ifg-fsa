@@ -2,6 +2,7 @@ package br.edu.ifg.formosa.obac.controls;
 
 import br.edu.ifg.formosa.obac.models.Environment;
 import br.edu.ifg.formosa.obac.models.Surface;
+import br.edu.ifg.formosa.obac.view.ConfigurationView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
 
 public class ObjectControl {
@@ -71,6 +72,10 @@ public class ObjectControl {
 	
 	public void calculaMomentoQueda(){
 		
+	}
+	
+	public void calculaCoefRestituicao(double e){
+		environment.getObjeto().setCoefRestituicao(e);
 	}
 	
 	public void calculaTempo(){

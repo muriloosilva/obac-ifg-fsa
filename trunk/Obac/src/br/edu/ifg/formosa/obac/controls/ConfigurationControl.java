@@ -39,6 +39,7 @@ public class ConfigurationControl {
 	private final String planetaLua = "Lua";
 	private final String planetaMarte = "Marte";
 	private ObjectGenericControl objectGenericControl = null;
+	private boolean removedPanelFriction  =false;
 
 	public ConfigurationControl(Obac obac, ConfigurationView configurationView,
 			Environment environment, ScaleView scaleView,
@@ -82,6 +83,7 @@ public class ConfigurationControl {
 		configurationView.getNotobstacle().setEnabled(false);
 		configurationView.getYesobstacle().setEnabled(false);
 		configurationView.getTxMass().setEnabled(false);
+		configurationView.getcDeslizante().setEnabled(false);
 	}
 	
 	public void unLockAll(){
@@ -98,6 +100,7 @@ public class ConfigurationControl {
 		configurationView.getNotobstacle().setEnabled(true);
 		configurationView.getYesobstacle().setEnabled(true);
 		configurationView.getTxMass().setEnabled(true);
+		configurationView.getcDeslizante().setEnabled(true);
 		
 	}
 	
@@ -120,8 +123,19 @@ public class ConfigurationControl {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+				CheckImages.checkImageSelected(configurationView, environmentView, surfaceView, false);
 				configurationView.getCbFriction().setEnabled(true);
+				
+				if(removedPanelFriction){
+					configurationView.getpAmbient().remove(configurationView.getpCoefRestitution());
+					configurationView.getpAmbient().remove(configurationView.getLbCoefRestitution());
+					configurationView.getpAmbient().add(configurationView.getpFriction());
+					configurationView.getpAmbient().add(configurationView.getLbFriction());
+					configurationView.getpAmbient().repaint();
+					removedPanelFriction = false;
+					
+				}
+				
 			}
 		});
 		
@@ -133,8 +147,19 @@ public class ConfigurationControl {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView, false);
 						configurationView.getCbFriction().setEnabled(true);
+						
+						if(removedPanelFriction){
+							configurationView.getpAmbient().remove(configurationView.getpCoefRestitution());
+							configurationView.getpAmbient().remove(configurationView.getLbCoefRestitution());
+							configurationView.getpAmbient().add(configurationView.getpFriction());
+							configurationView.getpAmbient().add(configurationView.getLbFriction());
+							configurationView.getpAmbient().repaint();
+							removedPanelFriction = false;
+							
+						}
+						
 					}
 				});
 
@@ -144,8 +169,19 @@ public class ConfigurationControl {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView, false);
 						configurationView.getCbFriction().setEnabled(true);
+						
+						if(removedPanelFriction){
+							configurationView.getpAmbient().remove(configurationView.getpCoefRestitution());
+							configurationView.getpAmbient().remove(configurationView.getLbCoefRestitution());
+							configurationView.getpAmbient().add(configurationView.getpFriction());
+							configurationView.getpAmbient().add(configurationView.getLbFriction());
+							configurationView.getpAmbient().repaint();
+							removedPanelFriction = false;
+							
+						}
+						
 					}
 				});
 
@@ -155,18 +191,35 @@ public class ConfigurationControl {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView, false);
 						configurationView.getCbFriction().setEnabled(true);
+						
+						if(removedPanelFriction){
+							configurationView.getpAmbient().remove(configurationView.getpCoefRestitution());
+							configurationView.getpAmbient().remove(configurationView.getLbCoefRestitution());
+							configurationView.getpAmbient().add(configurationView.getpFriction());
+							configurationView.getpAmbient().add(configurationView.getLbFriction());
+							configurationView.getpAmbient().repaint();
+							removedPanelFriction = false;
+							
+						}
+						
 					}
 				});
 		
+		// evento de seleção do tipo de simulação
 		configurationView.getFall().addActionListener(
 				new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
-						configurationView.getCbFriction().setEnabled(false);
+						CheckImages.checkImageSelected(configurationView, environmentView, surfaceView, false);
+						configurationView.getpAmbient().remove(configurationView.getpFriction());
+						configurationView.getpAmbient().remove(configurationView.getLbFriction());
+						configurationView.getpAmbient().add(configurationView.getpCoefRestitution());
+						configurationView.getpAmbient().add(configurationView.getLbCoefRestitution());
+						configurationView.getpAmbient().repaint();
+						removedPanelFriction = true;
 					}
 				});
 		
@@ -174,7 +227,7 @@ public class ConfigurationControl {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+				CheckImages.checkImageSelected(configurationView, environmentView, surfaceView, false);
 			}
 		});
 		
@@ -182,7 +235,7 @@ public class ConfigurationControl {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+				CheckImages.checkImageSelected(configurationView, environmentView, surfaceView, false);
 			}
 		});
 		
@@ -310,7 +363,8 @@ public class ConfigurationControl {
 						
 						else if (configurationView.getButtonGroupPlane().getSelection().getActionCommand().equalsIgnoreCase(ConfigurationView.sFall)) {
 							
-							obacControl.fallControl();
+							CheckImages.checkImageSelected(configurationView, environmentView, surfaceView, true);
+							obacControl.fallControl(Double.parseDouble(configurationView.getLbCurrentCoefRestitution().getText()));
 							objectGenericControl = new ObjectFallControl(obacControl, environment, scaleView, surfaceView);
 							//environment.getSurface().setEscala(SurfaceView.widthPlaneCliff/SurfaceView.widthPlaneCliffPx);
 							surfaceView.alteraPontosEscala(environment.getSurface().getPontoFinal());
@@ -356,7 +410,7 @@ public class ConfigurationControl {
 							configurationView.getBtSimulation().setText("Iniciar Simulação");
 							objectGenericControl.parar();
 							surfaceView.alteraPontosEscala(SurfaceView.pontoFinalEscalaDefault);
-							CheckImages.checkImageSelected(configurationView, environmentView, surfaceView);
+							CheckImages.checkImageSelected(configurationView, environmentView, surfaceView, false);
 							configurationView.remove(configurationView.getBtNewsimulation());
 							configurationView.repaint();
 							unLockAll();
