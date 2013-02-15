@@ -16,6 +16,7 @@ public class SurfaceView extends JPanel{
 	
 	public final static long pontoFinalEscalaDefault = 100;
 	public static long pontoFinalEscala = 100;
+	public static long pontoFinalEscalaFall = 1000;
 	private Image offScreenImage; //imagem auxiliar declarada na classe
 	private Object objeto;
 	private boolean ver = false;
@@ -45,13 +46,19 @@ public class SurfaceView extends JPanel{
 	private int posTextoEscalaY =  posTextoEscalaDown;
 	private int posTextoY = posTextoDown;
 	
+	//private int posLinhaEscalaYFall = 
+	
 	private boolean isDescent = false;
 	private boolean isClimb = false;
 	private boolean isCliff = false;
+	private boolean isFall = false;
 	
 	private int widthLinePlane = 600;
-	private int widthLineInclined = 691;
+	private int widthLineInclined = 645;
 	private int widthLine = 650;
+	
+	private Font estiloFonte = new Font("Arial", Font.BOLD, 14);
+	private Font estiloFonteMetros = new Font("Arial", Font.PLAIN, 10);
 	
 	public SurfaceView(ScaleView scaleView){
 		this.setLayout(null);
@@ -82,6 +89,7 @@ public class SurfaceView extends JPanel{
 		isDescent = false;
 		isClimb = false;
 		isCliff = false;
+		isFall = false;
 		
 		//reposiciona objeto
 		posObjetoY = posObjetoDown;
@@ -120,7 +128,6 @@ public class SurfaceView extends JPanel{
 		posObjetoX = posObjetoXDefault;
 		//reposiciona escala
 		setPosEscalaY(SurfaceView.escalaUp);
-		
 		repaint();
 		
 	}
@@ -146,6 +153,7 @@ public class SurfaceView extends JPanel{
 		isDescent = false;
 		isClimb = false;
 		isCliff = false;
+		isFall = true;
 		resetPosObjetoY();
 		posObjetoY = posObjetoFallUp;
 		posObjetoX = posObjetoXFall;
@@ -199,41 +207,8 @@ public class SurfaceView extends JPanel{
 		g2d.fillRect((int)objeto.getPosicaoAtualPixel()+posObjetoX, (int)(posObjetoY + objeto.getPosicaoAtualYPixel()), 30, 30);
 	}
 	
-	@Override
-	public void paint(Graphics g) {
-		//super.paint(g);
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.blue);
-		if(ver && objeto!=null){
-			
-			if(isDescent){
-				g2d.translate(95, 8);
-				g2d.rotate(0.476);
-				desenhaObjeto(g2d);
-				g2d.translate(0, -294);
-				widthLine = widthLineInclined;
-			}
-			else if(isClimb){
-				g2d.translate(-192.7, 53);
-				g2d.rotate(-0.476);
-				desenhaObjeto(g2d);
-				g2d.translate(0, 0);
-				widthLine = widthLinePlane;
-			}
-			else{
-				widthLine = widthLinePlane;
-				desenhaObjeto(g2d);
-			}
-  
-		}
-		else{
-			g2d.fillRect(50, posObjetoY, 30, 30);
-			ver = true;
-		}
-		
+	public void desenhaEscalaDefault(Graphics g){
 		g.setColor(Color.white);
-		Font estiloFonte = new Font("Arial", Font.BOLD, 14);
-		Font estiloFonteMetros = new Font("Arial", Font.PLAIN, 10);
 		g.setFont(estiloFonte);
 		g.drawLine(0, posLinhaEscalaY, widthLine, posLinhaEscalaY);
 		g.drawString("|", 50, posTracoEscalaY);
@@ -249,20 +224,76 @@ public class SurfaceView extends JPanel{
 		g.drawString(""+(pontoFinalEscala), 550, posTextoEscalaY);
 		g.setFont(estiloFonteMetros);
 		g.drawString("(metros)", 560, posTextoY);
+	}
+	
+	public void desenhaEscalaFall(Graphics g){
+		g.setColor(Color.cyan);
+		g.setFont(estiloFonte);
+		g.drawLine(260, 100, 260, 550);
+		g.drawString("__", 250, 98);
+		g.drawString("__", 250, 211);
+		g.drawString("__", 250, 323);
+		g.drawString("__", 250, 436);
+		g.drawString("__", 250, 548);
 		
-		if(isCliff){
-			g.setFont(estiloFonte);
-			double pontoFinalEscalaPlaneCliff = (pontoFinalEscala*30)/100;
-			g.setColor(Color.white);
-			g.setFont(estiloFonte);
-			g.drawLine(0, 210, 200, 210);
-			g.drawString("|", 50, 215);
-			g.drawString("|", 200, 215);
+		g.drawString("0", 240, 103);
+		g.drawString(""+(pontoFinalEscalaFall*0.25), 213, 216);
+		g.drawString(""+(pontoFinalEscalaFall*0.5), 213, 329);
+		g.drawString(""+(pontoFinalEscalaFall*0.75), 213, 442);
+		g.drawString(""+(pontoFinalEscalaFall), 213, 553);
+		g.setFont(estiloFonteMetros);
+		g.drawString("(metros)", 250, 565);
+	}
+	// 0, 112.5, 225, 337.5
+	@Override
+	public void paint(Graphics g) {
+		//super.paint(g);
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(Color.blue);
+		if(ver && objeto!=null){
 			
-			g.drawString("0", 50, 235);
-			g.drawString(""+(pontoFinalEscalaPlaneCliff), 185, 235);
-
+			if(isDescent){
+				g2d.translate(95, 8);
+				g2d.rotate(0.476);
+				desenhaObjeto(g2d);
+				g2d.translate(0, -294);
+				widthLine = widthLineInclined;
+				desenhaEscalaDefault(g);
+			}
+			else if(isClimb){
+				g2d.translate(-192.7, 53);
+				g2d.rotate(-0.476);
+				desenhaObjeto(g2d);
+				g2d.translate(0, 0);
+				widthLine = widthLinePlane;
+				desenhaEscalaDefault(g);
+			}else if(isCliff){
+				desenhaObjeto(g2d);
+				g.setFont(estiloFonte);
+				double pontoFinalEscalaPlaneCliff = (pontoFinalEscala*30)/100;
+				g.setColor(Color.white);
+				g.setFont(estiloFonte);
+				g.drawLine(0, 210, 200, 210);
+				g.drawString("|", 50, 215);
+				g.drawString("|", 200, 215);
+				g.drawString("0", 50, 235);
+				g.drawString(""+(pontoFinalEscalaPlaneCliff), 185, 235);
+				desenhaEscalaDefault(g);
+			}else if(isFall){
+				desenhaObjeto(g2d);
+				widthLine = widthLinePlane;
+				desenhaEscalaFall(g);
+			}
+			else{
+				desenhaObjeto(g2d);
+				desenhaEscalaDefault(g);
+			}
 		}
+		else{
+			g2d.fillRect(50, posObjetoY, 30, 30);
+			ver = true;
+		}
+		
 	}
 
 	
