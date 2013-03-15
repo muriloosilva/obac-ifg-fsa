@@ -20,7 +20,7 @@ import br.edu.ifg.formosa.obac.view.InfoPanelView;
 import br.edu.ifg.formosa.obac.view.ObjectView;
 import br.edu.ifg.formosa.obac.view.ScaleView;
 import br.edu.ifg.formosa.obac.view.SurfaceView;
-
+ 
 public class ConfigurationControl {
 
 	private EnvironmentView environmentView;
