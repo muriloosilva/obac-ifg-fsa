@@ -46,8 +46,10 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
                 	//System.out.println("############# Posicao atual: " + environment.getObjeto().getPosicaoAtual());
                 	
                 	if(first == false){
-                		v = environment.getObjeto().getVelocidadeInicial() - (environment.getObjeto().getAceleracao()* (-1) * (tempo));
-                		pos = environment.getObjeto().getPosicaoAtualPixel();
+                		v = (int)((environment.getObjeto().getVelocidadeInicial() * environment.getObjeto().getVelocidadeInicial()) + 2 * environment.getObjeto().getAceleracao() * Surface.widthPlaneCliffPx * environment.getSurface().getEscala());
+                		v = Math.sqrt(v);
+                		//v = environment.getObjeto().getVelocidadeInicial() - (environment.getObjeto().getAceleracao()* (-1) * (tempo));
+                		pos = environment.getObjeto().getPosicaoAtual();
                 		tempo=0;
                 		//delayS = 0.0252217294900222;
                 		first = true;
@@ -59,12 +61,12 @@ public class ObjectPlaneCliffControl implements Runnable, ObjectGenericControl{
 
                 	double novaPosicao = (pos +(v*(tempo)));
                 	//System.out.println("############# novaPosicao: " + novaPosicao);
-                	double diferencaPosicao = novaPosicao - environment.getObjeto().getPosicaoAtualPixel();
+                	//double diferencaPosicao = novaPosicao - environment.getObjeto().getPosicaoAtual();
                 	//System.out.println("############# diferencaPosicao: " + diferencaPosicao);
-                	double novaPosicaoEscala = environment.getObjeto().getPosicaoAtualPixel() + (diferencaPosicao/environment.getSurface().getEscala());
+                	//double novaPosicaoEscala = environment.getObjeto().getPosicaoAtualPixel() + (diferencaPosicao/environment.getSurface().getEscala());
                 	//System.out.println("############# novaPosicaoEscala: " + novaPosicaoEscala);
-                	environment.getObjeto().setPosicaoAtual(novaPosicao*environment.getSurface().getEscala());
-                	environment.getObjeto().setPosicaoAtualPixel(novaPosicao);
+                	environment.getObjeto().setPosicaoAtual(novaPosicao);
+                	environment.getObjeto().setPosicaoAtualPixel(novaPosicao/environment.getSurface().getEscala());
                 	
                 	
                 	//System.out.println("############# Nova Posição: " + environment.getObjeto().getPosicaoAtual());
