@@ -1,0 +1,1 @@
+O projeto "Aplicação das Leis da Física num Objeto Bidimencional em um Ambiente Computacional", é uma pesquisa de Iniciação Científica, feita por quatro alunos do IFG-Formosa, sob supervisão de dois Professores. Ele tem por objetivo criar uma plataforma de demonstrações de grandezas físicas, por meio do computador na busca de tornar a aprendizagem cada vez mais atrativa.
